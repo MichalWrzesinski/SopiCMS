@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\BlogRepository;
-use App\Repository\ItemRepository;
-use App\Repository\CategoryRepository;
+use App\Repository\Eloquent\BlogRepository;
+use App\Repository\Eloquent\ItemRepository;
+use App\Repository\Eloquent\CategoryRepository;
 use Illuminate\View\View;
 
 class HomeController extends Controller

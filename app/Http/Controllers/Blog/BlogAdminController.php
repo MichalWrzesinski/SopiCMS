@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Blog;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Repository\BlogRepository;
+use App\Repository\Eloquent\BlogRepository;
 use App\Http\Controllers\Controller;
 
 class BlogAdminController extends Controller

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Page;
 
 use Illuminate\Http\Request;
-use App\Repository\PageRepository;
+use App\Repository\Eloquent\PageRepository;
 use App\Http\Controllers\Controller;
 
 class PageGalleryController extends Controller

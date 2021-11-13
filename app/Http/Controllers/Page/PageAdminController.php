@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Page;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Repository\PageRepository;
+use App\Repository\Eloquent\PageRepository;
 use App\Http\Controllers\Controller;
 
 class PageAdminController extends Controller

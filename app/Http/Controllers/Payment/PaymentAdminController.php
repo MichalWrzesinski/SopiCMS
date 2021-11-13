@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Payment;
 
-use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Repository\PaymentRepository;
+use App\Repository\Eloquent\PaymentRepository;
 use App\Http\Controllers\Controller;
 
 class PaymentAdminController extends Controller

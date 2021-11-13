@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Repository\CategoryRepository;
+use App\Repository\Eloquent\CategoryRepository;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller

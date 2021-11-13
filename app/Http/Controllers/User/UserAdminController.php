@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Repository\UserRepository;
+use App\Repository\Eloquent\UserRepository;
 use App\Http\Controllers\Controller;
 
 class UserAdminController extends Controller

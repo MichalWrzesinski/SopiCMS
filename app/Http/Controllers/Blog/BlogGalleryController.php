@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Blog;
 
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Repository\BlogRepository;
+use App\Repository\Eloquent\BlogRepository;
 use App\Http\Controllers\Controller;
 
 class BlogGalleryController extends Controller

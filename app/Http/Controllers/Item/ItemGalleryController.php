@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Item;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Repository\ItemRepository;
-use App\Repository\CategoryRepository;
-use App\Repository\UserRepository;
+use App\Repository\Eloquent\ItemRepository;
+use App\Repository\Eloquent\CategoryRepository;
+use App\Repository\Eloquent\UserRepository;
 use App\Http\Controllers\Controller;
 
 class ItemGalleryController extends Controller
