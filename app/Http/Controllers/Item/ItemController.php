@@ -24,21 +24,20 @@ class ItemController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function list(Request $request, Int $id = 0): View
+    public function list(string $search = null): View
     {
-        if($id > 0 && !($request['category'] > 0)) {
-            $request['category'] = $id;
-        }
+        $search = $this->itemRepository->slugDecode($search);
 
-        $search = [
-            'query' => $request['query'],
-            'category' => $request['category'],
-            'region' => $request['region'],
-            'city' => $request['city'],
-            'price-from' => $request['price-from'],
-            'price-to' => $request['price-to'],
-        ];
+        return View('main.items.list', [
+            'title' => config('sopicms.item.list'),
+            'list' => $this->itemRepository->list($search, config('sopicms.paginate')),
+            'category' => $this->categoryRepository->list(),
+            'search' => $search,
+        ]);
+    }
 
+    public function search(Request $request)
+    {
         if($request['price-from'] <> '') {
             $request['price-from'] = convertToNumber($request['price-from']);
         }
@@ -56,12 +55,7 @@ class ItemController extends Controller
             'price-to' => ['nullable', 'numeric', 'min:0'],
         ]);
 
-        return View('main.items.list', [
-            'title' => config('sopicms.item.list'),
-            'list' => $this->itemRepository->list($request, config('sopicms.paginate')),
-            'category' => $this->categoryRepository->list(),
-            'search' => $search,
-        ]);
+        return redirect()->route('item.list', ['search' => $this->itemRepository->slugEncode($request)]);
     }
 
     public function show(Int $id, String $url): View

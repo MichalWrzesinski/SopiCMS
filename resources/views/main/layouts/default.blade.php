@@ -46,7 +46,7 @@
                                                 Wyloguj się
                                             </a>
                                         </li>
-                                        <li class="nav-item ps-3">
+                                        <li class="nav-item ps-3 position-relative">
                                             <a href="{{ route('user.dashboard') }}" class="btn btn-primary">
                                                 Twoje konto
                                             </a>
@@ -155,8 +155,6 @@
                 </div>
             </div>
         </footer>
-
-
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -12,7 +12,7 @@
             <div class="col-xl-3 col-sm-12">
                 <section class="p-4 mb-4">
                     <h4>Filtruj</h4>
-                    <form method="post" action="{{ url()->current() }}">
+                    <form method="post" action="{{ route('item.search.send') }}">
                         @csrf
                         <label>
                             Słowo kluczowe

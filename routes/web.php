@@ -165,17 +165,12 @@ Route::group(['prefix' => '/konto/'], function() {
 /*
  * Items
  */
-Route::get('/ogloszenia', [ItemController::class, 'list'])
+Route::get('/ogloszenia/{search?}', [ItemController::class, 'list'])
+    ->where('search', '(.*)')
     ->name('item.list');
 
-Route::post('/ogloszenia', [ItemController::class, 'list'])
-    ->name('item.list.send');
-
-Route::get('/kategoria/{id}/{url}', [ItemController::class, 'list'])
-    ->name('item.list.category');
-
-Route::post('/kategoria/{id}/{url}', [ItemController::class, 'list'])
-    ->name('item.list.category');
+Route::post('/szukaj', [ItemController::class, 'search'])
+    ->name('item.search.send');
 
 Route::get('/ogloszenie/{id}/{url}', [ItemController::class, 'show'])
     ->name('item.show');

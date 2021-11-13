@@ -128,4 +128,15 @@ return [
         6 => 'Sobota',
         7 => 'Niedziela'
     ],
+
+    'opd' => [
+        'category' => 'kategoria',
+        'region' => 'wojewodztwo',
+        'city' => 'miejscowosc',
+        'price' => 'cena',
+        'price-from' => 'cena-od',
+        'price-to' => 'cena-do',
+        'query' => 'szukaj',
+        'page' => 'strona',
+    ],
 ];

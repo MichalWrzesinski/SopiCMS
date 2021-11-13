@@ -75,6 +75,60 @@ class ItemRepository implements ItemRepositoryInterface
         return $this->fillCollection($list->get());
     }
 
+    public function slugEncode($data)
+    {
+        $slug = [];
+
+        if(!empty($data['category'])) {
+            $slug[] = config('sopicms.opd.category');
+            $slug[] = $data['category'];
+        }
+        if(!empty($data['region'])) {
+            $slug[] = config('sopicms.opd.region');
+            $slug[] = $data['region'];
+        }
+        if(!empty($data['city'])) {
+            $slug[] = config('sopicms.opd.city');
+            $slug[] = urlencode($data['city']);
+        }
+        if(!empty($data['price-from'])) {
+            $slug[] = config('sopicms.opd.price-from');
+            $slug[] = $data['price-from'];
+        }
+        if(!empty($data['price-to'])) {
+            $slug[] = config('sopicms.opd.price-to');
+            $slug[] = $data['price-to'];
+        }
+        if(!empty($data['query'])) {
+            $slug[] = config('sopicms.opd.query');
+            $slug[] = urlencode($data['query']);
+        }
+
+        return implode('/', $slug);
+    }
+
+    public function slugDecode($data)
+    {
+        $search = [];
+
+        $opd = array_flip(config('sopicms.opd'));
+
+        if($data <> '') {
+            $searchArray = explode('/', $data);
+            foreach($searchArray as $key => $value) {
+                if($key % 2 == 0) {
+                    $label = $value;
+                    if(isset($opd[$value])) {
+                        $label = $opd[$value];
+                    }
+                    $search[$label] = $searchArray[$key+1];
+                }
+            }
+        }
+
+        return $search;
+    }
+
     public function add($data)
     {
         return $this->model->create([

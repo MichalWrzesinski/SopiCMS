@@ -9,11 +9,6 @@
         </ol>
     </nav>
     <div class="container">
-        <section class="p-4 mb-4">
-            <h1>{{ $item->title }}</h1>
-        </section>
-    </div>
-    <div class="container">
         <div class="row">
             <div class="col-xl-6 col-sm-12 mb-4">
                 @if(!empty($item->gallery) && is_array($item->gallery))
