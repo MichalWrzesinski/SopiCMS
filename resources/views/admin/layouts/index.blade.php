@@ -12,10 +12,23 @@
             @include('admin.layouts.left')
         </div>
         <div id="right" class="col-xl-9 col-sm-12">
-            <section class="p-4 mb-3">
-                <h1 class="mb-4">{{ $title }}</h1>
-                @include('main.layouts.alert')
-            </section>
+            <div class="accordion accordion-flush" id="section-list">
+
+                <div class="accordion-item mb-4">
+                    <h1 class="accordion-header" id="section-1">
+                        <button class="accordion-button text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-1-container" aria-expanded="false" aria-controls="section-1-container">
+                            {{ $title }}
+                        </button>
+                    </h1>
+                    <div id="section-1-container" class="accordion-collapse collapse show" aria-labelledby="section-1">
+                        <section class="accordion-body p-4">
+                            @include('main.layouts.alert')
+
+
+                        </section>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

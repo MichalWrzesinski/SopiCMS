@@ -11328,8 +11328,8 @@ section h5,
 section .h5,
 section h6,
 section .h6 {
-  margin-bottom: 26px;
-  font-size: 26px;
+  margin-bottom: 24px;
+  font-size: 24px;
 }
 
 h1:last-child, .h1:last-child,
@@ -11425,6 +11425,17 @@ input[type=reset],
 .avatar {
   border-radius: 100px;
   border: 4px solid #09b294;
+}
+
+.accordion-button {
+  padding: 25px;
+  font-size: 24px;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.accordion-item {
+  border: none !important;
 }
 
 /*

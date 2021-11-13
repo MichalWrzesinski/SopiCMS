@@ -133,6 +133,20 @@ input[type="reset"],
     color: #fff;
 }
 
+.accordion-button {
+
+    padding: 24px;
+
+    font-size: 24px;
+    background: #fff !important;
+    box-shadow: none !important;
+}
+
+.accordion-item {
+
+    border: none !important;
+}
+
 /*
  *  Header
  */

@@ -20,11 +20,31 @@
                         <nav class="navbar navbar-expand">
                             <div class="collapse navbar-collapse" id="menu">
                                 <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item d-none d-xl-block"><a href="{{ route('admin.dashboard') }}" class="nav-link{!! Request::url() == route('admin.dashboard') ? ' active' : '' !!}">Strona główna</a></li>
-                                    <li class="nav-item d-none d-xl-block"><a href="{{ route('home') }}" class="nav-link{!! Request::url() == route('home') ? ' active' : '' !!}">Powrót do serwisu</a></li>
-                                    <li class="nav-item d-none d-xl-block"><a href="{{ route('user.dashboard') }}"  class="nav-link">Jesteś zalogowany jako <strong>{{ auth()->user()->name }}</strong></a></li>
-                                    <li class="nav-item ps-3 d-none d-xl-block"><a href="{{ route('user.logout') }}" class="btn btn-primary">Wyloguj się</a></li>
-                                    <li class="nav-item ps-3 d-inline d-xl-none"><a data-bs-toggle="collapse" href="#left-menu" role="button" aria-expanded="false" aria-controls="left-menu" class="btn btn-primary">Menu</a></li>
+                                    <li class="nav-item d-none d-xl-block">
+                                        <a href="{{ route('admin.dashboard') }}" class="nav-link{!! Request::url() == route('admin.dashboard') ? ' active' : '' !!}">
+                                            Strona główna
+                                        </a>
+                                    </li>
+                                    <li class="nav-item d-none d-xl-block">
+                                        <a href="{{ route('home') }}" class="nav-link{!! Request::url() == route('home') ? ' active' : '' !!}">
+                                            Powrót do serwisu
+                                        </a>
+                                    </li>
+                                    <li class="nav-item d-none d-xl-block">
+                                        <a href="{{ route('user.dashboard') }}"  class="nav-link">
+                                            Jesteś zalogowany jako <strong>{{ auth()->user()->name }}</strong>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ps-3 d-none d-xl-block">
+                                        <a href="{{ route('user.logout') }}" class="btn btn-primary">
+                                            Wyloguj się
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ps-3 d-inline d-xl-none">
+                                        <a data-bs-toggle="collapse" href="#left-menu" role="button" aria-expanded="false" aria-controls="left-menu" class="btn btn-primary">
+                                            Menu
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
