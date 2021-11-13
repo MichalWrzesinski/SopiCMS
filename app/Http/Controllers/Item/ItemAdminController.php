@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Item;
 
+use App\Http\Requests\DeleteRequest;
+use App\Http\Requests\ImageRequest;
+use App\Http\Requests\ItemRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -42,7 +45,7 @@ class ItemAdminController extends Controller
         return $this->list($request, 0);
     }
 
-    public function edit(Int $id): View
+    public function edit(int $id): View
     {
         return View('admin.items.edit', [
             'title' => config('sopicms.item.edit'),
@@ -52,38 +55,23 @@ class ItemAdminController extends Controller
         ]);
     }
 
-    public function editSend(Request $request, Int $id)
+    public function editSend(ItemRequest $request, int $id)
     {
-        $request->validate([
-            'title' => ['required', 'min:10'],
-            'price' => ['required', 'numeric', 'min:0'],
-            'category' => ['required', 'integer'],
-            'region' => ['required', 'integer'],
-            'city' => ['required', 'min:5'],
-            'content' => ['required', 'min:100'],
-        ]);
-
         $this->itemRepository->update($id, $request);
 
         return back()->with('success', 'Zmiany zostały zapisane.');
     }
 
-    public function publicSend(Request $request, Int $id)
+    public function publicSend(Request $request, int $id)
     {
         $this->itemRepository->public($id, $request);
-
         return back()->with('success', 'Zmiany zostały zapisane.');
     }
 
-    public function gallerySend(Request $request, int $id)
+    public function gallerySend(ImageRequest $request, int $id)
     {
-        $request->validate([
-            'file' => ['required', 'file', 'image', 'mimes:jpg,jpeg,gif,png,bmp', 'max:10240'],
-        ]);
-
-        $file = $request->file('file')->store('items', 'public');
+        $file = $request->file('image')->store('items', 'public');
         $this->itemRepository->imageAdd($id, $file);
-
         return back()->with('success', 'Zdjęcie zostało dodane do galerii2');
     }
 
@@ -114,5 +102,13 @@ class ItemAdminController extends Controller
         Setting::where('key', 'item.premium.price')->update(['value' => $request['premium-price']]);
 
         return back()->with('success', 'Ustawienia zostały zapisane');
+    }
+
+    public function deleteSend(DeleteRequest $request, int $id)
+    {
+        $this->itemRepository->delete($id);
+
+        return redirect()->route('admin.items.list')
+            ->with('success', 'Wpis został usunięty');
     }
 }

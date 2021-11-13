@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Item;
 
+use App\Http\Requests\ImageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repository\Eloquent\ItemRepository;
@@ -24,13 +25,9 @@ class ItemGalleryController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function addSend(Request $request, int $id)
+    public function addSend(ImageRequest $request, int $id)
     {
-        $request->validate([
-            'file' => ['required', 'file', 'image', 'mimes:jpg,jpeg,gif,png,bmp', 'max:10240'],
-        ]);
-
-        $file = $request->file('file')->store('items', 'public');
+        $file = $request->file('image')->store('items', 'public');
         $this->itemRepository->imageAdd($id, $file, (auth()->user()->type == 9) ? 0 : Auth::id());
 
         return back()->with('success', 'Zdjęcie zostało dodane do galerii');
@@ -39,14 +36,12 @@ class ItemGalleryController extends Controller
     public function deleteSend(Request $request, int $id, int $key)
     {
         $this->itemRepository->imageDelete($id, $key, (auth()->user()->type == 9) ? 0 : Auth::id());
-
         return back()->with('success', 'Zdjęcie zostało usunięte z galerii');
     }
 
     public function coverSend(Request $request, int $id, int $key)
     {
         $this->itemRepository->imageCover($id, $key, (auth()->user()->type == 9) ? 0 : Auth::id());
-
         return back()->with('success', 'Zdjęcie zostało umstawione jako główne');
     }
 }

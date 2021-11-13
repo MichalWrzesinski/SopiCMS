@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Blog;
 
+use App\Http\Requests\ImageRequest;
 use Illuminate\Http\Request;
 use App\Repository\Eloquent\BlogRepository;
 use App\Http\Controllers\Controller;
@@ -17,13 +18,9 @@ class BlogGalleryController extends Controller
         $this->blogRepository = $blogRepository;
     }
 
-    public function addSend(Request $request, int $id)
+    public function addSend(ImageRequest $request, int $id)
     {
-        $request->validate([
-            'file' => ['required', 'file', 'image', 'mimes:jpg,jpeg,gif,png,bmp', 'max:10240'],
-        ]);
-
-        $file = $request->file('file')->store('blog', 'public');
+        $file = $request->file('image')->store('blog', 'public');
         $this->blogRepository->imageAdd($id, $file);
 
         return back()->with('success', 'Zdjęcie zostało dodane do galerii');

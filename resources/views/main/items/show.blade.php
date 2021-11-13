@@ -44,10 +44,10 @@
                     <h1>{{ $item->title }}</h1>
                     <ul class="list">
                         <li>Cena: <strong>{{ priceFormat($item->price) }}</strong></li>
-                        <li>Kategoria: <strong>{{ $item->category }}</strong></li>
+                        <li>Kategoria: <strong>{{ $item->category_dir }}</strong></li>
                         @if($item->region <> '')<li>Województwo: <strong>{{config('sopicms.region.'.$item->region) }}</strong></li>@endif
                         @if($item->city <> '')<li>Miejscowość: <strong>{{ $item->city }}</strong></li>@endif
-                        @if($item->user <> '')<li>Sprzedający: <strong>{{ $item->user }}</strong></li>@endif
+                        @if($item->user <> '')<li>Sprzedający: <strong><a href="{{ route('item.list', ['search' => config('sopicms.opd.user').'/'.$item->user_id]) }}">{{ $item->user }}</a></strong></li>@endif
                         @if($item->email <> '')<li>E-mail: <strong><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></strong></li>@endif
                         @if($item->phone <> '')<li>Telefon: <strong>{{ $item->phone }}</strong></li>@endif
                     </ul>

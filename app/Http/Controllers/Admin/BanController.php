@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\IpRequest;
 use App\Models\Ban;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -25,12 +26,8 @@ class BanController extends Controller
         ]);
     }
 
-    public function addSend(Request $request)
+    public function addSend(IpRequest $request)
     {
-        $request->validate([
-            'ip' => ['required', 'ip', 'unique:bans,ip']
-        ]);
-
         Ban::create([
             'ip' => $request['ip'],
         ]);

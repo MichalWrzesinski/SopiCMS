@@ -62,10 +62,11 @@ class ItemRepository implements ItemRepositoryInterface
 
             if(!empty($search['query'])) $query->where('title', 'like', '%'.$search['query'].'%');
             if(!empty($search['category'])) $query->whereIn('category_id', $catList);
-            if(!empty($search['region'])) $query->where('region', $search['region']);
+            if(!empty($search['region'])) $query->where('region', (int)$search['region']);
             if(!empty($search['city'])) $query->where('city', 'like', '%'.$search['city'].'%');
-            if(!empty($search['price-from'])) $query->where('price', '>=', $search['price-from']);
-            if(!empty($search['price-to'])) $query->where('price', '<=', $search['price-to']);
+            if(!empty($search['price-from'])) $query->where('price', '>=', (float)$search['price-from']);
+            if(!empty($search['price-to'])) $query->where('price', '<=', (float)$search['price-to']);
+            if(!empty($search['user'])) $query->where('user_id', (int)$search['user']);
         })->orderBy($order, $direction);
 
         if($limit > 0) {
@@ -102,6 +103,10 @@ class ItemRepository implements ItemRepositoryInterface
         if(!empty($data['query'])) {
             $slug[] = config('sopicms.opd.query');
             $slug[] = urlencode($data['query']);
+        }
+        if(!empty($data['user'])) {
+            $slug[] = config('sopicms.opd.user');
+            $slug[] = $data['user'];
         }
 
         return implode('/', $slug);

@@ -30,14 +30,14 @@
                                 @csrf
                                 <label>
                                     Nazwa
-                                    <input type="text" name="name" required="required" value="{{ old('name', $user->name) }}">
+                                    <input type="text" name="name" required="required" value="{{ old('name', $user->name) }}" class="@error('name') is-invalid @enderror">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Adre e-mail
-                                    <input type="text" name="email" required="required" value="{{ old('email', $user->email) }}">
+                                    <input type="text" name="email" required="required" value="{{ old('email', $user->email) }}" class="@error('email') is-invalid @enderror">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
@@ -136,8 +136,8 @@
                                 @csrf
                                 <label>
                                     Plik graficzny
-                                    <input type="file" name="avatar" required="required" class="@error('avatar') is-invalid @enderror">
-                                    @error('avatar')
+                                    <input type="file" name="image" required="required" class="@error('image') is-invalid @enderror">
+                                    @error('image')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>

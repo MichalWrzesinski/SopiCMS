@@ -109,8 +109,8 @@
                                     @csrf
                                     <label>
                                         Plik graficzny
-                                        <input type="file" name="avatar" required="required" class="@error('avatar') is-invalid @enderror">
-                                        @error('avatar')
+                                        <input type="file" name="image" required="required" class="@error('image') is-invalid @enderror">
+                                        @error('image')
                                             <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>

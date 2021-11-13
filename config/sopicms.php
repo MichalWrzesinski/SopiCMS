@@ -138,5 +138,6 @@ return [
         'price-to' => 'cena-do',
         'query' => 'szukaj',
         'page' => 'strona',
+        'user' => 'uzytkownik',
     ],
 ];

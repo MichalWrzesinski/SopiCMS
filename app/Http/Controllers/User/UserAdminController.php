@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\ImageRequest;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\DeleteRequest;
 use App\Models\User;
 use App\Repository\Eloquent\UserRepository;
 use App\Http\Controllers\Controller;
@@ -29,14 +33,8 @@ class UserAdminController extends Controller
         ]);
     }
 
-    public function addSend(Request $request)
+    public function addSend(RegisterRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:3', 'max:30'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'min:8', 'confirmed'],
-        ]);
-
         $request['status'] = 1;
         $id = $this->userRepository->add($request);
 
@@ -71,57 +69,41 @@ class UserAdminController extends Controller
         return back()->with('success', 'Zmiany zostały zapisane');
     }
 
-    public function passwordSend(Request $request, Int $id)
+    public function passwordSend(PasswordRequest $request, int $id)
     {
-        $request->validate([
-            'password' => ['required', 'min:8', 'confirmed'],
-        ]);
-
         $this->userRepository->update($id, [
             'password' => Hash::make($request['password'])
         ]);
-
         return back()->with('success', 'Hasło użytkownika zostało zmienione');
     }
 
-    public function deleteSend(Request $request, Int $id)
+    public function deleteSend(DeleteRequest $request, int $id)
     {
-        $request->validate([
-            'delete' => ['required'],
-        ]);
-
         $this->userRepository->delete($id);
-
         return redirect()->route('admin.users.list')
             ->with('success', 'Użytkownik został usunięty');
     }
 
-    public function avatarAddSend(Request $request, Int $id)
+    public function avatarAddSend(ImageRequest $request, int $id)
     {
         $user = User::findOrFail($id);
-
-        $request->validate([
-            'avatar' => ['required', 'file', 'image', 'mimes:jpg,jpeg,gif,png,bmp', 'max:10240'],
-        ]);
 
         if($user->avatar <> null) {
             Storage::disk('public')->delete($user->avatar);
         }
 
-        $file = $request->file('avatar')->store('avatars', 'public');
+        $file = $request->file('image')->store('avatars', 'public');
         $this->userRepository->update($id, [
             'avatar' => $file,
         ]);
-
         return back()->with('success', 'Avatar użytkownika został zmieniony');
     }
 
-    public function avatarDeleteSend(Request $request, Int $id)
+    public function avatarDeleteSend(Request $request, int $id)
     {
         $this->userRepository->update($id, [
             'avatar' => '',
         ]);
-
         return back()->with('success', 'Avatar użytkownika został usunięty');
     }
 
@@ -147,7 +129,6 @@ class UserAdminController extends Controller
         ]);
 
         $this->userRepository->newsletter($request['title'], $request['content']);
-
         return back()->with('success', 'Newsletter został wysłany');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\NameRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Repository\Eloquent\CategoryRepository;
@@ -24,14 +25,9 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function addSend(Request $request)
+    public function addSend(NameRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'max:255'],
-        ]);
-
         $this->categoryRepository->add($request);
-
         return back()->with('success', 'Kategoria została dodana');
     }
 
@@ -63,14 +59,9 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function editSend(Request $request, int $id)
+    public function editSend(NameRequest $request, int $id)
     {
-        $request->validate([
-            'name' => ['required', 'max:255'],
-        ]);
-
         $this->categoryRepository->update($id, $request);
-
         return back()->with('success', 'Zmiany zostały zapisane');
     }
 

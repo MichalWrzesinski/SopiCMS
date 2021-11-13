@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Blog;
 
+use App\Http\Requests\DeleteRequest;
+use App\Http\Requests\TitleRequest;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -27,15 +29,9 @@ class BlogAdminController extends Controller
         ]);
     }
 
-    public function addSend(Request $request)
+    public function addSend(TitleRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'max:255'],
-        ]);
-
-        $id = $this->blogRepository->add($request);
-
-        return redirect()->route('admin.blog.edit', ['id' => $id]);
+        return redirect()->route('admin.blog.edit', ['id' => $this->blogRepository->add($request)]);
     }
 
     public function edit(Int $id): View
@@ -47,23 +43,14 @@ class BlogAdminController extends Controller
         ]);
     }
 
-    public function editSend(Request $request, int $id)
+    public function editSend(TitleRequest $request, int $id)
     {
-        $request->validate([
-            'title' => ['required', 'max:255'],
-        ]);
-
         $this->blogRepository->update($id, $request);
-
         return back()->with('success', 'Zmiany zostały zapisane');
     }
 
-    public function deleteSend(Request $request, int $id)
+    public function deleteSend(DeleteRequest $request, int $id)
     {
-        $request->validate([
-            'delete' => ['required'],
-        ]);
-
         $this->blogRepository->delete($id);
 
         return redirect()->route('admin.blog.list')

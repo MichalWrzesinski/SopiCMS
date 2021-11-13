@@ -81,6 +81,7 @@
                                 </label>
                             </div>
                         </div>
+                        <input type="hidden" name="user" value="{{ $search['user'] ?? '' }}">
                         <div class="mt-4">
                             <input type="submit" value="Szukaj" class="btn btn-primary me-2">
                             <a href="{{ route('item.list') }}" class="btn btn-secondary">Wyczyść filtry</a>

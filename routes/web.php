@@ -108,7 +108,7 @@ Route::group(['prefix' => '/konto/'], function() {
             Route::get('edytuj/{id}', [ItemUserController::class, 'edit'])
                 ->name('user.item.edit');
 
-            Route::post('edytuj/{id}', [ItemController::class, 'editSend'])
+            Route::post('edytuj/{id}', [ItemUserController::class, 'editSend'])
                 ->name('user.item.edit.send');
 
             Route::post('galeria/{id}', [ItemGalleryController::class, 'addSend'])

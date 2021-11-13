@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Item;
 
+use App\Http\Requests\DeleteRequest;
+use App\Http\Requests\ItemRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -41,22 +43,9 @@ class ItemUserController extends Controller
         ]);
     }
 
-    public function addSend(Request $request)
+    public function addSend(ItemRequest $request)
     {
-        $request['price'] = convertToNumber($request['price']);
-
-        $request->validate([
-            'title' => ['required', 'min:10'],
-            'price' => ['required', 'numeric', 'min:0'],
-            'category' => ['required', 'integer'],
-            'region' => ['required', 'integer'],
-            'city' => ['required', 'min:5'],
-            'content' => ['required', 'min:50'],
-        ]);
-
-        $id = $this->itemRepository->add($request);
-
-        return redirect()->route('user.item.edit', ['id' => $id])
+        return redirect()->route('user.item.edit', ['id' => $this->itemRepository->add($request)])
             ->with('success', 'Ogłoszenie zostało dodane. Zaczekaj na aktywację przez administratora.');
     }
 
@@ -70,23 +59,13 @@ class ItemUserController extends Controller
         ]);
     }
 
-    public function editSend(Request $request, int $id)
+    public function editSend(ItemRequest $request, int $id)
     {
-        $request->validate([
-            'title' => ['required', 'min:10'],
-            'price' => ['required', 'numeric', 'min:0'],
-            'category' => ['required', 'integer'],
-            'region' => ['required', 'integer'],
-            'city' => ['required', 'min:5'],
-            'content' => ['required', 'min:100'],
-        ]);
-
         $this->itemRepository->update($id, $request, Auth::id());
-
         return back()->with('success', 'Zmiany zostały zapisane.');
     }
 
-    public function deleteSend(Request $request, int $id)
+    public function deleteSend(DeleteRequest $request, int $id)
     {
         $this->itemRepository->delete($id, Auth::id());
 

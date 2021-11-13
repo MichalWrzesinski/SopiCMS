@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Item;
 
+use App\Http\Requests\DeleteRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Repository\Eloquent\ItemRepository;
@@ -64,8 +65,11 @@ class ItemController extends Controller
 
         $cat = $this->categoryRepository->get($item->category_id);
         $item['category'] = $cat->name;
+        $item['category_dir'] = '';
+        $item['category_parent'] = '';
         if($cat->parent_id > 0) {
-            $item['category'] = $cat->parent.' - '.$item['category'];
+            $item['category_dir'] = $cat->parent.' - '.$item['category'];
+            $item['category_parent'] = $cat->parent;
         }
 
         $user = $this->userRepository->get($item->user_id);
@@ -77,5 +81,13 @@ class ItemController extends Controller
             'title' => $item->title,
             'item' => $item,
         ]);
+    }
+
+    public function deleteSend(DeleteRequest $request, int $id)
+    {
+        $this->itemRepository->delete($id);
+
+        return redirect()->route('item.user.list')
+            ->with('success', 'Wpis został usunięty');
     }
 }

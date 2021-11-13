@@ -32,7 +32,7 @@ return [
         'array'   => 'Wartość musi mieć pomiędzy :min a :max pozycji',
     ],
     'boolean'              => 'Wartość musi być true lub false',
-    'confirmed'            => 'Potwierdzenie :attribute nie pasuje',
+    'confirmed'            => 'Potwierdzenie nie pasuje',
     'current_password'     => 'Hasło jest błędne',
     'date'                 => 'Wartość nie jest prawidłową datą',
     'date_equals'          => 'Wartość musi być datą równą :date',

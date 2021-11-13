@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Page;
 
+use App\Http\Requests\DeleteRequest;
+use App\Http\Requests\TitleRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Repository\Eloquent\PageRepository;
@@ -26,15 +28,9 @@ class PageAdminController extends Controller
         ]);
     }
 
-    public function addSend(Request $request)
+    public function addSend(TitleRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'max:255'],
-        ]);
-
-        $id = $this->pageRepository->add($request);
-
-        return redirect()->route('admin.pages.edit', ['id' => $id]);
+        return redirect()->route('admin.pages.edit', ['id' => $this->pageRepository->add($request)]);
     }
 
     public function edit(int $id): View
@@ -58,14 +54,9 @@ class PageAdminController extends Controller
         return back()->with('success', 'Zmiany zostały zapisane');
     }
 
-    public function deleteSend(Request $request, int $id)
+    public function deleteSend(DeleteRequest $request, int $id)
     {
-        $request->validate([
-            'delete' => ['required'],
-        ]);
-
         $this->pageRepository->delete($id);
-
         return redirect()->route('admin.pages.list')
             ->with('success', 'Strona została usunięta');
     }

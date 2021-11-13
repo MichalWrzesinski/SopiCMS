@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\ImageRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -35,13 +39,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function loginSend(Request $request)
+    public function loginSend(LoginRequest $request)
     {
-        $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
         if($this->userRepository->login($request)) {
             return redirect()->route('user.dashboard');
         }
@@ -69,7 +68,6 @@ class UserController extends Controller
     public function passwordSend(Request $request)
     {
         $this->userRepository->passwordInit($request);
-
         return back()->with('success', 'Na podany adres e-mail wysłaliśmy wiadomość z dalszymi instrukcjami');
     }
 
@@ -111,15 +109,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function registerSend(Request $request)
+    public function registerSend(RegisterRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:3', 'max:30'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'min:8', 'confirmed'],
-            'regulations' => ['required']
-        ]);
-
         $this->userRepository->add($request);
 
         return redirect()->route('user.activate')
@@ -146,11 +137,9 @@ class UserController extends Controller
 
     public function manage(): View
     {
-        $user = Auth::user();
-
         return View('main.user.manage', [
             'title' => 'Ustawienia konta',
-            'user' => $user,
+            'user' => Auth::user(),
         ]);
     }
 
@@ -169,12 +158,8 @@ class UserController extends Controller
         return back()->with('success', 'Twoje ustawienia zostały zmienione');
     }
 
-    public function managePasswordSend(Request $request)
+    public function managePasswordSend(PasswordRequest $request)
     {
-        $request->validate([
-            'password' => ['required', 'min:8', 'confirmed'],
-        ]);
-
         $this->userRepository->update(Auth::id(), [
             'password' => Hash::make($request['password']),
         ]);
@@ -182,18 +167,14 @@ class UserController extends Controller
         return back()->with('success', 'Twoje hasło zostało zmienione');
     }
 
-    public function manageAvatarSend(Request $request)
+    public function manageAvatarSend(ImageRequest $request)
     {
-        $request->validate([
-            'avatar' => ['required', 'file', 'image', 'mimes:jpg,jpeg,gif,png,bmp', 'max:10240'],
-        ]);
-
         $user = Auth::user();
         if($user->avatar <> null) {
             Storage::disk('public')->delete($user->avatar);
         }
 
-        $file = $request->file('avatar')->store('avatars', 'public');
+        $file = $request->file('image')->store('avatars', 'public');
         $this->userRepository->update(Auth::id(), [
             'avatar' => $file,
         ]);
