@@ -33,14 +33,14 @@
                                         Nazwa użytkownika
                                         <input type="text" name="name" required="required" class="@error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}">
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <label>
                                         Adres e-mail
                                         <input type="email" name="email" required="required" class="@error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}">
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">
@@ -67,7 +67,7 @@
                                                 Hasło
                                                 <input type="password" name="password" required="required" class="@error('password') is-invalid @enderror">
                                                 @error('password')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -76,7 +76,7 @@
                                                 Powtórz hasło
                                                 <input type="password" name="password_confirmation" required="required" class="@error('password_confirmation') is-invalid @enderror">
                                                 @error('password_confirmation')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -111,7 +111,7 @@
                                         Plik graficzny
                                         <input type="file" name="avatar" required="required" class="@error('avatar') is-invalid @enderror">
                                         @error('avatar')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">

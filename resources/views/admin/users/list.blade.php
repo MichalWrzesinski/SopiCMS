@@ -28,26 +28,26 @@
                             @if($list->isNotEmpty())
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nazwa</th>
-                                        <th>E-mail</th>
-                                        <th>Status</th>
-                                        <th>Typ</th>
-                                        <th>Opcje</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nazwa</th>
+                                            <th>E-mail</th>
+                                            <th>Status</th>
+                                            <th>Typ</th>
+                                            <th>Opcje</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($list as $user)
-                                        <tr>
-                                            <td>{{ $user['id'] }}</td>
-                                            <td>{{ $user['name'] }}</td>
-                                            <td>{{ $user['email'] }}</td>
-                                            <td>{{ config('sopicms.user.status.'.$user['status']) }}</td>
-                                            <td>{{ config('sopicms.user.type.'.$user['type']) }}</td>
-                                            <td><a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}">Zarządzaj</a></td>
-                                        </tr>
-                                    @endforeach
+                                        @foreach($list as $user)
+                                            <tr>
+                                                <td>{{ $user['id'] }}</td>
+                                                <td>{{ $user['name'] }}</td>
+                                                <td>{{ $user['email'] }}</td>
+                                                <td>{{ config('sopicms.user.status.'.$user['status']) }}</td>
+                                                <td>{{ config('sopicms.user.type.'.$user['type']) }}</td>
+                                                <td><a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}">Zarządzaj</a></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 {{ $list->links() }}
@@ -72,14 +72,14 @@
                                     Nazwa
                                     <input type="text" name="name" required="required" class="@error('name') is-invalid @enderror">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Adres e-mail
                                     <input type="email" name="email" required="required" class="@error('email') is-invalid @enderror">
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="row">
@@ -88,7 +88,7 @@
                                             Hasło
                                             <input type="password" name="password" required="required" class="@error('password') is-invalid @enderror">
                                             @error('password')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -97,7 +97,7 @@
                                             Powtórz hasło
                                             <input type="password" name="password_confirmation" required="required" class="@error('password_confirmation') is-invalid @enderror">
                                             @error('password_confirmation')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -124,7 +124,7 @@
                                     Słowo kluczowe
                                     <input type="text" name="search" required="required" value="{{ old('search') }}">
                                     @error('search')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>

@@ -32,14 +32,14 @@
                                     Nazwa
                                     <input type="text" name="name" required="required" value="{{ old('name', $user->name) }}">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Adre e-mail
                                     <input type="text" name="email" required="required" value="{{ old('email', $user->email) }}">
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="row">
@@ -52,7 +52,7 @@
                                                 @endforeach
                                             </select>
                                             @error('status')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -65,7 +65,7 @@
                                                 @endforeach
                                             </select>
                                             @error('type')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -94,7 +94,7 @@
                                             Hasło
                                             <input type="password" name="password" required="required" class="@error('password') is-invalid @enderror">
                                             @error('password')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -103,7 +103,7 @@
                                             Powtórz hasło
                                             <input type="password" name="password_confirmation" required="required" class="@error('password_confirmation') is-invalid @enderror">
                                             @error('password_confirmation')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -138,7 +138,7 @@
                                     Plik graficzny
                                     <input type="file" name="avatar" required="required" class="@error('avatar') is-invalid @enderror">
                                     @error('avatar')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

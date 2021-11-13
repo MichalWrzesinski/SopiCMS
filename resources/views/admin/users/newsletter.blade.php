@@ -32,14 +32,14 @@
                                     Tytuł
                                     <input type="text" name="title" required="required" value="{{ old('title') }}">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Treść
                                     <textarea name="content" required="required">{{ old('content') }}</textarea>
                                     @error('content')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

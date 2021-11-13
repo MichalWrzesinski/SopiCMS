@@ -32,28 +32,28 @@
                                     Nazwa
                                     <input type="text" name="name" value="{{ old('name', $form['name']) }}" required="required" class="@error('name') is-invalid @enderror">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Tytuł
                                     <input type="text" name="title" value="{{ old('title', $form['title']) }}" required="required" placeholder="Meta / title" class="@error('title') is-invalid @enderror">
                                     @error('title')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Opis
                                     <input type="text" name="description" value="{{ old('description', $form['description']) }}" placeholder="Meta / description" class="@error('description') is-invalid @enderror">
                                     @error('description')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Słowa kluczowe
                                     <input type="text" name="keywords" value="{{ old('keywords', $form['keywords']) }}" placeholder="Meta / keywords" class="@error('keywords') is-invalid @enderror">
                                     @error('keywords')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <input type="hidden" name="index" value="">
@@ -61,7 +61,7 @@
                                     <input type="checkbox" name="index" value="all"@if(old('index', $form['index']) == 'all') checked="checked"@endif class="@error('index') is-invalid @enderror">
                                     Indeksuj w przeglądarkach
                                     @error('index')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

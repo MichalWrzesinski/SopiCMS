@@ -29,22 +29,22 @@
                             @if($list->isNotEmpty())
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>IP</th>
-                                        <th>Data blokady</th>
-                                        <th>Opcje</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>IP</th>
+                                            <th>Data blokady</th>
+                                            <th>Opcje</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($list as $ban)
-                                        <tr>
-                                            <td>{{ $ban['id'] }}</td>
-                                            <td>{{ $ban['ip'] }}</td>
-                                            <td>{{ $ban['created_at'] }}</td>
-                                            <td><a href="{{ route('admin.users.bans.delete.send', ['id' => $ban['id']]) }}">Odblokuj</a></td>
-                                        </tr>
-                                    @endforeach
+                                        @foreach($list as $ban)
+                                            <tr>
+                                                <td>{{ $ban['id'] }}</td>
+                                                <td>{{ $ban['ip'] }}</td>
+                                                <td>{{ $ban['created_at'] }}</td>
+                                                <td><a href="{{ route('admin.users.bans.delete.send', ['id' => $ban['id']]) }}">Odblokuj</a></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 {{ $list->links() }}
@@ -69,7 +69,7 @@
                                     Adres IP
                                     <input type="text" name="ip" required="required" class="@error('ip') is-invalid @enderror">
                                     @error('ip')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
@@ -94,7 +94,7 @@
                                     Słowo kluczowe
                                     <input type="text" name="search" required="required" value="{{ old('search') }}">
                                     @error('search')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>

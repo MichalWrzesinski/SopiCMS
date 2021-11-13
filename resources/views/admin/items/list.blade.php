@@ -28,13 +28,13 @@
                             @if($list->isNotEmpty())
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tytuł</th>
-                                        <th>Status</th>
-                                        <th>Promowane</th>
-                                        <th>Opcje</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Tytuł</th>
+                                            <th>Status</th>
+                                            <th>Promowane</th>
+                                            <th>Opcje</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($list as $item)
@@ -70,7 +70,7 @@
                                     Słowo kluczowe
                                     <input type="text" name="search" required="required" value="{{ old('search') }}">
                                     @error('search')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>

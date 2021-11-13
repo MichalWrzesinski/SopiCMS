@@ -29,13 +29,14 @@
 
                             <form method="post" action="{{ route('admin.pages.edit.send', ['id' => $id]) }}">
                                 @csrf
+
                                 <div class="row">
                                     <div class="col">
                                         <label>
                                             Tytuł strony
                                             <input type="text" name="title" required="required" value="{{ old('title', $page->title) }}" class="@error('title') is-invalid @enderror">
                                             @error('title')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -44,7 +45,7 @@
                                             Adres url
                                             <input type="text" name="url" required="required" value="{{ old('url', $page->url) }}" class="@error('url') is-invalid @enderror">
                                             @error('url')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -55,7 +56,7 @@
                                             Opis
                                             <input type="text" name="description" value="{{ old('description', $page->description) }}" maxlength="255" class="@error('description') is-invalid @enderror">
                                             @error('description')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -64,7 +65,7 @@
                                             Słowa kluczowe
                                             <input type="text" name="keywords" value="{{ old('keywords', $page->keywords) }}" maxlength="255" class="@error('keywords') is-invalid @enderror">
                                             @error('keywords')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -73,7 +74,7 @@
                                     Treść
                                     <textarea name="content" class="@error('content') is-invalid @enderror">{{ old('content', $page->content) }}</textarea>
                                     @error('content')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
@@ -100,9 +101,23 @@
                                             <img src="{{ route('image.thumbnail', ['path' => $img, 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="aaa{{ $key }}">
-                                            @if($key > 0)<li><a href="{{ route('admin.pages.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">Ustaw jako zdjęcie główne</a></li>@endif
-                                            <li><a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">Pokaż zdjęcie</a></li>
-                                            <li><a href="{{ route('admin.pages.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">Usuń zdjęcie</a></li>
+                                            @if($key > 0)
+                                                <li>
+                                                    <a href="{{ route('admin.pages.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                        Ustaw jako zdjęcie główne
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            <li>
+                                                <a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">
+                                                    Pokaż zdjęcie
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('admin.pages.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                    Usuń zdjęcie
+                                                </a>
+                                            </li>
                                         </ul>
                                     @endforeach
                                 </div>
@@ -115,7 +130,7 @@
                                     Plik graficzny
                                     <input type="file" name="file" required="required" class="@error('file') is-invalid @enderror">
                                     @error('file')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
@@ -143,7 +158,7 @@
                                         <input type="checkbox" name="delete" value="1" required="required" class="@error('delete') is-invalid @enderror">
                                         Potwierdzam chęć usunięcia tej strony
                                         @error('delete')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">

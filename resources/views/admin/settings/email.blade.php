@@ -32,21 +32,21 @@
                                     Adres e-mail
                                     <input type="email" name="to" value="{{ old('to', $form['to']) }}" required="required" class="@error('to') is-invalid @enderror">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Adres zwrotny e-mail
                                     <input type="email" name="reply" value="{{ old('reply', $form['reply']) }}" required="required" class="@error('reply') is-invalid @enderror">
                                     @error('reply')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Nadawca
                                     <input type="text" name="sender" value="{{ old('sender', $form['sender']) }}" required="required" class="@error('sender') is-invalid @enderror">
                                     @error('sender')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

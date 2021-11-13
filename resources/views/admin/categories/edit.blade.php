@@ -33,7 +33,7 @@
                                     Nazwa
                                     <input type="text" name="name" required="required" class="@error('name') is-invalid @enderror" value="{{ old('name', $category->name) }}">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>

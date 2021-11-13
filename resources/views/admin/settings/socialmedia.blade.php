@@ -32,35 +32,35 @@
                                     Facebook
                                     <input type="text" name="facebook" value="{{ old('facebook', $form['facebook']) }}" required="required" class="@error('facebook') is-invalid @enderror">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Instagram
                                     <input type="text" name="instagram" value="{{ old('instagram', $form['instagram']) }}" required="required" class="@error('instagram') is-invalid @enderror">
                                     @error('instagram')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     YouTube
                                     <input type="text" name="youtube" value="{{ old('youtube', $form['youtube']) }}" required="required" class="@error('youtube') is-invalid @enderror">
                                     @error('youtube')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Twitter
                                     <input type="text" name="twitter" value="{{ old('twitter', $form['twitter']) }}" required="required" class="@error('twitter') is-invalid @enderror">
                                     @error('twitter')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     LinkedIn
                                     <input type="text" name="linkedin" value="{{ old('linkedin', $form['linkedin']) }}" required="required" class="@error('linkedin') is-invalid @enderror">
                                     @error('linkedin')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

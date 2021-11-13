@@ -33,7 +33,7 @@
                                     Tytuł strony
                                     <input type="text" name="title" required="required" value="{{ old('title', $blog->title) }}" class="@error('title') is-invalid @enderror">
                                     @error('title')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="row">
@@ -42,7 +42,7 @@
                                             Opis
                                             <input type="text" name="description" value="{{ old('description', $blog->description) }}" maxlength="255" class="@error('description') is-invalid @enderror">
                                             @error('description')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -51,7 +51,7 @@
                                             Słowa kluczowe
                                             <input type="text" name="keywords" value="{{ old('keywords', $blog->keywords) }}" maxlength="255" class="@error('keywords') is-invalid @enderror">
                                             @error('keywords')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                             @enderror
                                         </label>
                                     </div>
@@ -60,7 +60,7 @@
                                     Treść
                                     <textarea name="content" class="@error('content') is-invalid @enderror">{{ old('content', $blog->content) }}</textarea>
                                     @error('content')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
@@ -87,9 +87,23 @@
                                             <img src="{{ route('image.thumbnail', ['path' => $img, 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="aaa{{ $key }}">
-                                            @if($key > 0)<li><a href="{{ route('admin.blog.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">Ustaw jako zdjęcie główne</a></li>@endif
-                                            <li><a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">Pokaż zdjęcie</a></li>
-                                            <li><a href="{{ route('admin.blog.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">Usuń zdjęcie</a></li>
+                                            @if($key > 0)
+                                                <li>
+                                                    <a href="{{ route('admin.blog.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                        Ustaw jako zdjęcie główne
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            <li>
+                                                <a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">
+                                                    Pokaż zdjęcie
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('admin.blog.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                    Usuń zdjęcie
+                                                </a>
+                                            </li>
                                         </ul>
                                     @endforeach
                                 </div>
@@ -102,9 +116,7 @@
                                     Plik graficzny
                                     <input type="file" name="file" required="required" class="@error('file') is-invalid @enderror">
                                     @error('file')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

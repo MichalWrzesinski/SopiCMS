@@ -36,7 +36,7 @@
                                                 Tytuł
                                                 <input type="text" name="title" required="required" class="@error('title') is-invalid @enderror" value="{{ old('title', $item->title) }}">
                                                 @error('title')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -45,7 +45,7 @@
                                                 Cena
                                                 <input type="text" name="price" required="required" class="@error('category') is-invalid @enderror" value="{{ old('price', $item->price) }}">
                                                 @error('price')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -71,7 +71,7 @@
                                                     @endif
                                                 </select>
                                                 @error('category')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -87,7 +87,7 @@
                                                     @endif
                                                 </select>
                                                 @error('region')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -96,7 +96,7 @@
                                                 Miejscowość
                                                 <input type="text" name="city" required="required" class="@error('city') is-invalid @enderror" value="{{ old('city', $item->city) }}">
                                                 @error('city')
-                                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                                 @enderror
                                             </label>
                                         </div>
@@ -105,7 +105,7 @@
                                         Treść
                                         <textarea name="content" required="required">{{ old('content', $item->content) }}</textarea>
                                         @error('content')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">
@@ -132,9 +132,23 @@
                                                 <img src="{{ route('image.thumbnail', ['path' => $img, 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="aaa{{ $key }}">
-                                                @if($key > 0)<li><a href="{{ route('user.item.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">Ustaw jako zdjęcie główne</a></li>@endif
-                                                <li><a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">Pokaż zdjęcie</a></li>
-                                                <li><a href="{{ route('user.item.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">Usuń zdjęcie</a></li>
+                                                @if($key > 0)
+                                                    <li>
+                                                        <a href="{{ route('user.item.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                            Ustaw jako zdjęcie główne
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                <li>
+                                                    <a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">
+                                                        Pokaż zdjęcie
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.item.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                        Usuń zdjęcie
+                                                    </a>
+                                                </li>
                                             </ul>
                                         @endforeach
                                     </div>
@@ -147,7 +161,7 @@
                                         Plik graficzny
                                         <input type="file" name="file" required="required" class="@error('file') is-invalid @enderror">
                                         @error('file')
-                                        <span class="invalid-feedback" role="alert">>{{ $message }}/span>
+                                            <span class="invalid-feedback" role="alert">>{{ $message }}/span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">
@@ -187,7 +201,7 @@
                                         <input type="checkbox" name="delete" value="1" required="required" class="@error('delete') is-invalid @enderror">
                                         Potwierdzam chęć usunięcia tego ogłoszenia
                                         @error('delete')
-                                        <span class="invalid-feedback" role="alert">>{{ $message }}/span>
+                                            <span class="invalid-feedback" role="alert">>{{ $message }}/span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">

@@ -32,28 +32,28 @@
                                     Blok nr 1
                                     <textarea name="block1" class="@error('block1') is-invalid @enderror">{{ old('block1', $form['block1']) }}</textarea>
                                     @error('block1')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Blok nr 2
                                     <textarea name="block2" class="@error('block2') is-invalid @enderror">{{ old('block2', $form['block2']) }}</textarea>
                                     @error('block2')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Blok nr 3
                                     <textarea name="block3" class="@error('block3') is-invalid @enderror">{{ old('block3', $form['block3']) }}</textarea>
                                     @error('block3')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Blok nr 4
                                     <textarea name="block4" class="@error('block4') is-invalid @enderror">{{ old('block4', $form['block4']) }}</textarea>
                                     @error('block4')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

@@ -32,14 +32,14 @@
                                     Kod HTML w sekcji HEAD
                                     <textarea name="head" class="@error('head') is-invalid @enderror">{{ old('head', $form['head']) }}</textarea>
                                     @error('head')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Kod HTML w sekcji BODY
                                     <textarea name="body" class="@error('body') is-invalid @enderror">{{ old('body', $form['body']) }}</textarea>
                                     @error('body')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

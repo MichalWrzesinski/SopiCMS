@@ -32,21 +32,21 @@
                                     Liczba dni publikacji
                                     <input type="text" name="validity" value="{{ old('validity', $form['validity']) }}" required="required" class="@error('validity') is-invalid @enderror">
                                     @error('validity')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Liczba dni promowania
                                     <input type="text" name="premium-validity" value="{{ old('premium-validity', $form['premium-validity']) }}" required="required" class="@error('premium-validity') is-invalid @enderror">
                                     @error('premium-validity')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Cena promowania
                                     <input type="text" name="premium-price" value="{{ old('premium-price', $form['premium-price']) }}" required="required" class="@error('premium-price') is-invalid @enderror">
                                     @error('premium-price')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

@@ -29,12 +29,12 @@
                             @if($list->isNotEmpty())
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tytuł</th>
-                                        <th>Edycja</th>
-                                        <th>Opcje</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Tytuł</th>
+                                            <th>Edycja</th>
+                                            <th>Opcje</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($list as $page)
@@ -69,14 +69,14 @@
                                     Tytuł strony
                                     <input type="text" name="title" required="required" class="@error('title') is-invalid @enderror">
                                     @error('title')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
                                     Treść
                                     <textarea name="content"class="@error('content') is-invalid @enderror"></textarea>
                                     @error('content')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
@@ -101,7 +101,7 @@
                                     Słowo kluczowe
                                     <input type="text" name="search" required="required" value="{{ old('search') }}">
                                     @error('search')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>

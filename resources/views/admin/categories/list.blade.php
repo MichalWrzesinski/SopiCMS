@@ -29,12 +29,12 @@
                             @if(count($list) > 0)
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Nazwa</th>
-                                        <th>Pozycja</th>
-                                        <th>Opcje</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nazwa</th>
+                                            <th>Pozycja</th>
+                                            <th>Opcje</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($list[0] as $cat)
@@ -105,7 +105,7 @@
                                     Nazwa
                                     <input type="text" name="name" required="required" class="@error('name') is-invalid @enderror">
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>

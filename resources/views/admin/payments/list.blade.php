@@ -29,14 +29,14 @@
                             @if($list->isNotEmpty())
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Użytkownik</th>
-                                        <th>Status</th>
-                                        <th>Typ</th>
-                                        <th>Data</th>
-                                        <th>Opcje</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Użytkownik</th>
+                                            <th>Status</th>
+                                            <th>Typ</th>
+                                            <th>Data</th>
+                                            <th>Opcje</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($list as $payment)
