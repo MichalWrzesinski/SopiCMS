@@ -1,7 +1,7 @@
 <div id="left-menu" class="collapse show">
     <section class="mb-4 d-block d-xl-none">
         <h4 class="p-4">Nawigacja</h4>
-        <ul class="list-group list-group-flush pb-2">
+        <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.dashboard') }}">
                     Strona główna
@@ -26,7 +26,7 @@
     </section>
     <section class="mb-4">
         <h4 class="p-4">{{ config('sopicms.item.name') }}</h4>
-        <ul class="list-group list-group-flush pb-2">
+        <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.items.list') }}">
                     {{ config('sopicms.item.list') }}
@@ -60,7 +60,7 @@
     </section>
     <section class="mb-4">
         <h4 class="p-4">Użytkownicy</h4>
-        <ul class="list-group list-group-flush pb-2">
+        <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.users.list') }}">
                     Lista użytkowników
@@ -94,7 +94,7 @@
     </section>
     <section class="mb-4">
         <h4 class="p-4">Treści</h4>
-        <ul class="list-group list-group-flush pb-2">
+        <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.pages.list') }}">
                     Strony
@@ -115,7 +115,7 @@
     </section>
     <section class="mb-4">
         <h4 class="p-4">Ustawienia</h4>
-        <ul class="list-group list-group-flush pb-2">
+        <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.settings.seo') }}">
                     Optymalizacja SEO

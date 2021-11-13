@@ -51,7 +51,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{ $list->links() }}
+                                {{ $list->appends(request()->input())->links() }}
                             @else
                                 <p>Niczego nie znaleziono</p>
                             @endif

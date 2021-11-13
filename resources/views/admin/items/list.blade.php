@@ -48,7 +48,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{ $list->links() }}
+                                {{ $list->appends(request()->input())->links() }}
                             @else
                                 <p>Niczego nie znaleziono</p>
                             @endif
@@ -59,7 +59,7 @@
                 <div class="accordion-item mb-4">
                     <h2 class="accordion-header" id="section-2">
                         <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-2-container" aria-expanded="false" aria-controls="section-2-container">
-                            Dodaj ogłoszenie
+                            Szukaj ogłoszenia
                         </button>
                     </h2>
                     <div id="section-2-container" class="accordion-collapse collapse" aria-labelledby="section-2">
