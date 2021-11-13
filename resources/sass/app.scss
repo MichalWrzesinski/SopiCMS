@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css?family=Krub:300,400,500,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Oswald:600&display=swap&subset=latin-ext');
+@import 'variables';
+
+$primary: #09b294;
+$gray:    #353535;
+$hover:   #e10055;
+
+$font: 'Krub', sans-serif;
+$fontSpecial: 'Oswald', sans-serif;
+
+@import '~bootstrap/scss/bootstrap';
+
+/*
+ *
+ */
+
+body {
+
+    font-family: $font;
+    font-size: 17px;
+    background: #f5f5f5;
+    overflow-y: scroll;
+}
+
+a {
+
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+    margin-bottom: 20px;
+
+    font-family: $fontSpecial;
+}
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+
+    margin-bottom: 26px;
+
+    font-size: 26px;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+
+        margin-bottom: 0 !important;
+}
+
+section {
+
+    position: relative;
+
+    background: #fff;
+}
+
+p:last-child {
+
+    margin-bottom: 0;
+}
+
+label {
+
+    display: block;
+    margin: 0 0 10px 0;
+
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+select,
+textarea {
+
+    display: block;
+    width: 100%;
+    padding: 10px;
+
+    background: #f5f5f5;
+    border: 2px solid #f5f5f5;
+    border-radius: 3px;
+}
+
+input[type="text"].is-invalid,
+input[type="password"].is-invalid,
+input[type="email"].is-invalid,
+input[type="file"].is-invalid,
+select.is-invalid,
+textarea.is-invalid {
+
+    border: #e3342f;
+}
+
+textarea {
+
+    height: 300px;
+}
+
+/*
+ *
+ */
+
+button,
+input[type="button"]
+input[type="submit"],
+input[type="reset"],
+.btn {
+
+    font-family: $fontSpecial;
+    font-size: 17px;
+}
+
+.btn-lg {
+
+    font-size: 20px;
+}
+
+.btn-primary {
+
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+
+    color: #fff;
+    background: $hover;
+    border-color: $hover;
+}
+
+.img-fluid {
+
+    width: 100%;
+}
+
+.red {
+
+    color: #c00;
+}
+
+.avatar {
+
+    border-radius: 100px;
+    border: 4px solid $primary;
+}
+
+/*
+ *
+ */
+
+.list {
+
+    margin: 0;
+    padding: 0;
+}
+
+.list li {
+
+    padding: 10px 0;
+    margin: 0;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    list-style: none;
+}
+
+.list li:first-child {
+
+    padding-top: 0;
+}
+
+.list li:last-child {
+
+    padding-bottom: 0;
+
+    border-bottom: none;
+}
+
+/*
+ *  Header
+ */
+
+#header {
+
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+
+    background: $gray;
+    color: #fff;
+}
+
+#header a {
+
+    color: #fff;
+}
+
+#header a:hover:not(.btn) {
+
+    color: $primary;
+}
+
+#logo {
+
+    font-family: $fontSpecial;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+#logo:hover {
+
+    color: #fff !important;
+}
+
+.navbar-toggler {
+
+    background-color: $primary;
+}
+
+#header-space {
+
+    height: 80px;
+}
+
+/*
+ *  Main
+ */
+
+#main {
+
+    padding-top: 120px !important;
+}
+
+#main.index {
+
+    padding-top: 80px !important;
+}
+
+/*
+ *  Slider
+ */
+
+#slider .carousel-caption {
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    text-align: left;
+}
+
+#slider h3 {
+
+    margin: 0 0 30px 0;
+
+    font-size: 30px;
+}
+
+#slider p {
+
+    margin: 0 0 30px 0;
+
+    font-size: 18px;
+}
+
+/*
+ *  Bar
+ */
+
+#bar {
+
+    background: $primary;
+    color: #fff;
+}
+
+#bar a,
+#bar a:hover {
+
+    color: #fff;
+}
+
+#bar .navbar .navbar-collapse {
+
+    text-align: center;
+}
+
+#bar .nav-item {
+
+    padding: 0 5px;
+}
+
+#bar .nav-link {
+
+    padding: 20px 30px;
+
+    font-size: 20px;
+    font-family: $fontSpecial;
+}
+
+#bar .nav-link:hover {
+
+    background: #fff;
+    color: #000;
+}
+
+#bar .navbar svg {
+
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/*
+ *  Ad blocks
+ */
+
+.block-format {
+
+    padding: 50px;
+
+    text-align: center;
+    border: 2px dashed #ccc;
+    color: #aaa;
+}
+
+.block-format a {
+
+    color: #aaa;
+    text-decoaration: underline;
+}
+
+/*
+ *  Item block
+ */
+
+.item {
+
+    text-align: center;
+}
+
+.item h4 {
+
+    height: 2.5em;
+    margin: 0 0 20px 0;
+
+    overflow: hidden;
+}
+
+.item p {
+
+    height: 6.5em;
+    margin: 0 0 20px 0;
+
+    overflow: hidden;
+}
+
+.item-price {
+
+    font-size: 20px;
+    color: $hover;
+}
+
+.item-buttons {
+
+    margin: 20px 0 0 0;
+}
+
+/*
+ *  Footer
+ */
+
+#footer {
+
+    background: $gray;
+    color: #fff;
+}
+
+#footer a {
+
+    color: #fff;
+}
+
+#footer a:hover {
+
+    color: $primary;
+}
+
+#copyright {
+
+    font-family: $fontSpecial;
+    font-size: 20px;
+}
