@@ -188,39 +188,6 @@ class ItemRepository implements ItemRepositoryInterface
         return $this->fillCollection($list->get());
     }
 
-    public function imageAdd(int $id, string $file, int $userId = 0)
-    {
-        $item = $this->getData($id, $userId);
-        $item->gallery = (($item->gallery <> '') ? $item->gallery.';' : '').$file;
-        $item->save();
-
-        return true;
-    }
-
-    public function imageDelete(int $id, int $key, int $userId = 0)
-    {
-        $item = $this->getData($id, $userId);
-        $gallery = explode(';', $item->gallery);
-        unset($gallery[$key]);
-        $item->gallery = implode(';', $gallery);
-        $item->save();
-
-        return true;
-    }
-
-    public function imageCover(int $id, int $key, int $userId = 0)
-    {
-        $item = $this->getData($id, $userId);
-        $gallery = explode(';', $item->gallery);
-        $img = $gallery[$key];
-        unset($gallery[$key]);
-        array_unshift($gallery, $img);
-        $item->gallery = implode(';', $gallery);
-        $item->save();
-
-        return true;
-    }
-
     private function fill($row)
     {
         $row->gallery = ($row->gallery <> '') ? explode(';', $row->gallery) : '';

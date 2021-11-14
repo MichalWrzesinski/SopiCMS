@@ -70,41 +70,6 @@ class PageRepository implements PageRepositoryInterface
             ->delete();
     }
 
-    public function imageAdd(int $id, string $file)
-    {
-        $page = $this->model->findOrFail($id);
-        $page->gallery = (($page->gallery <> '') ? $page->gallery.';' : '').$file;
-        $page->save();
-
-        return true;
-    }
-
-    public function imageDelete(int $id, int $key)
-    {
-        $page = $this->model->findOrFail($id);
-
-        $gallery = explode(';', $page->gallery);
-        unset($gallery[$key]);
-        $page->gallery = implode(';', $gallery);
-        $page->save();
-
-        return true;
-    }
-
-    public function imageCover(int $id, int $key)
-    {
-        $page = $this->model->findOrFail($id);
-
-        $gallery = explode(';', $page->gallery);
-        $img = $gallery[$key];
-        unset($gallery[$key]);
-        array_unshift($gallery, $img);
-        $page->gallery = implode(';', $gallery);
-        $page->save();
-
-        return true;
-    }
-
     private function fill($row)
     {
         $row->gallery = ($row->gallery <> '') ? explode(';', $row->gallery) : '';

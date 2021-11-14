@@ -15,8 +15,5 @@ interface ItemRepository
     public function public(int $id, $data);
     public function delete(int $id, int $userId = 0);
     public function userItems(int $userId, $limit = null, $order = 'created_at');
-    public function imageAdd(int $id, string $file, int $userId = 0);
-    public function imageDelete(int $id, int $key, int $userId = 0);
-    public function imageCover(int $id, int $key, int $userId = 0);
 }
 
