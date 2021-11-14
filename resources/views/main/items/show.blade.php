@@ -14,7 +14,7 @@
                 @if(!empty($gallery) && is_array($gallery) && count($gallery) > 0)
                     <div class="mb-4">
                         @if(isset($gallery[0]))
-                            <a href="{{ route('image.show', ['path' => $gallery[0]['image']]) }}">
+                            <a href="{{ route('image.show', ['path' => $gallery[0]['image']]) }}" data-lightbox="gallery">
                                 <img src="{{ route('image.thumbnail', ['path' => $gallery[0]['image'], 'width' => 480, 'height' => 320]) }}" alt="{{ $item->title }}" class="img-fluid">
                             </a>
                         @endif
@@ -23,7 +23,7 @@
                                 @foreach($gallery as $img)
                                     @if(!$loop->first)
                                         <div class="col-3 mt-4">
-                                            <a href="{{ route('image.show', ['path' => $img['image']]) }}">
+                                            <a href="{{ route('image.show', ['path' => $img['image']]) }}" data-lightbox="gallery">
                                                 <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="{{ $item->title }}" class="img-fluid">
                                             </a>
                                         </div>

@@ -8,6 +8,7 @@
         <meta name="keywords" content="{{ $keywords ?? config('sopicms.meta.keywords') }}">
         <title>{{ $title ?? config('sopicms.meta.title') }}</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
     </head>
     <body class="d-flex flex-column min-vh-100">
         <header id="header" class="p-3">
@@ -156,5 +157,6 @@
             </div>
         </footer>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/lightbox.js') }}"></script>
     </body>
 </html>

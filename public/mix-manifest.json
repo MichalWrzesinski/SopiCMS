@@ -1,7 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/lightbox.js": "/js/lightbox.js",
     "/js/admin/app.js": "/js/admin/app.js",
     "/css/admin/app.css": "/css/admin/app.css",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/lightbox.css": "/css/lightbox.css"
 }

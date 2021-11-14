@@ -17,7 +17,7 @@
                 <h3>Galeria zdjęć</h3>
                 <div>
                     @foreach($gallery as $img)
-                        <a href="{{ route('image.show', ['path' => $img['image']]) }}" target="_blank">
+                        <a href="{{ route('image.show', ['path' => $img['image']]) }}" data-lightbox="gallery">
                             <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="{{ $page->title }}">
                         </a>
                     @endforeach
