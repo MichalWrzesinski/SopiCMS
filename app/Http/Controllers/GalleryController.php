@@ -60,7 +60,12 @@ class GalleryController extends Controller
             return true;
         }
 
-        if($this->galleryRepository->where('module', $module)->where('module_id', $moduleId)->where('user_id', auth()->user()->id)->count() == 1) {
+        if($this->galleryRepository
+                ->where('module', $module)
+                ->where('module_id', $moduleId)
+                ->where('user_id', auth()->user()->id)
+                ->count() == 1
+        ) {
             return true;
         }
 
@@ -73,7 +78,11 @@ class GalleryController extends Controller
             return true;
         }
 
-        if($this->galleryRepository->where('id', $id)->where('user_id', auth()->user()->id)->count() == 1) {
+        if($this->galleryRepository
+                ->where('id', $id)
+                ->where('user_id', auth()->user()->id)
+                ->count() == 1
+        ) {
             return true;
         }
 

@@ -168,7 +168,7 @@
                         @if(!empty($blog[1]))
                             <ul class="list mt-5">
                                 @foreach($blog as $blogValue)
-                                    @if(!$loop-> first)
+                                    @if(!$loop->first)
                                         <li><a href="{{ $blogValue->url }}">{{ $blogValue['title'] }}</a></li>
                                     @endif
                                 @endforeach

@@ -20,11 +20,11 @@
                         @endif
                         @if(isset($gallery[1]))
                             <div class="row">
-                                @foreach($gallery as $key => $val)
-                                    @if($key > 0)
+                                @foreach($gallery as $img)
+                                    @if(!$loop->first)
                                         <div class="col-3 mt-4">
-                                            <a href="{{ route('image.show', ['path' => $val]) }}">
-                                                <img src="{{ route('image.thumbnail', ['path' => $va['image'], 'width' => 150, 'height' => 150]) }}" alt="{{ $item->title }}" class="img-fluid">
+                                            <a href="{{ route('image.show', ['path' => $img['image']]) }}">
+                                                <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="{{ $item->title }}" class="img-fluid">
                                             </a>
                                         </div>
                                     @endif
