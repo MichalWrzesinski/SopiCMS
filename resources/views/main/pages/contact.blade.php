@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-sm-12">
-                <section class="p-4">
+                <section class="p-4 mb-4">
                     <h1>{{ $title }}</h1>
                     <ul class="list">
                         @if(!empty($phone))<li>Telefon: {{ $phone }}</li>@endif
@@ -20,7 +20,7 @@
                 </section>
             </div>
             <div class="col-xl-9 col-sm-12">
-                <section class="p-4">
+                <section class="p-4 mb-4">
                     <h2>Formularz kontaktowy</h2>
                     @include('main.layouts.alert')
 

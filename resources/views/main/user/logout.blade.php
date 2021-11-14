@@ -13,7 +13,7 @@
                 @include('main.layouts.left')
             </div>
             <div class="col-xl-9 col-sm-12">
-                <section class="p-4">
+                <section class="p-4 mb-4">
                     <h1>{{ $title }}</h1>
                     <p>Zostałeś wylogowany ze swojego konta. Przejdź do <a href="{{ route('home') }}">strony głównej</a> lub <a href="{{ route('user.login') }}">zaloguj się</a> ponownie.</p>
                 </section>

@@ -52,6 +52,8 @@ Route::post('/kontakt', [ContactController::class, 'send'])
  *
  */
 Route::get('/image/{width}x{height}/{path?}', [ImageController::class, 'thumbnail'])
+    ->where('width', '([0-9]+)')
+    ->where('height', '([0-9]+)')
     ->where('path', '(.*)')
     ->name('image.thumbnail');
 

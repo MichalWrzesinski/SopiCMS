@@ -14,7 +14,7 @@
                 @include('main.layouts.left')
             </div>
             <div class="col-xl-9 col-sm-12">
-                <section class="p-4">
+                <section class="p-4 mb-4">
                     <h1>{{ $title }}</h1>
 
                     @include('main.layouts.alert')

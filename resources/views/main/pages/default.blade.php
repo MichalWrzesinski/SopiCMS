@@ -13,7 +13,7 @@
             {!! $page->content !!}
         </section>
         @if(isset($gallery) && is_array($gallery) && count($gallery) > 0)
-            <section class="p-4 mb-3">
+            <section class="p-4 mb-4">
                 <h3>Galeria zdjęć</h3>
                 <div>
                     @foreach($gallery as $img)

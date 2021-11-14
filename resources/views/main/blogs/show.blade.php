@@ -25,7 +25,7 @@
                 </div>
             </section>
         @endif
-        <section class="p-4 mb-3">
+        <section class="p-4 mb-4">
             <p>Dodano: {{ dateTimeFormat(strtotime($blog->created_at)) }}</p>
         </section>
     </div>

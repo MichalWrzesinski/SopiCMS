@@ -26,7 +26,7 @@
             </li>
         </ul>
     </section>
-    <section class="p-4 pb-3">
+    <section class="p-4 pb-3 mb-4">
         <h2>{{ config('sopicms.item.name') }}</h2>
         <ul class="list-group list-group-flush">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
