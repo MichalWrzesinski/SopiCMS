@@ -12,11 +12,11 @@
             <h1>{{ $title }}</h1>
         </section>
         <div class="row">
-        @foreach($list as $blog)
-            <div class="col-xl-4 mb-4">
-                 @include('main.blogs.block', $blog)
-            </div>
-        @endforeach
+            @foreach($list as $blog)
+                <div class="col-xl-4 mb-4">
+                     @include('main.blogs.block', ['blog' => $blog, 'cover' => $gallery[$blog->id]])
+                </div>
+            @endforeach
         </div>
         {{ $list->links() }}
     </div>

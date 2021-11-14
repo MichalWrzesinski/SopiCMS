@@ -21,7 +21,7 @@
                 <div class="row">
                     @foreach($list as $item)
                         <div class="col-xl-4 mb-4">
-                            @include('main.items.block', ['mode' => 'edit'])
+                            @include('main.items.block', ['mode' => 'edit', 'item' => $item, 'cover' => $gallery[$item->id]])
                         </div>
                     @endforeach
                 </div>

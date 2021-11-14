@@ -26,7 +26,6 @@ class CreateItemsTable extends Migration
             $table->smallInteger('region')->default(0)->index();
             $table->string('city')->nullable()->index();
             $table->text('content')->nullable();
-            $table->text('gallery')->nullable();
             $table->timestamps();
         });
 
@@ -58,9 +57,11 @@ class CreateItemsTable extends Migration
             $lp++;
             if($lp > 18) $lp = 1;
 
+            $userId = rand(1, 52);
+
             DB::table('items')->insert([
                 'status' => 1,
-                'user_id' => rand(1, 52),
+                'user_id' => $userId,
                 'category_id' => rand(6, 20),
                 'validity' => Carbon::now()->addDays(30),
                 'premium' => ((rand(0, 9) == 0) ? Carbon::now()->addDays(7) : null),
@@ -69,7 +70,18 @@ class CreateItemsTable extends Migration
                 'region' => rand(1, 16),
                 'city' => $faker->city,
                 'content' => $faker->text(500),
-                'gallery' => 'example/img-'.$lp.'.jpg',
+                'created_at' => Carbon::now()->addDays(-$i),
+                'updated_at' => Carbon::now()->addDays(-$i),
+            ]);
+
+            $id = DB::getPdo()->lastInsertId();
+
+            DB::table('galleries')->insert([
+                'user_id' => $userId,
+                'module' => 'items',
+                'module_id' => $id,
+                'image' => 'example/img-'.$lp.'.jpg',
+                'cover' => 1,
                 'created_at' => Carbon::now()->addDays(-$i),
                 'updated_at' => Carbon::now()->addDays(-$i),
             ]);

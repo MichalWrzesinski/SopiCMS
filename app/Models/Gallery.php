@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Gallery extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'content',
-        'url',
-        'description',
-        'keywords',
+        'module',
+        'module_id',
+        'image',
+        'cover',
     ];
 }

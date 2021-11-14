@@ -21,7 +21,6 @@ class CreatePagesTable extends Migration
             $table->string('url')->unique();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
-            $table->text('gallery')->nullable();
             $table->text('content')->nullable();
             $table->tinyInteger('constant')->default(0);
             $table->timestamps();

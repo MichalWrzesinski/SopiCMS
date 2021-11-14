@@ -105,7 +105,7 @@
                     <div class="row">
                         @foreach($list as $item)
                             <div class="col-xl-4 mb-4">
-                                @include('main.items.block', $item)
+                                @include('main.items.block', ['item' => $item, 'cover' => $gallery[$item->id]])
                             </div>
                         @endforeach
                     </div>

@@ -69,7 +69,10 @@
             <div class="container">
                 <div class="row text-center mb-4">
                     <h3>Kategorie</h3>
-                    <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>non felis. Maecenas malesuada elit lectus felis.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>
+                        non felis. Maecenas malesuada elit lectus felis.
+                    </p>
                 </div>
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav mx-auto">
@@ -89,17 +92,20 @@
         </div>
     @endif
 
-    @if(isset($new))
+    @if(isset($premium))
         <div id="items-promote-section" class="p-5">
             <div class="container">
                 <div class="row text-center mb-5">
                     <h3>Prmowane ogłoszenia</h3>
-                    <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>non felis. Maecenas malesuada elit lectus felis.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>
+                        non felis. Maecenas malesuada elit lectus felis.
+                    </p>
                 </div>
                 <div class="row">
                     @foreach($premium as $item)
                         <div class="col-xl-3 col-md-6 mb-4">
-                            @include('main.items.block', $item)
+                            @include('main.items.block', ['item' => $item, 'cover' => $gallery['premium'][$item->id]])
                         </div>
                     @endforeach
                 </div>
@@ -120,12 +126,15 @@
             <div class="container">
                 <div class="row text-center mb-5">
                     <h3>Nowe ogłoszenia</h3>
-                    <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>non felis. Maecenas malesuada elit lectus felis.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>
+                        non felis. Maecenas malesuada elit lectus felis.
+                    </p>
                 </div>
                 <div class="row">
                     @foreach($new as $item)
                         <div class="col-xl-3 col-md-6 mb-4">
-                            @include('main.items.block', $item)
+                            @include('main.items.block', ['item' => $item, 'cover' => $gallery['new'][$item->id]])
                         </div>
                     @endforeach
                 </div>
@@ -146,31 +155,37 @@
             <div class="container">
                 <div class="row text-center mb-5">
                     <h3>Blog</h3>
-                    <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>non felis. Maecenas malesuada elit lectus felis.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui,<br>
+                        non felis. Maecenas malesuada elit lectus felis.
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-xl-6 col-sm-12">
                         <h3>{{ $blog[0]['title'] }}</h3>
                         <p>{{ $blog[0]['description'] }}</p>
-                        <a href="{{ route('blog.show', ['id' => $blog[0]['id'], 'url' => Str::slug($blog[0]['title'])]) }}" class="btn btn-primary btn-lg">Czytaj całość</a>
+                        <a href="{{ $blog[0]['url']}}" class="btn btn-primary btn-lg">Czytaj całość</a>
                         @if(!empty($blog[1]))
                             <ul class="list mt-5">
                                 @foreach($blog as $blogValue)
                                     @if(!$loop-> first)
-                                        <li><a href="{{ route('blog.show', ['id' => $blogValue['id'], 'url' => Str::slug($blogValue['title'])]) }}">{{ $blogValue['title'] }}</a></li>
+                                        <li><a href="{{ $blogValue->url }}">{{ $blogValue['title'] }}</a></li>
                                     @endif
                                 @endforeach
                             </ul>
                         @endif
                     </div>
                     <div class="col-xl-6 col-sm-12">
-                        @if($blog[0]['gallery'][0])
-                            <a href="{{ route('blog.show', ['id' => $blog[0]['id'], 'url' => Str::slug($blog[0]['title'])]) }}"><img src="{{ route('image.thumbnail', ['path' => $blog[0]['gallery'][0], 'width' => 640, 'height' => 480]) }}" alt="{{ $blog[0]['title'] }}" class="img-fluid"></a>
+                        @if($gallery['blog'][$blog[0]->id])
+                            <a href="{{ $blog[0]->url }}">
+                                <img src="{{ route('image.thumbnail', ['path' => $gallery['blog'][$blog[0]->id], 'width' => 640, 'height' => 480]) }}" alt="{{ $blog[0]['title'] }}" class="img-fluid">
+                            </a>
                         @endif
                     </div>
                 </div>
             </div>
         </div>
     @endif
+
 
 @endsection

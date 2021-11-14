@@ -11,20 +11,20 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-sm-12 mb-4">
-                @if(!empty($item->gallery) && is_array($item->gallery))
+                @if(!empty($gallery) && is_array($gallery) && count($gallery) > 0)
                     <div class="mb-4">
-                        @if(isset($item->gallery[0]))
-                            <a href="{{ route('image.show', ['path' => $item->gallery[0]]) }}">
-                                <img src="{{ route('image.thumbnail', ['path' => $item->gallery[0], 'width' => 480, 'height' => 320]) }}" alt="{{ $item->title }}" class="img-fluid">
+                        @if(isset($gallery[0]))
+                            <a href="{{ route('image.show', ['path' => $gallery[0]['image']]) }}">
+                                <img src="{{ route('image.thumbnail', ['path' => $gallery[0]['image'], 'width' => 480, 'height' => 320]) }}" alt="{{ $item->title }}" class="img-fluid">
                             </a>
                         @endif
-                        @if(isset($item->gallery[1]))
+                        @if(isset($gallery[1]))
                             <div class="row">
-                                @foreach($item->gallery as $key => $val)
+                                @foreach($gallery as $key => $val)
                                     @if($key > 0)
                                         <div class="col-3 mt-4">
                                             <a href="{{ route('image.show', ['path' => $val]) }}">
-                                                <img src="{{ route('image.thumbnail', ['path' => $val, 'width' => 150, 'height' => 150]) }}" alt="{{ $item->title }}" class="img-fluid">
+                                                <img src="{{ route('image.thumbnail', ['path' => $va['image'], 'width' => 150, 'height' => 150]) }}" alt="{{ $item->title }}" class="img-fluid">
                                             </a>
                                         </div>
                                     @endif

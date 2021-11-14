@@ -21,6 +21,5 @@ class Item extends Model
         'region',
         'city',
         'content',
-        'gallery',
     ];
 }

@@ -1,6 +1,6 @@
 <section class="item">
     <a href="{{ $blog->url }}">
-        <img src="{{ route('image.thumbnail', ['path' => $blog->gallery[0], 'width' => 320, 'height' => 240]) }}" alt="" class="img-fluid">
+        <img src="{{ route('image.thumbnail', ['path' => $cover, 'width' => 320, 'height' => 240]) }}" alt="" class="img-fluid">
     </a>
     <div class="p-4">
         <h4><a href="{{ $blog->url }}">{{ $blog->title }}</a></h4>

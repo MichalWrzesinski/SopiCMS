@@ -12,20 +12,20 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Repository\Eloquent\ItemRepository;
 use App\Repository\Eloquent\CategoryRepository;
-use App\Repository\Eloquent\UserRepository;
+use App\Repository\Eloquent\GalleryRepository;
 use App\Http\Controllers\Controller;
 
 class ItemAdminController extends Controller
 {
     private ItemRepository $itemRepository;
     private CategoryRepository $categoryRepository;
-    private UserRepository $userRepository;
+    private GalleryRepository $galleryRepository;
 
-    public function __construct(ItemRepository $itemRepository, CategoryRepository $categoryRepository, UserRepository $userRepository)
+    public function __construct(ItemRepository $itemRepository, CategoryRepository $categoryRepository, GalleryRepository $galleryRepository)
     {
         $this->itemRepository = $itemRepository;
         $this->categoryRepository = $categoryRepository;
-        $this->userRepository = $userRepository;
+        $this->galleryRepository = $galleryRepository;
     }
 
     public function list(Request $request, $status = null): View
@@ -52,6 +52,7 @@ class ItemAdminController extends Controller
             'id' => $id,
             'item' => $this->itemRepository->get($id),
             'list' => $this->categoryRepository->list(),
+            'gallery' => $this->galleryRepository->list('items', $id)->toArray(),
         ]);
     }
 

@@ -19,7 +19,6 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
-            $table->text('gallery')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });
@@ -35,8 +34,19 @@ class CreateBlogsTable extends Migration
                 'title' => $faker->text(50),
                 'description' => $faker->text(255),
                 'keywords' => str_replace(' ', ', ', $faker->text(100)),
-                'gallery' => 'example/img-'.$lp.'.jpg',
                 'content' => '<p>'.$faker->text(1000).'</p>',
+                'created_at' => Carbon::now()->addDays(-$i),
+                'updated_at' => Carbon::now()->addDays(-$i),
+            ]);
+
+            $id = DB::getPdo()->lastInsertId();
+
+            DB::table('galleries')->insert([
+                'user_id' => 0,
+                'module' => 'blogs',
+                'module_id' => $id,
+                'image' => 'example/img-'.$lp.'.jpg',
+                'cover' => 1,
                 'created_at' => Carbon::now()->addDays(-$i),
                 'updated_at' => Carbon::now()->addDays(-$i),
             ]);

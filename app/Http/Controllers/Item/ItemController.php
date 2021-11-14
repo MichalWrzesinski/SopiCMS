@@ -10,17 +10,20 @@ use Illuminate\View\View;
 use App\Repository\Eloquent\ItemRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\UserRepository;
+use App\Repository\Eloquent\GalleryRepository;
 use App\Http\Controllers\Controller;
 
 class ItemController extends Controller
 {
     private ItemRepository $itemRepository;
+    private GalleryRepository $galleryRepository;
     private CategoryRepository $categoryRepository;
     private UserRepository $userRepository;
 
-    public function __construct(ItemRepository $itemRepository, CategoryRepository $categoryRepository, UserRepository $userRepository)
+    public function __construct(ItemRepository $itemRepository, GalleryRepository $galleryRepository, CategoryRepository $categoryRepository, UserRepository $userRepository)
     {
         $this->itemRepository = $itemRepository;
+        $this->galleryRepository = $galleryRepository;
         $this->categoryRepository = $categoryRepository;
         $this->userRepository = $userRepository;
     }
@@ -28,10 +31,12 @@ class ItemController extends Controller
     public function list(string $search = null): View
     {
         $search = $this->itemRepository->slugDecode($search);
+        $list = $this->itemRepository->list($search, config('sopicms.paginate'));
 
         return View('main.items.list', [
             'title' => config('sopicms.item.list'),
-            'list' => $this->itemRepository->list($search, config('sopicms.paginate')),
+            'list' => $list,
+            'gallery' => $this->galleryRepository->coverList('items', $list->pluck('id')->toArray()),
             'category' => $this->categoryRepository->list(),
             'search' => $search,
         ]);
@@ -80,6 +85,7 @@ class ItemController extends Controller
         return View('main.items.show', [
             'title' => $item->title,
             'item' => $item,
+            'gallery' => $this->galleryRepository->list('items', $id)->toArray(),
         ]);
     }
 

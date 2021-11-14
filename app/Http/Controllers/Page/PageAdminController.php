@@ -9,15 +9,18 @@ use App\Http\Requests\TitleRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Repository\Eloquent\PageRepository;
+use App\Repository\Eloquent\GalleryRepository;
 use App\Http\Controllers\Controller;
 
 class PageAdminController extends Controller
 {
     private PageRepository $pageRepository;
+    private GalleryRepository $galleryRepository;
 
-    public function __construct(PageRepository $pageRepository)
+    public function __construct(PageRepository $pageRepository, GalleryRepository $galleryRepository)
     {
         $this->pageRepository = $pageRepository;
+        $this->galleryRepository = $galleryRepository;
     }
 
     public function list(Request $request): View
@@ -39,6 +42,7 @@ class PageAdminController extends Controller
             'id' => $id,
             'title' => 'Edycja strony',
             'page' => $this->pageRepository->get($id),
+            'gallery' => $this->galleryRepository->list('pages', $id)->toArray(),
         ]);
     }
 

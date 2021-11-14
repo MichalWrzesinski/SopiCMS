@@ -162,44 +162,44 @@
                     </h2>
                     <div id="section-3-container" class="accordion-collapse collapse" aria-labelledby="section-3">
                         <section class="accordion-body p-4">
-                            <div class="mb-5">
-                                @if(count($item->gallery) > 0)
+                            @if(isset($gallery) && is_array($gallery) && count($gallery) > 0)
+                                <div class="mb-5">
                                     <p>Kliknij na zdjęciu by wyświetlić więcej opcji</p>
-                                    @foreach($item->gallery as $key => $img)
-                                        <a href="#" class=dropdown-toggle" role="button" id="aaa{{ $key }}" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{ route('image.thumbnail', ['path' => $img, 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
+                                    @foreach($gallery as $img)
+                                        <a href="#" class=dropdown-toggle" role="button" id="image-options{{ $img['id'] }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
                                         </a>
-                                        <ul class="dropdown-menu" aria-labelledby="aaa{{ $key }}">
-                                            @if($key > 0)
+                                        <ul class="dropdown-menu" aria-labelledby="image-options{{ $img['id'] }}">
+                                            @if($img['cover'] == 0)
                                                 <li>
-                                                    <a href="{{ route('admin.items.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                    <a href="{{ route('gallery.cover.send', ['module' => 'items', 'moduleId' => $id, 'id' => $img['id']]) }}" class="dropdown-item">
                                                         Ustaw jako zdjęcie główne
                                                     </a>
                                                 </li>
                                             @endif
                                             <li>
-                                                <a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">
+                                                <a href="{{ route('image.show', ['path' => $img['image']]) }}" class="dropdown-item" target="_blank">
                                                     Pokaż zdjęcie
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('admin.items.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                <a href="{{ route('gallery.delete.send', ['id' => $img['id']]) }}" class="dropdown-item">
                                                     Usuń zdjęcie
                                                 </a>
                                             </li>
                                         </ul>
                                     @endforeach
-                                @else
-                                    <p>Nie dodano jeszcze żadnego zdjęcia</p>
-                                @endif
-                            </div>
-                            <form method="post" action="{{ route('admin.items.gallery.send', ['id' => $id]) }}" enctype="multipart/form-data">
+                                </div>
+                            @else
+                                <p>Nie dodano jeszcze żadnego zdjęcia</p>
+                            @endif
+                            <form method="post" action="{{ route('gallery.add.send', ['module' => 'items', 'moduleId' => $id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 <label>
                                     Plik graficzny
                                     <input type="file" name="image" required="required" class="@error('image') is-invalid @enderror">
                                     @error('image')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">

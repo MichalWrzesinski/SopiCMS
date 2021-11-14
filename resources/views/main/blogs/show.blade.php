@@ -13,13 +13,13 @@
             <h1 class="mb-4">{{ $blog->title }}</h1>
             {!! $blog->content !!}
         </section>
-        @if(isset($blog->gallery) && is_array($blog->gallery) && count($blog->gallery) > 0)
+        @if(isset($gallery) && is_array($gallery) && count($gallery) > 0)
             <section class="p-4 mb-3">
                 <h3>Galeria zdjęć</h3>
                 <div>
-                    @foreach($blog->gallery as $img)
-                        <a href="{{ route('image.show', ['path' => $img]) }}" target="_blank">
-                            <img src="{{ route('image.thumbnail', ['path' => $img, 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
+                    @foreach($gallery as $img)
+                        <a href="{{ route('image.show', ['path' => $img['image']]) }}" target="_blank">
+                            <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
                         </a>
                     @endforeach
                 </div>

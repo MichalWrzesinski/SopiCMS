@@ -124,28 +124,28 @@
                         </h2>
                         <div id="section-2-container" class="accordion-collapse collapse" aria-labelledby="section-2">
                             <section class="accordion-body p-4">
-                                @if(isset($item->gallery) && is_array($item->gallery) && count($item->gallery) > 0)
+                                @if(isset($gallery) && is_array($gallery) && count($gallery) > 0)
                                     <div class="mb-5">
                                         <p>Kliknij na zdjęciu by wyświetlić więcej opcji</p>
-                                        @foreach($item->gallery as $key => $img)
-                                            <a href="#" class=dropdown-toggle" role="button" id="aaa{{ $key }}" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src="{{ route('image.thumbnail', ['path' => $img, 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
+                                        @foreach($gallery as $img)
+                                            <a href="#" class=dropdown-toggle" role="button" id="image-options{{ $img['id'] }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
                                             </a>
-                                            <ul class="dropdown-menu" aria-labelledby="aaa{{ $key }}">
-                                                @if($key > 0)
+                                            <ul class="dropdown-menu" aria-labelledby="image-options{{ $img['id'] }}">
+                                                @if($img['cover'] == 0)
                                                     <li>
-                                                        <a href="{{ route('user.item.gallery.cover.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                        <a href="{{ route('gallery.cover.send', ['module' => 'items', 'moduleId' => $id, 'id' => $img['id']]) }}" class="dropdown-item">
                                                             Ustaw jako zdjęcie główne
                                                         </a>
                                                     </li>
                                                 @endif
                                                 <li>
-                                                    <a href="{{ route('image.show', ['path' => $img]) }}" class="dropdown-item" target="_blank">
+                                                    <a href="{{ route('image.show', ['path' => $img['image']]) }}" class="dropdown-item" target="_blank">
                                                         Pokaż zdjęcie
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.item.gallery.delete.send', ['id' => $id, 'key' => $key]) }}" class="dropdown-item">
+                                                    <a href="{{ route('gallery.delete.send', ['id' => $img['id']]) }}" class="dropdown-item">
                                                         Usuń zdjęcie
                                                     </a>
                                                 </li>
@@ -155,7 +155,7 @@
                                 @else
                                     <p>Nie dodano jeszcze żadnego zdjęcia</p>
                                 @endif
-                                <form method="post" action="{{ route('user.item.gallery.send', ['id' => $id]) }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('gallery.add.send', ['module' => 'items', 'moduleId' => $id]) }}" enctype="multipart/form-data">
                                     @csrf
                                     <label>
                                         Plik graficzny

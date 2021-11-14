@@ -4,21 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Page\PageController;
 use App\Http\Controllers\Page\PageAdminController;
-use App\Http\Controllers\Page\PageGalleryController;
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Blog\BlogAdminController;
-use App\Http\Controllers\Blog\BlogGalleryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserAdminController;
 use App\Http\Controllers\Item\ItemController;
 use App\Http\Controllers\Item\ItemUserController;
 use App\Http\Controllers\Item\ItemAdminController;
-use App\Http\Controllers\Item\ItemGalleryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BanController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Payment\PaymentAdminController;
 
@@ -111,15 +109,6 @@ Route::group(['prefix' => '/konto/'], function() {
             Route::post('edytuj/{id}', [ItemUserController::class, 'editSend'])
                 ->name('user.item.edit.send');
 
-            Route::post('galeria/{id}', [ItemGalleryController::class, 'addSend'])
-                ->name('user.item.gallery.send');
-
-            Route::get('galeria/{id}/usun/{key}', [ItemGalleryController::class, 'deleteSend'])
-                ->name('user.item.gallery.delete.send');
-
-            Route::get('galeria/{id}/glowne/{key}', [ItemGalleryController::class, 'coverSend'])
-                ->name('user.item.gallery.cover.send');
-
             Route::post('usun/{id}', [ItemUserController::class, 'deleteSend'])
                 ->name('user.item.delete.send');
 
@@ -176,6 +165,21 @@ Route::get('/ogloszenie/{id}/{url}', [ItemController::class, 'show'])
     ->name('item.show');
 
 /*
+     *  Gallery
+     */
+Route::group(['prefix' => 'galeria/', 'middleware' => ['auth']], function() {
+
+    Route::post('dodaj/{module}/{moduleId}', [GalleryController::class, 'addSend'])
+        ->name('gallery.add.send');
+
+    Route::get('glowne/{module}/{moduleId}/{id}', [GalleryController::class, 'coverSend'])
+        ->name('gallery.cover.send');
+
+    Route::get('usun/{id}', [GalleryController::class, 'deleteSend'])
+        ->name('gallery.delete.send');
+});
+
+/*
  * Admin
  */
 Route::group(['prefix' => '/admin/', 'middleware' => ['auth', 'can:admin']], function() {
@@ -202,15 +206,6 @@ Route::group(['prefix' => '/admin/', 'middleware' => ['auth', 'can:admin']], fun
 
         Route::post('publikacja/{id}', [ItemAdminController::class, 'publicSend'])
             ->name('admin.items.public.send');
-
-        Route::post('galeria/{id}', [ItemGalleryController::class, 'addSend'])
-            ->name('admin.items.gallery.send');
-
-        Route::get('galeria/{id}/usun/{key}', [ItemGalleryController::class, 'deleteSend'])
-            ->name('admin.items.gallery.delete.send');
-
-        Route::get('galeria/{id}/glowne/{key}', [ItemGalleryController::class, 'coverSend'])
-            ->name('admin.items.gallery.cover.send');
 
         Route::post('usun/{id}', [ItemAdminController::class, 'deleteSend'])
             ->name('admin.items.delete.send');
@@ -330,15 +325,6 @@ Route::group(['prefix' => '/admin/', 'middleware' => ['auth', 'can:admin']], fun
 
             Route::post('usun/{id}', [PageAdminController::class, 'deleteSend'])
                 ->name('admin.pages.delete.send');
-
-            Route::post('galeria/{id}', [PageGalleryController::class, 'addSend'])
-                ->name('admin.pages.gallery.send');
-
-            Route::get('galeria/{id}/usun/{key}', [PageGalleryController::class, 'deleteSend'])
-                ->name('admin.pages.gallery.delete.send');
-
-            Route::get('galeria/{id}/glowne/{key}', [PageGalleryController::class, 'coverSend'])
-                ->name('admin.pages.gallery.cover.send');
         });
 
         /*
@@ -363,15 +349,6 @@ Route::group(['prefix' => '/admin/', 'middleware' => ['auth', 'can:admin']], fun
 
             Route::post('usun/{id}', [BlogAdminController::class, 'deleteSend'])
                 ->name('admin.blog.delete.send');
-
-            Route::post('galeria/{id}', [BlogGalleryController::class, 'addSend'])
-                ->name('admin.blog.gallery.send');
-
-            Route::get('galeria/{id}/usun/{key}', [BlogGalleryController::class, 'deleteSend'])
-                ->name('admin.blog.gallery.delete.send');
-
-            Route::get('galeria/{id}/glowne/{key}', [BlogGalleryController::class, 'coverSend'])
-                ->name('admin.blog.gallery.cover.send');
         });
     });
 
