@@ -66,7 +66,7 @@ Route::get('/image/{path?}', [ImageController::class, 'show'])
  * User - guest
  *
  */
-Route::group(['prefix' => '/konto/', 'middleware' => ['guest']], function() {
+Route::group(['middleware' => ['guest']], function() {
 
     Route::get('logowanie', [UserController::class, 'login'])
         ->name('user.login');
@@ -86,16 +86,16 @@ Route::group(['prefix' => '/konto/', 'middleware' => ['guest']], function() {
     Route::get('aktywacja/{id}/{hash}', [UserController::class, 'activateSend'])
         ->name('user.activate.send');
 
-    Route::get('haslo', [UserController::class, 'password'])
+    Route::get('przypomnij-haslo', [UserController::class, 'password'])
         ->name('user.password');
 
-    Route::post('haslo', [UserController::class, 'passwordSend'])
+    Route::post('przypomnij-haslo', [UserController::class, 'passwordSend'])
         ->name('user.password.send');
 
-    Route::get('haslo/{id}/{hash}', [UserController::class, 'passwordNew'])
+    Route::get('przypomnij-haslo/{id}/{hash}', [UserController::class, 'passwordNew'])
         ->name('user.password.new');
 
-    Route::post('haslo/{id}/{hash}/zmien', [UserController::class, 'passwordNewSend'])
+    Route::post('przypomnij-haslo/{id}/{hash}/zmien', [UserController::class, 'passwordNewSend'])
         ->name('user.password.new.send');
 });
 
