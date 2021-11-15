@@ -42,7 +42,13 @@
                                                 <td>{{ $ban['id'] }}</td>
                                                 <td>{{ $ban['ip'] }}</td>
                                                 <td>{{ $ban['created_at'] }}</td>
-                                                <td><a href="{{ route('admin.users.bans.delete.send', ['id' => $ban['id']]) }}">Odblokuj</a></td>
+                                                <td>
+                                                    <form method="post" action="{{ route('admin.users.bans.delete.send', ['id' => $ban['id']]) }}">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <input type="submit" value="Odblokuj" class="btn btn-link">
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

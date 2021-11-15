@@ -11362,10 +11362,28 @@ textarea {
 button,
 input[type=button] input[type=submit],
 input[type=reset],
-.btn {
+.btn:not(.btn-link) {
   font-family: "Oswald", sans-serif;
   font-size: 17px;
   color: #fff !important;
+}
+
+.btn-link {
+  padding: 0;
+  margin: 0;
+  line-height: 100%;
+  font-size: 17px;
+  text-decoration: none;
+  color: #09b294;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: #078e76;
+  border: none;
+  box-shadow: none;
 }
 
 .btn-lg, .btn-group-lg > .btn {

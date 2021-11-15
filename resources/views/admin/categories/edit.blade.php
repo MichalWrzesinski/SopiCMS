@@ -64,6 +64,7 @@
                     <div id="section-2-container" class="accordion-collapse collapse" aria-labelledby="section-2">
                         <section class="accordion-body p-4">
                             <form method="post" action="{{ route('admin.categories.delete.send', ['id' => $id]) }}">
+                                @method('delete')
                                 @csrf
                                 <label>
                                     <input type="checkbox" name="delete" value="1" required="required" class="@error('delete') is-invalid @enderror">

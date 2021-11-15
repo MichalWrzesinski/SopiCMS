@@ -130,7 +130,7 @@ Route::group(['prefix' => '/konto/', 'middleware' => ['auth']], function() {
         Route::post('avatar', [UserController::class, 'manageAvatarSend'])
             ->name('user.manage.avatar.send');
 
-        Route::post('usun-avatar', [UserController::class, 'manageAvatarDelete'])
+        Route::delete('usun-avatar', [UserController::class, 'manageAvatarDelete'])
             ->name('user.manage.avatar.delete');
     });
 });
@@ -169,7 +169,7 @@ Route::group(['prefix' => '/konto/ogloszenia'], function() {
     Route::post('edytuj/{id}', [ItemUserController::class, 'editSend'])
         ->name('user.item.edit.send');
 
-    Route::post('usun/{id}', [ItemUserController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [ItemUserController::class, 'deleteSend'])
         ->name('user.item.delete.send');
 
     Route::get('obserwowane', [ItemUserController::class, 'favorite'])
@@ -193,7 +193,7 @@ Route::group(['prefix' => '/admin/ogloszenia/', 'middleware' => ['auth', 'can:ad
     Route::post('publikacja/{id}', [ItemAdminController::class, 'publicSend'])
         ->name('admin.items.public.send');
 
-    Route::post('usun/{id}', [ItemAdminController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [ItemAdminController::class, 'deleteSend'])
         ->name('admin.items.delete.send');
 
     Route::get('do-aktywacji', [ItemAdminController::class, 'listDeactive'])
@@ -218,10 +218,10 @@ Route::group(['prefix' => 'galeria/', 'middleware' => ['auth']], function() {
     Route::post('dodaj/{module}/{moduleId}', [GalleryController::class, 'addSend'])
         ->name('gallery.add.send');
 
-    Route::get('glowne/{module}/{moduleId}/{id}', [GalleryController::class, 'coverSend'])
+    Route::post('glowne/{module}/{moduleId}/{id}', [GalleryController::class, 'coverSend'])
         ->name('gallery.cover.send');
 
-    Route::get('usun/{id}', [GalleryController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [GalleryController::class, 'deleteSend'])
         ->name('gallery.delete.send');
 });
 
@@ -265,7 +265,7 @@ Route::group(['prefix' => '/admin/kategorie/', 'middleware' => ['auth', 'can:adm
     Route::post('edytuj/{id}', [CategoryController::class, 'editSend'])
         ->name('admin.categories.edit.send');
 
-    Route::post('usun/{id}', [CategoryController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [CategoryController::class, 'deleteSend'])
         ->name('admin.categories.delete.send');
 });
 
@@ -296,13 +296,13 @@ Route::group(['prefix' => '/admin/uzytkownicy/', 'middleware' => ['auth', 'can:a
     Route::post('haslo/{id}', [UserAdminController::class, 'passwordSend'])
         ->name('admin.users.password.send');
 
-    Route::post('usun/{id}', [UserAdminController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [UserAdminController::class, 'deleteSend'])
         ->name('admin.users.delete.send');
 
     Route::post('avatar/{id}', [UserAdminController::class, 'avatarAddSend'])
         ->name('admin.users.avatar.add.send');
 
-    Route::post('avatar/{id}/usun', [UserAdminController::class, 'avatarDeleteSend'])
+    Route::delete('avatar/{id}/usun', [UserAdminController::class, 'avatarDeleteSend'])
         ->name('admin.users.avatar.delete.send');
 });
 
@@ -324,7 +324,7 @@ Route::group(['prefix' => '/admin/banicja/', 'middleware' => ['auth', 'can:admin
     Route::post('dodaj', [BanController::class, 'addSend'])
         ->name('admin.users.bans.add.send');
 
-    Route::get('usun/{id}', [BanController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [BanController::class, 'deleteSend'])
         ->name('admin.users.bans.delete.send');
 });
 
@@ -427,7 +427,7 @@ Route::group(['prefix' => '/admin/blog/', 'middleware' => ['auth', 'can:admin']]
     Route::post('edytuj/{id}', [BlogAdminController::class, 'editSend'])
         ->name('admin.blog.edit.send');
 
-    Route::post('usun/{id}', [BlogAdminController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [BlogAdminController::class, 'deleteSend'])
         ->name('admin.blog.delete.send');
 });
 
@@ -455,7 +455,7 @@ Route::group(['prefix' => '/admin/strony/', 'middleware' => ['auth', 'can:admin'
     Route::post('edytuj/{id}', [PageAdminController::class, 'editSend'])
         ->name('admin.pages.edit.send');
 
-    Route::post('usun/{id}', [PageAdminController::class, 'deleteSend'])
+    Route::delete('usun/{id}', [PageAdminController::class, 'deleteSend'])
         ->name('admin.pages.delete.send');
 });
 

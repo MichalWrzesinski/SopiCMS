@@ -134,20 +134,18 @@
                                             <ul class="dropdown-menu" aria-labelledby="image-options{{ $img['id'] }}">
                                                 @if($img['cover'] == 0)
                                                     <li>
-                                                        <a href="{{ route('gallery.cover.send', ['module' => 'items', 'moduleId' => $id, 'id' => $img['id']]) }}" class="dropdown-item">
-                                                            Ustaw jako zdjęcie główne
-                                                        </a>
+                                                        <form method="post" action="{{ route('gallery.cover.send', ['module' => 'items', 'moduleId' => $id, 'id' => $img['id']]) }}" class="dropdown-item">
+                                                            @csrf
+                                                            <input type="submit" value="Ustaw jako zdjęcie główne" class="btn btn-link">
+                                                        </form>
                                                     </li>
                                                 @endif
                                                 <li>
-                                                    <a href="{{ route('image.show', ['path' => $img['image']]) }}" class="dropdown-item" target="_blank">
-                                                        Pokaż zdjęcie
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('gallery.delete.send', ['id' => $img['id']]) }}" class="dropdown-item">
-                                                        Usuń zdjęcie
-                                                    </a>
+                                                    <form method="post" action="{{ route('gallery.delete.send', ['id' => $img['id']]) }}" class="dropdown-item">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <input type="submit" value="Usuń zdjęcie" class="btn btn-link">
+                                                    </form>
                                                 </li>
                                             </ul>
                                         @endforeach
@@ -197,6 +195,7 @@
                             <section class="accordion-body p-4">
                                 <form method="post" action="{{ route('user.item.delete.send', ['id' => $id]) }}">
                                     @csrf
+                                    @method('delete')
                                     <label>
                                         <input type="checkbox" name="delete" value="1" required="required" class="@error('delete') is-invalid @enderror">
                                         Potwierdzam chęć usunięcia tego ogłoszenia

@@ -100,6 +100,7 @@
                                 @if($user->avatar)
                                     <form method="post" action="{{ route('user.manage.avatar.delete') }}">
                                         @csrf
+                                        @method('delete')
                                         <img src="{{ route('image.thumbnail', ['path' => $user->avatar, 'width' => 150, 'height' => 150]) }}" alt="Avatar" class="avatar me-4">
                                         <button type="submit" class="btn btn-primary">Usuń avatar</button>
                                     </form>

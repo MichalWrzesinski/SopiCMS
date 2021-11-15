@@ -127,6 +127,7 @@
                             @if($user->avatar)
                                 <form method="post" action="{{ route('admin.users.avatar.delete.send', ['id' => $id]) }}">
                                     @csrf
+                                    @method('delete')
                                     <img src="{{ route('image.thumbnail', ['path' => $user->avatar, 'width' => 150, 'height' => 150]) }}" alt="Avatar" class="avatar me-4">
                                     <button type="submit" class="btn btn-primary">Usuń avatar</button>
                                 </form>
@@ -161,6 +162,7 @@
                                 <p>Nie można usunąć własnego konta</p>
                             @else
                                 <form method="post" action="{{ route('admin.users.delete.send', ['id' => $id]) }}">
+                                    @method('delete')
                                     @csrf
                                     <label>
                                         <input type="checkbox" name="delete" value="1" required="required">
