@@ -8,16 +8,23 @@
         </ol>
     </nav>
     <div class="container">
-        <section class="p-4 mb-4">
-            <h1>{{ $title }}</h1>
-        </section>
         <div class="row">
-            @foreach($list as $blog)
-                <div class="col-xl-4 mb-4">
-                     @include('main.blogs.block', ['blog' => $blog, 'cover' => $gallery[$blog->id]])
+            <div class="col-xl-3 col-sm-12">
+                @include('main.layouts.left')
+            </div>
+            <div class="col-xl-9 col-sm-12">
+                <section class="p-4 mb-4">
+                    <h1>{{ $title }}</h1>
+                </section>
+                <div class="row">
+                    @foreach($list as $blog)
+                        <div class="col-xl-4 mb-4">
+                            @include('main.blogs.block', ['blog' => $blog, 'cover' => $gallery[$blog->id]])
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+                {{ $list->links() }}
+            </div>
         </div>
-        {{ $list->links() }}
     </div>
 @endsection

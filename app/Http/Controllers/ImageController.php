@@ -13,8 +13,7 @@ class ImageController extends Controller
         if(Storage::disk('public')->missing($path)) {
             return abort(404);
         }
-
-        return Image::make('storage/'.$path)->response();
+        return Image::make(storage_path('app/public/'.$path))->response();
     }
 
     public function thumbnail(int $width, int $height, string $path = 'default.jpg'): Response
@@ -27,12 +26,12 @@ class ImageController extends Controller
         $thumbnailPath = str_replace('.'.end($ex), '.'.$width.'x'.$height.'.'.end($ex), $path);
 
         if(Storage::disk('public')->missing($thumbnailPath)) {
-            return Image::make('storage/'.$path)
+            return Image::make(storage_path('app/public/'.$path))
                 ->fit($width, $height)
-                ->save('storage/'.$thumbnailPath)
+                ->save(storage_path('app/public/'.$thumbnailPath))
                 ->response();
         }
 
-        return Image::make('storage/'.$thumbnailPath)->response();
+        return Image::make(storage_path('app/public/'.$thumbnailPath))->response();
     }
 }

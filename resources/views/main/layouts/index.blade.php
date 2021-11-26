@@ -9,46 +9,46 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('img/1.jpg') }}" class="d-block w-100" alt="">
-                <div class="carousel-caption d-none d-md-block">
+                <img src="{{ asset('img/slider-1.jpg') }}" class="d-block w-100" alt="">
+                <div class="carousel-caption d-none d-md-block text-dark">
                     <div class="row">
+                        <div class="col">
+
+                        </div>
                         <div class="col">
                             <h3>First slide label</h3>
                             <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.</p>
                             <a href="#" class="btn btn-primary btn-lg">Zaczynamy</a>
-                        </div>
-                        <div class="col">
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('img/2.jpg') }}" class="d-block w-100" alt="">
-                <div class="carousel-caption d-none d-md-block">
+                <img src="{{ asset('img/slider-1.jpg') }}" class="d-block w-100" alt="">
+                <div class="carousel-caption d-none d-md-block text-dark">
                     <div class="row">
+                        <div class="col">
+
+                        </div>
                         <div class="col">
                             <h3>First slide label</h3>
                             <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.</p>
                             <a href="#" class="btn btn-primary btn-lg">Zaczynamy</a>
-                        </div>
-                        <div class="col">
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('img/3.jpg') }}" class="d-block w-100" alt="">
-                <div class="carousel-caption d-none d-md-block">
+                <img src="{{ asset('img/slider-1.jpg') }}" class="d-block w-100" alt="">
+                <div class="carousel-caption d-none d-md-block text-dark">
                     <div class="row">
+                        <div class="col">
+
+                        </div>
                         <div class="col">
                             <h3>First slide label</h3>
                             <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.</p>
                             <a href="#" class="btn btn-primary btn-lg">Zaczynamy</a>
-                        </div>
-                        <div class="col">
-
                         </div>
                     </div>
                 </div>

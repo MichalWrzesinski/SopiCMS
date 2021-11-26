@@ -70,3 +70,9 @@
         </ul>
     </section>
 @endauth
+
+@if(config('settings.ads.block3'))
+    <div id="block-3" class="mb-4">
+        {!! config('settings.ads.block3') !!}
+    </div>
+@endif

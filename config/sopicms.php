@@ -3,7 +3,6 @@
 return [
 
     'siteName' => 'SopiCMS',
-
     'meta' => [
         'title' => 'SopiCMS',
         'description' => 'Opis strony',
@@ -55,6 +54,7 @@ return [
         '50x50',
         '100x100',
         '150x150',
+        '200x150',
         '320x240',
         '480x320',
         '640x480',
