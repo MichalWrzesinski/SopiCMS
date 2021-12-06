@@ -9,7 +9,7 @@
                 <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
             </svg>
         </a>
-        @include('main.layouts.alert')
+        @include('tools.alert')
         <p>
             Twoje konto zostało zarejestrowane.
             Na podany adres e-mail wysłaliśmy wiadomość.

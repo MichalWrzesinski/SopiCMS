@@ -24,7 +24,7 @@
                     </h1>
                     <div id="section-1-container" class="accordion-collapse collapse show" aria-labelledby="section-1">
                         <section class="accordion-body p-4">
-                            @include('main.layouts.alert')
+                            @include('tools.alert')
 
                             <form method="post" action="{{ route('admin.items.public.send', ['id' => $id]) }}">
                                 @csrf
@@ -224,7 +224,7 @@
                                     Potwierdzam chęć usunięcia tego rekordu
                                 </label>
                                 @error('delete')
-                                    <span class="invalid-feedback" role="alert">>{{ $message }}/span>
+                                    <span class="invalid-feedback" role="alert">>{{ $message }}</span>
                                 @enderror
                                 <div class="mt-4">
                                     <input type="submit" value="Usuń" class="btn btn-primary">

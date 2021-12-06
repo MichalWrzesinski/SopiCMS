@@ -56,12 +56,12 @@
 
             a {
 
-                color: #e10055;
+                color: #ff385b;
             }
 
             a:hover {
 
-                color: #e10055;
+                color: #ff385b;
             }
 
             .button {
@@ -71,7 +71,7 @@
                 padding: 0 20px;
                 height: 2.7em;
 
-                background: #09b294;
+                background: #ff385b;
                 color: #fff !important;
                 font: 17px sans-serif;
                 line-height: 2.7em;
@@ -82,7 +82,7 @@
 
             .button:hover {
 
-                background: #e10055;
+                background: #7d1a2b;
                 color: #fff !important;
             }
         </style>

@@ -21,7 +21,7 @@ class SendMail extends Mailable
     {
         return $this->from(config('sopicms.email'), config('sopicms.siteName'))
             ->subject($this->data['subject'])
-            ->markdown('main.layouts.mail')
+            ->markdown('tools.mail')
             ->with($this->data);
     }
 }

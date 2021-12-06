@@ -23,7 +23,7 @@
                 </section>
                 <section class="p-4 mb-4">
                     <h2>Formularz kontaktowy</h2>
-                    @include('main.layouts.alert')
+                    @include('tools.alert')
 
                     <form method="post" action="{{ route('contact.send') }}">
                         @csrf

@@ -16,7 +16,7 @@
             <div class="col-xl-9 col-sm-12">
                 <section class="p-4 mb-4">
                     <h1>{{ $title }}</h1>
-                    @include('main.layouts.alert')
+                    @include('tools.alert')
                 </section>
                 <div class="row">
                     @foreach($list as $item)

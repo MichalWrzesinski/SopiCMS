@@ -23,7 +23,7 @@
                     </h1>
                     <div id="section-1-container" class="accordion-collapse collapse show" aria-labelledby="section-1">
                         <section class="accordion-body p-4">
-                            @include('main.layouts.alert')
+                            @include('tools.alert')
 
                             @if($list->isNotEmpty())
                                 <table class="table">
