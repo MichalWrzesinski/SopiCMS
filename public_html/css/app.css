@@ -11666,3 +11666,12 @@ a#logo {
   font-family: "Oswald", sans-serif;
   font-size: 20px;
 }
+
+/*
+ *  Auth
+ */
+body#auth {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ff385b;
+}

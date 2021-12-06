@@ -1,4 +1,4 @@
-@extends('main.layouts.default')
+@extends('main.layouts.layout')
 
 @section('content')
     <nav aria-label="breadcrumb" class="mb-3">
@@ -84,7 +84,9 @@
                         <input type="hidden" name="user" value="{{ $search['user'] ?? '' }}">
                         <div class="mt-4">
                             <input type="submit" value="Szukaj" class="btn btn-primary me-2">
-                            <a href="{{ route('item.list') }}" class="btn btn-secondary">Wyczyść filtry</a>
+                            @if(count($search) > 0)
+                                <a href="{{ route('item.list') }}" class="btn btn-secondary">Wyczyść filtry</a>
+                            @endif
                         </div>
                     </form>
                 </section>

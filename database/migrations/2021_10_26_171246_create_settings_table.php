@@ -96,7 +96,7 @@ class CreateSettingsTable extends Migration
             ],
             [
                 'key' => 'email.sender',
-                'value' => 'Nadawca',
+                'value' => 'SopiCMS',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

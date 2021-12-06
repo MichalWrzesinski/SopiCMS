@@ -6,6 +6,7 @@ use App\Http\Controllers\Page\PageController;
 use App\Http\Controllers\Page\PageAdminController;
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Blog\BlogAdminController;
+use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserAdminController;
 use App\Http\Controllers\Item\ItemController;
@@ -70,34 +71,34 @@ Route::get('/image/{path?}', [ImageController::class, 'show'])
  */
 Route::group(['middleware' => ['guest']], function() {
 
-    Route::get('logowanie', [UserController::class, 'login'])
+    Route::get('logowanie', [AuthController::class, 'login'])
         ->name('user.login');
 
-    Route::post('logowanie', [UserController::class, 'loginSend'])
+    Route::post('logowanie', [AuthController::class, 'loginSend'])
         ->name('user.login.send');
 
-    Route::get('rejestracja', [UserController::class, 'register'])
+    Route::get('rejestracja', [AuthController::class, 'register'])
         ->name('user.register');
 
-    Route::post('rejestracja', [UserController::class, 'registerSend'])
+    Route::post('rejestracja', [AuthController::class, 'registerSend'])
         ->name('user.register.send');
 
-    Route::get('aktywacja', [UserController::class, 'activate'])
+    Route::get('aktywacja', [AuthController::class, 'activate'])
         ->name('user.activate');
 
-    Route::get('aktywacja/{id}/{hash}', [UserController::class, 'activateSend'])
+    Route::get('aktywacja/{id}/{hash}', [AuthController::class, 'activateSend'])
         ->name('user.activate.send');
 
-    Route::get('przypomnij-haslo', [UserController::class, 'password'])
+    Route::get('przypomnij-haslo', [AuthController::class, 'password'])
         ->name('user.password');
 
-    Route::post('przypomnij-haslo', [UserController::class, 'passwordSend'])
+    Route::post('przypomnij-haslo', [AuthController::class, 'passwordSend'])
         ->name('user.password.send');
 
-    Route::get('przypomnij-haslo/{id}/{hash}', [UserController::class, 'passwordNew'])
+    Route::get('przypomnij-haslo/{id}/{hash}', [AuthController::class, 'passwordNew'])
         ->name('user.password.new');
 
-    Route::post('przypomnij-haslo/{id}/{hash}/zmien', [UserController::class, 'passwordNewSend'])
+    Route::post('przypomnij-haslo/{id}/{hash}/zmien', [AuthController::class, 'passwordNewSend'])
         ->name('user.password.new.send');
 });
 
@@ -113,7 +114,7 @@ Route::group(['prefix' => '/konto/', 'middleware' => ['auth']], function() {
     Route::get('', [UserController::class, 'dashboard'])
         ->name('user.dashboard');
 
-    Route::get('wyloguj', [UserController::class, 'logout'])
+    Route::get('wyloguj', [AuthController::class, 'logout'])
         ->name('user.logout');
 
     Route::group(['prefix' => 'ustawienia/'], function() {

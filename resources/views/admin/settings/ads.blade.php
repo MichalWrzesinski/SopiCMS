@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.layout')
 
 @section('content')
     <nav aria-label="breadcrumb" class="mb-3">

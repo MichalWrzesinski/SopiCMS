@@ -41,7 +41,7 @@ class CreateCategoriesTable extends Migration
             ],
             [
                 'id' => 3,
-                'name' => 'Moda',
+                'name' => 'Ubrania i buty',
                 'parent_id' => 0,
                 'y' => 2,
                 'created_at' => Carbon::now(),
@@ -49,7 +49,7 @@ class CreateCategoriesTable extends Migration
             ],
             [
                 'id' => 4,
-                'name' => 'Praca',
+                'name' => 'Oferty pracy',
                 'parent_id' => 0,
                 'y' => 3,
                 'created_at' => Carbon::now(),
