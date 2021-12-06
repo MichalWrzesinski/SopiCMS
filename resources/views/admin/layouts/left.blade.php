@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
-                <a href="{{ route('user.logout') }}">
+                <a href="{{ route('auth.logout') }}">
                     Wyloguj się
                 </a>
             </li>

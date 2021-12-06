@@ -62,7 +62,7 @@ class AuthController extends Controller
     public function passwordNew(int $id, string $hash)
     {
         if(!$this->userRepository->passwordVeryfi($id, $hash)) {
-            return redirect()->route('user.password')
+            return redirect()->route('auth.password')
                 ->with('error', 'Błędny link potwierdzający');
         }
 
@@ -86,7 +86,7 @@ class AuthController extends Controller
 
         $this->userRepository->passwordReset((int)$request['id'], $request);
 
-        return redirect()->route('user.login')
+        return redirect()->route('auth.login')
             ->with('success', 'Twoje hasło zostało zmienione. Możesz się teraz zalogować');
     }
 
@@ -101,7 +101,7 @@ class AuthController extends Controller
     {
         $this->userRepository->add($request);
 
-        return redirect()->route('user.activate');
+        return redirect()->route('auth.activate');
     }
 
     public function activate(): View
@@ -114,11 +114,11 @@ class AuthController extends Controller
     public function activateSend(int $id, string $hash)
     {
         if(!$this->userRepository->active($id, $hash)) {
-            return redirect()->route('user.activate')
+            return redirect()->route('auth.activate')
                 ->with('error', 'Błędny link potwierdzający');
         }
 
-        return redirect()->route('user.login')
+        return redirect()->route('auth.login')
             ->with('success', 'Twoje konto zostało aktywowane. Możesz się teraz zalogować.');
     }
 }

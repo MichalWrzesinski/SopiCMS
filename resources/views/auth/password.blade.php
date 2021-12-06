@@ -11,7 +11,7 @@
             </svg>
         </a>
         @if($form == 1)
-            <form method="post" action="{{ route('user.password.send') }}">
+            <form method="post" action="{{ route('auth.password.send') }}">
                 @csrf
                 <label>
                     <input type="email" name="email" required="required" placeholder="Adres e-mail" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
@@ -23,14 +23,14 @@
                     <input type="submit" value="Następny krok" class="btn btn-primary">
                 </div>
                 <div class="mt-4 small">
-                    <a href="{{ route('user.login') }}" class="text-decoration-underline">Zaloguj się</a>
+                    <a href="{{ route('auth.login') }}" class="text-decoration-underline">Zaloguj się</a>
                     <span class="mx-2">/</span>
-                    <a href="{{ route('user.register') }}" class="text-decoration-underline">Załóż konto</a>
+                    <a href="{{ route('auth.register') }}" class="text-decoration-underline">Załóż konto</a>
                 </div>
             </form>
         @endif
         @if($form == 2)
-            <form method="post" action="{{ route('user.password.new.send', ['id' => $id, 'hash' => $hash]) }}">
+            <form method="post" action="{{ route('auth.password.new.send', ['id' => $id, 'hash' => $hash]) }}">
                 @csrf
                 <label>
                     <input type="password" name="password" required="required" placeholder="Hasło" class="@error('password') is-invalid @enderror">

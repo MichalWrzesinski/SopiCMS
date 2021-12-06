@@ -72,34 +72,34 @@ Route::get('/image/{path?}', [ImageController::class, 'show'])
 Route::group(['middleware' => ['guest']], function() {
 
     Route::get('logowanie', [AuthController::class, 'login'])
-        ->name('user.login');
+        ->name('auth.login');
 
     Route::post('logowanie', [AuthController::class, 'loginSend'])
-        ->name('user.login.send');
+        ->name('auth.login.send');
 
     Route::get('rejestracja', [AuthController::class, 'register'])
-        ->name('user.register');
+        ->name('auth.register');
 
     Route::post('rejestracja', [AuthController::class, 'registerSend'])
-        ->name('user.register.send');
+        ->name('auth.register.send');
 
     Route::get('aktywacja', [AuthController::class, 'activate'])
-        ->name('user.activate');
+        ->name('auth.activate');
 
     Route::get('aktywacja/{id}/{hash}', [AuthController::class, 'activateSend'])
-        ->name('user.activate.send');
+        ->name('auth.activate.send');
 
     Route::get('przypomnij-haslo', [AuthController::class, 'password'])
-        ->name('user.password');
+        ->name('auth.password');
 
     Route::post('przypomnij-haslo', [AuthController::class, 'passwordSend'])
-        ->name('user.password.send');
+        ->name('auth.password.send');
 
     Route::get('przypomnij-haslo/{id}/{hash}', [AuthController::class, 'passwordNew'])
-        ->name('user.password.new');
+        ->name('auth.password.new');
 
     Route::post('przypomnij-haslo/{id}/{hash}/zmien', [AuthController::class, 'passwordNewSend'])
-        ->name('user.password.new.send');
+        ->name('auth.password.new.send');
 });
 
 /*
@@ -115,7 +115,7 @@ Route::group(['prefix' => '/konto/', 'middleware' => ['auth']], function() {
         ->name('user.dashboard');
 
     Route::get('wyloguj', [AuthController::class, 'logout'])
-        ->name('user.logout');
+        ->name('auth.logout');
 
     Route::group(['prefix' => 'ustawienia/'], function() {
 

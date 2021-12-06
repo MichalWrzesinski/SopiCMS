@@ -49,7 +49,7 @@
                                     </li>
                                     @auth
                                         <li class="nav-item">
-                                            <a href="{{ route('user.logout') }}" class="nav-link{!! Request::url() == route('user.logout') ? ' active' : '' !!}">
+                                            <a href="{{ route('auth.logout') }}" class="nav-link{!! Request::url() == route('auth.logout') ? ' active' : '' !!}">
                                                 Wyloguj się
                                             </a>
                                         </li>
@@ -60,12 +60,12 @@
                                         </li>
                                     @else
                                         <li class="nav-item">
-                                            <a href="{{ route('user.register') }}" class="nav-link{!! Request::url() == route('user.register') ? ' active' : '' !!}">
+                                            <a href="{{ route('auth.register') }}" class="nav-link{!! Request::url() == route('auth.register') ? ' active' : '' !!}">
                                                 Rejestracja
                                             </a>
                                         </li>
                                         <li class="nav-item ps-3">
-                                            <a href="{{ route('user.login') }}" class="btn btn-primary">
+                                            <a href="{{ route('auth.login') }}" class="btn btn-primary">
                                                 Logowanie
                                             </a>
                                         </li>

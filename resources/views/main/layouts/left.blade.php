@@ -20,7 +20,7 @@
                 </li>
             @endcan
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
-                <a href="{{ route('user.logout') }}">
+                <a href="{{ route('auth.logout') }}">
                     Wyloguj się
                 </a>
             </li>
@@ -53,17 +53,17 @@
         <h2>Nawigacja</h2>
         <ul class="list-group list-group-flush">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
-                <a href="{{ route('user.login') }}">
+                <a href="{{ route('auth.login') }}">
                     Logowanie
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
-                <a href="{{ route('user.register') }}">
+                <a href="{{ route('auth.register') }}">
                     Rejestracja
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
-                <a href="{{ route('user.password') }}">
+                <a href="{{ route('auth.password') }}">
                     Przypomnij hasło
                 </a>
             </li>

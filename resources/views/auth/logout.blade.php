@@ -14,7 +14,7 @@
         <div class="mt-4 small">
             <a href="{{ route('home') }}" class="text-decoration-underline">Strona główna</a>
             <span class="mx-2">/</span>
-            <a href="{{ route('user.login') }}" class="text-decoration-underline">Zaloguj się</a>
+            <a href="{{ route('auth.login') }}" class="text-decoration-underline">Zaloguj się</a>
         </div>
     </section>
 @endsection

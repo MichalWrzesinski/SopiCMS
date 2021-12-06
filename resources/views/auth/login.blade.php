@@ -10,7 +10,7 @@
                 <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
             </svg>
         </a>
-        <form method="post" action="{{ route('user.login.send') }}">
+        <form method="post" action="{{ route('auth.login.send') }}">
             @csrf
             <label>
                 <input type="email" name="email" required="required" placeholder="Adres e-mail" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
@@ -28,9 +28,9 @@
                 <input type="submit" value="Zaloguj się" class="btn btn-primary">
             </div>
             <div class="mt-4 small">
-                <a href="{{ route('user.register') }}" class="text-decoration-underline">Załóż konto</a>
+                <a href="{{ route('auth.register') }}" class="text-decoration-underline">Załóż konto</a>
                 <span class="mx-2">/</span>
-                <a href="{{ route('user.password') }}" class="text-decoration-underline">Zapomniałeś hasła?</a>
+                <a href="{{ route('auth.password') }}" class="text-decoration-underline">Zapomniałeś hasła?</a>
             </div>
         </form>
     </section>

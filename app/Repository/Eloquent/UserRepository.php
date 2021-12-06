@@ -83,7 +83,7 @@ class UserRepository implements UserRepositoryInterface
                     'body' => 'Twoje konto zostało założone. Aby dokonać aktywacji zweryfikuj swój adres e-mail klikając w poniższy odnośnik.',
                     'reply' => config('sopicms.email'),
                     'button' => 'Zweryfikuj konto',
-                    'url' => route('user.activate.send', ['id' => $user->id, 'hash' => sha1($data['name'].$password)])
+                    'url' => route('auth.activate.send', ['id' => $user->id, 'hash' => sha1($data['name'].$password)])
                 ]));
         }
 
@@ -123,7 +123,7 @@ class UserRepository implements UserRepositoryInterface
                 'body' => 'Otrzymaliśmy zgłoszenie o konieczności przypomnienia Twojego hasła. Kliknij w poniższy odnośnik, by wygenerować nowe hasło.',
                 'reply' => config('sopicms.email'),
                 'button' => 'Wygeneruj nowe hasło',
-                'url' => route('user.password.new', ['id' => $user->id, 'hash' => sha1($user->name.$user->password)])
+                'url' => route('auth.password.new', ['id' => $user->id, 'hash' => sha1($user->name.$user->password)])
             ]));
 
         return true;

@@ -36,7 +36,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item ps-3 d-none d-xl-block">
-                                        <a href="{{ route('user.logout') }}" class="btn btn-primary">
+                                        <a href="{{ route('auth.logout') }}" class="btn btn-primary">
                                             Wyloguj się
                                         </a>
                                     </li>
