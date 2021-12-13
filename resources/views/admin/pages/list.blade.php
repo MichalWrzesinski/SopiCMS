@@ -33,7 +33,7 @@
                                             <th>{{ __('pages.field.id') }}</th>
                                             <th>{{ __('pages.field.title') }}</th>
                                             <th>{{ __('pages.field.edit') }}</th>
-                                            <th>{{ __('admin.options') }}</th>
+                                            <th>{{ __('layout.field.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,7 +42,7 @@
                                             <td>{{ $page['id'] }}</td>
                                             <td><a href="{{ route('page.show', ['url' => $page['url']]) }}" target="_blank">{{ $page['title'] }}</a></td>
                                             <td>{{ $page['updated_at'] }}</td>
-                                            <td><a href="{{ route('admin.pages.edit', ['id' => $page['id']]) }}">{{ __('admin.manage') }}</a></td>
+                                            <td><a href="{{ route('admin.pages.edit', ['id' => $page['id']]) }}">{{ __('layout.button.manage') }}</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

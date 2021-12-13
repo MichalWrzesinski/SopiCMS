@@ -100,7 +100,7 @@
                 <section class="p-4 mb-4">
                     <h1>{{ $title }}</h1>
                     @if(count($list) == 0)
-                        <p>{{ __('items.alert.notFound') }}</p>
+                        <p>{{ __('layout.alert.notFound') }}</p>
                     @endif
                 </section>
                 @if(count($list) > 0)

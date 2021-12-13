@@ -13,6 +13,8 @@ return [
         'policy' => 'Privacy Policy',
         'admin' => 'Admin panel',
         'pages' => 'Contents',
+        'account' => 'Your account',
+        'logout' => 'Logout',
     ],
 
     /*
@@ -42,6 +44,7 @@ return [
         'menu' => 'Menu',
         'search' => 'Search',
         'send' => 'Send',
+        'manage' => 'Manage',
     ],
 
     /*
@@ -56,5 +59,12 @@ return [
         'inEmail' => 'Search in e-mail',
         'inIP' => 'Search in IP',
         'inUrl' => 'Search in URL',
+        'options' => 'Options',
+        'select' => 'Select',
+        'facebook' => 'Facebook',
+        'twitter' => 'Twitter',
+        'youtube' => 'YouTube',
+        'instagram' => 'Instagram',
+        'linkedin' => 'LinkedIn',
     ],
 ];

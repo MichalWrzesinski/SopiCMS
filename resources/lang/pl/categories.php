@@ -25,6 +25,13 @@ return [
     ],
 
     /*
+     * Buttons
+     */
+    'button' => [
+
+    ],
+
+    /*
      * Fields
      */
     'field' => [

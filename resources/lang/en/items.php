@@ -24,7 +24,6 @@ return [
      */
     'alert' => [
         'premium' => 'Premium',
-        'notFound' => 'Nothing was found',
         'success' => 'The advertisement has been added. Wait for activation by the administrator.',
         'done' => 'Changes have been saved',
         'deleted' => 'The ad has been deleted',

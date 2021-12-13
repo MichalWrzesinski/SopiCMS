@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('blog') }}">Blog</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('blog') }}">{{ __('blog.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $blog->title }}</li>
         </ol>
     </nav>

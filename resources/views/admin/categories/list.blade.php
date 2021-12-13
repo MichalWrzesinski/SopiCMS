@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('admin.title') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.items.list') }}">{{ __('items.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
@@ -33,7 +33,7 @@
                                             <th>{{ __('categories.field.id') }}</th>
                                             <th>{{ __('categories.field.name') }}</th>
                                             <th>{{ __('categories.field.position') }}</th>
-                                            <th>{{ __('admin.options') }}</th>
+                                            <th>{{ __('layout.field.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,7 +55,7 @@
                                             </td>
                                             <td class="table-primary">
                                                 <a href="{{ route('admin.categories.edit', ['id' => $cat['id']]) }}">
-                                                    {{ __('admin.manage') }}
+                                                    {{ __('layout.button.manage') }}
                                                 </a>
                                             </td>
                                         </tr>
@@ -83,7 +83,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('admin.categories.edit', ['id' => $sub['id']]) }}">
-                                                            {{ __('admin.manage') }}
+                                                            {{ __('layout.button.manage') }}
                                                         </a>
                                                     </td>
                                                 </tr>

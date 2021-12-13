@@ -13,6 +13,8 @@ return [
         'policy' => 'Polityką prywatności',
         'admin' => 'Panel administracyjny',
         'pages' => 'Treści',
+        'account' => 'Twoje konto',
+        'logout' => 'Wyloguj się',
     ],
 
     /*
@@ -42,6 +44,7 @@ return [
         'menu' => 'Menu',
         'search' => 'Szukaj',
         'send' => 'Wyślij',
+        'manage' => 'Zarządzaj',
     ],
 
     /*
@@ -56,5 +59,12 @@ return [
         'inEmail' => 'Szukaj w adresach E-mail',
         'inIP' => 'Szukaj w adresach IP',
         'inUrl' => 'Szukaj w adresach URL',
+        'options' => 'Opcje',
+        'select' => 'Wybierz',
+        'facebook' => 'Facebook',
+        'twitter' => 'Twitter',
+        'youtube' => 'YouTube',
+        'instagram' => 'Instagram',
+        'linkedin' => 'LinkedIn',
     ],
 ];

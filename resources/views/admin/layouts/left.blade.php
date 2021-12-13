@@ -1,10 +1,10 @@
 <div id="left-menu" class="collapse show">
     <section class="mb-4 d-block d-xl-none">
-        <h4 class="p-4">{{ __('admin.nav') }}</h4>
+        <h4 class="p-4">{{ __('layout.header.nav') }}</h4>
         <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.dashboard') }}">
-                    {{ __('admin.home') }}
+                    {{ __('layout.header.home') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
@@ -14,12 +14,12 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('user.dashboard') }}">
-                    {{ __('admin.account') }}
+                    {{ __('layout.header.account') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('auth.logout') }}">
-                    {{ __('admin.logout') }}
+                    {{ __('layout.header.logout') }}
                 </a>
             </li>
         </ul>

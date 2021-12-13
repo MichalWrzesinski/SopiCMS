@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('admin.title') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.items.list') }}">{{ __('items.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>

@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-8 col-xl-4">
-                        <a href="{{ route('admin.dashboard') }}" id="logo">{{ __('admin.title') }}</a>
+                        <a href="{{ route('admin.dashboard') }}" id="logo">{{ __('layout.header.admin') }}</a>
                     </div>
                     <div class="col-4 col-xl-8">
                         <nav class="navbar navbar-expand">
@@ -22,7 +22,7 @@
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item d-none d-xl-block">
                                         <a href="{{ route('admin.dashboard') }}" class="nav-link{!! Request::url() == route('admin.dashboard') ? ' active' : '' !!}">
-                                            {{ __('admin.home') }}
+                                            {{ __('layout.header.home') }}
                                         </a>
                                     </li>
                                     <li class="nav-item d-none d-xl-block">
@@ -37,12 +37,12 @@
                                     </li>
                                     <li class="nav-item ps-3 d-none d-xl-block">
                                         <a href="{{ route('auth.logout') }}" class="btn btn-primary">
-                                            {{ __('admin.logout') }}
+                                            {{ __('layout.header.logout') }}
                                         </a>
                                     </li>
                                     <li class="nav-item ps-3 d-inline d-xl-none">
                                         <a data-bs-toggle="collapse" href="#left-menu" role="button" aria-expanded="false" aria-controls="left-menu" class="btn btn-primary">
-                                            {{ __('admin.menu') }}
+                                            {{ __('layout.button.menu') }}
                                         </a>
                                     </li>
                                 </ul>

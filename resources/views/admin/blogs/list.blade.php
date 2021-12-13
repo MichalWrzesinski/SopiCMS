@@ -33,7 +33,7 @@
                                             <th>{{ __('blog.field.id') }}</th>
                                             <th>{{ __('blog.field.title') }}</th>
                                             <th>{{ __('blog.field.edit') }}</th>
-                                            <th>{{ __('admin.options') }}</th>
+                                            <th>{{ __('layout.field.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,7 +42,7 @@
                                             <td>{{ $blog['id'] }}</td>
                                             <td><a href="{{ route('blog.show', ['id' => $blog['id'], 'url' => Str::Slug($blog['title'])]) }}" target="_blank">{{ $blog['title'] }}</a></td>
                                             <td>{{ $blog['updated_at'] }}</td>
-                                            <td><a href="{{ route('admin.blog.edit', ['id' => $blog['id']]) }}">{{ __('admin.manage') }}</a></td>
+                                            <td><a href="{{ route('admin.blog.edit', ['id' => $blog['id']]) }}">{{ __('layout.button.manage') }}</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

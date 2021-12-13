@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('admin.title') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -33,7 +33,7 @@
                                             <th>{{ __('items.field.title') }}</th>
                                             <th>{{ __('items.field.status') }}</th>
                                             <th>{{ __('items.field.promote') }}</th>
-                                            <th>{{ __('admin.options') }}</th>
+                                            <th>{{ __('layout.field.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,14 +43,14 @@
                                             <td><a href="{{ route('item.show', ['id' => $item['id'], 'url' => Str::Slug($item['title'])]) }}" target="_blank">{{ $item['title'] }}</a></td>
                                             <td>{{ config('sopicms.item.status.'.$item['status']) }}</td>
                                             <td>@if($item['premium'] > Carbon\Carbon::now()) {{ config('sopicms.item.premium.1') }} @else {{ config('sopicms.item.premium.0') }} @endif</td>
-                                            <td><a href="{{ route('admin.items.edit', ['id' => $item['id']]) }}">{{ __('admin.manage') }}</a></td>
+                                            <td><a href="{{ route('admin.items.edit', ['id' => $item['id']]) }}">{{ __('layout.button.manage') }}</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                                 {{ $list->appends(request()->input())->links() }}
                             @else
-                                <p>{{ __('items.alert.notFound') }}</p>
+                                <p>{{ __('layout.alert.notFound') }}</p>
                             @endif
                         </section>
                     </div>

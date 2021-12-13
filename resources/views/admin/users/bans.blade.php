@@ -33,7 +33,7 @@
                                             <th>{{ __('bans.field.id') }}</th>
                                             <th>{{ __('bans.field.ip') }}</th>
                                             <th>{{ __('bans.field.date') }}</th>
-                                            <th>{{ __('admin.options') }}</th>
+                                            <th>{{ __('layout.field.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -22,7 +22,7 @@ return [
      * Buttons
      */
     'button' => [
-        'submit' => 'Wyślij',
+
     ],
 
     /*

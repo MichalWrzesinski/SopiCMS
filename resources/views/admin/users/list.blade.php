@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('admin.title') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -45,7 +45,7 @@
                                                 {{ __('users.field.type') }}
                                             </th>
                                             <th>
-                                                {{ __('admin.options') }}
+                                                {{ __('layout.field.options') }}
                                             </th>
                                         </tr>
                                     </thead>
@@ -69,7 +69,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('admin.users.edit', ['id' => $user['id']]) }}">
-                                                        {{ __('admin.manage') }}
+                                                        {{ __('layout.button.manage') }}
                                                     </a>
                                                 </td>
                                             </tr>

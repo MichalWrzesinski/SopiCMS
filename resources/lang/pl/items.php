@@ -24,7 +24,6 @@ return [
      */
     'alert' => [
         'premium' => 'Premium',
-        'notFound' => 'Niczego nie znaleziono',
         'success' => 'Ogłoszenie zostało dodane. Zaczekaj na aktywację przez administratora.',
         'done' => 'Zmiany zostały zapisane',
         'deleted' => 'Ogłoszenie zostało usunięte',
