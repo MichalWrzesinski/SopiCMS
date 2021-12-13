@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Panel administracyjny</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ustawienia</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('settings.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -29,28 +29,28 @@
                             <form method="post" action="{{ route('admin.settings.email.send') }}">
                                 @csrf
                                 <label>
-                                    Adres e-mail
+                                    {{ __('settings.field.email') }}
                                     <input type="email" name="to" value="{{ old('to', $form['to']) }}" required="required" class="@error('to') is-invalid @enderror">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
-                                    Adres zwrotny e-mail
+                                    {{ __('settings.field.emailReply') }}
                                     <input type="email" name="reply" value="{{ old('reply', $form['reply']) }}" required="required" class="@error('reply') is-invalid @enderror">
                                     @error('reply')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
-                                    Nadawca
+                                    {{ __('settings.field.sender') }}
                                     <input type="text" name="sender" value="{{ old('sender', $form['sender']) }}" required="required" class="@error('sender') is-invalid @enderror">
                                     @error('sender')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
-                                    <input type="submit" value="Zapisz" class="btn btn-primary">
+                                    <input type="submit" value="{{ __('layout.button.save') }}" class="btn btn-primary">
                                 </div>
                             </form>
                         </section>

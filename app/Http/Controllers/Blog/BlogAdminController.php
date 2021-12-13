@@ -26,7 +26,7 @@ class BlogAdminController extends Controller
     public function list(Request $request): View
     {
         return View('admin.blogs.list', [
-            'title' => 'Strony',
+            'title' => __('blog.header.title'),
             'list' => $this->blogRepository->list($request, config('sopicms.paginate')),
         ]);
     }
@@ -40,7 +40,7 @@ class BlogAdminController extends Controller
     {
         return View('admin.blogs.edit', [
             'id' => $id,
-            'title' => 'Edycja wpisu',
+            'title' => __('blog.header.edit'),
             'blog' => $this->blogRepository->get($id),
             'gallery' => $this->galleryRepository->list('blogs', $id)->toArray(),
         ]);
@@ -49,7 +49,7 @@ class BlogAdminController extends Controller
     public function editSend(TitleRequest $request, int $id)
     {
         $this->blogRepository->update($id, $request);
-        return back()->with('success', 'Zmiany zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function deleteSend(DeleteRequest $request, int $id)
@@ -57,6 +57,6 @@ class BlogAdminController extends Controller
         $this->blogRepository->delete($id);
 
         return redirect()->route('admin.blog.list')
-            ->with('success', 'Wpis został usunięty');
+            ->with('success', __('blog.alert.deleted'));
     }
 }

@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Panel administracyjny</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.users.list') }}">Użytkownicy</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.users.list') }}">{{ __('users.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -30,12 +30,12 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Użytkownik</th>
-                                            <th>Status</th>
-                                            <th>Typ</th>
-                                            <th>Data</th>
-                                            <th>Opcje</th>
+                                            <th>{{ __('payments.field.id') }}</th>
+                                            <th>{{ __('payments.field.user') }}</th>
+                                            <th>{{ __('payments.field.status') }}</th>
+                                            <th>{{ __('payments.field.type') }}</th>
+                                            <th>{{ __('payments.field.date) }}</th>
+                                            <th>{{ __('layout.field.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -53,7 +53,7 @@
                                 </table>
                                 {{ $list->appends(request()->input())->links() }}
                             @else
-                                <p>Niczego nie znaleziono</p>
+                                <p>{{ __('layout.alert.notFound') }}</p>
                             @endif
                         </section>
                     </div>

@@ -26,7 +26,7 @@ class PageAdminController extends Controller
     public function list(Request $request): View
     {
         return View('admin.pages.list', [
-            'title' => 'Strony',
+            'title' => __('pages.header.title'),
             'list' => $this->pageRepository->list($request, config('sopicms.paginate')),
         ]);
     }
@@ -40,7 +40,7 @@ class PageAdminController extends Controller
     {
         return View('admin.pages.edit', [
             'id' => $id,
-            'title' => 'Edycja strony',
+            'title' => __('pages.header.edit'),
             'page' => $this->pageRepository->get($id),
             'gallery' => $this->galleryRepository->list('pages', $id)->toArray(),
         ]);
@@ -55,13 +55,13 @@ class PageAdminController extends Controller
 
         $this->pageRepository->update($id, $request);
 
-        return back()->with('success', 'Zmiany zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function deleteSend(DeleteRequest $request, int $id)
     {
         $this->pageRepository->delete($id);
         return redirect()->route('admin.pages.list')
-            ->with('success', 'Strona została usunięta');
+            ->with('success', __('pages.alert.deleted'));
     }
 }

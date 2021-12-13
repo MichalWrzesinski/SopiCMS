@@ -31,7 +31,7 @@ class GalleryController extends Controller
 
         $image = $request->file('image')->store($module, 'public');
         $this->galleryRepository->add($module, $moduleId, $image);
-        return back()->with('success', 'Zdjęcie zostało dodane do galerii');
+        return back()->with('success', __('gallery.alert.add'));
     }
 
     public function coverSend(string $module, int $moduleId, int $id)
@@ -41,7 +41,7 @@ class GalleryController extends Controller
         }
 
         $this->galleryRepository->cover($module, $moduleId, $id);
-        return back()->with('success', 'Zdjęcie zostało usunięte z galerii');
+        return back()->with('success', __('gallery.alert.cover'));
     }
 
     public function deleteSend(int $id)
@@ -51,7 +51,7 @@ class GalleryController extends Controller
         }
 
         $this->galleryRepository->delete($id);
-        return back()->with('success', 'Zdjęcie zostało umstawione jako główne');
+        return back()->with('success', __('gallery.alert.delete'));
     }
 
     private function checkAccess(string $module, int $moduleId)

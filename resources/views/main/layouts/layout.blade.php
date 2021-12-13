@@ -29,51 +29,51 @@
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
                                         <a href="{{ route('home') }}" class="nav-link{!! Request::url() == route('home') ? ' active' : '' !!}">
-                                            Strona główna
+                                            {{ __('layout.header.home') }}
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('item.list') }}" class="nav-link{!! Request::url() == route('item.list') ? ' active' : '' !!}">
-                                            {{ config('sopicms.item.name') }}
+                                            {{ __('items.header.title') }}
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('blog') }}" class="nav-link{!! Request::url() == route('blog') ? ' active' : '' !!}">
-                                            Blog
+                                            {{ __('blog.header.title') }}
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('contact') }}" class="nav-link{!! Request::url() == route('contact') ? ' active' : '' !!}">
-                                            Kontakt
+                                            {{ __('contact.header.title') }}
                                         </a>
                                     </li>
                                     @auth
                                         <li class="nav-item">
                                             <a href="{{ route('auth.logout') }}" class="nav-link{!! Request::url() == route('auth.logout') ? ' active' : '' !!}">
-                                                Wyloguj się
+                                                {{ __('user.header.logout') }}
                                             </a>
                                         </li>
                                         <li class="nav-item ps-3 position-relative">
                                             <a href="{{ route('user.dashboard') }}" class="btn btn-primary">
-                                                Twoje konto
+                                                {{ __('user.header.title') }}
                                             </a>
                                         </li>
                                     @else
                                         <li class="nav-item">
                                             <a href="{{ route('auth.register') }}" class="nav-link{!! Request::url() == route('auth.register') ? ' active' : '' !!}">
-                                                Rejestracja
+                                                {{ __('auh.header.register') }}
                                             </a>
                                         </li>
                                         <li class="nav-item ps-3">
                                             <a href="{{ route('auth.login') }}" class="btn btn-primary">
-                                                Logowanie
+                                                {{ __('auth.header.login') }}
                                             </a>
                                         </li>
                                     @endauth
                                 </ul>
                             </div>
                             <button class="navbar-toggler btn btn-primary float-end" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Pokaż menu">
-                                Menu
+                                {{ __('layout.header.menu') }}
                             </button>
                         </nav>
                     </div>
@@ -106,22 +106,22 @@
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
                                     <a href="{{ route('home') }}" class="nav-link">
-                                        Strona główna
+                                        {{ __('layout.header.home') }}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('page.show', ['url' => config('sopicms.url.regulations')]) }}" class="nav-link">
-                                        Regulamin
+                                        {{ __('layout.header.regulations') }}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('page.show', ['url' => config('sopicms.url.privacyPolicy')]) }}" class="nav-link">
-                                        Polityka prywatności
+                                        {{ __('layout.header.policy') }}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('contact') }}" class="nav-link">
-                                        Kontakt
+                                        {{ __('contact.header.title') }}
                                     </a>
                                 </li>
                             </ul>

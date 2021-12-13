@@ -34,7 +34,7 @@ class ItemController extends Controller
         $list = $this->itemRepository->list($search, config('sopicms.paginate'));
 
         return View('main.items.list', [
-            'title' => config('sopicms.item.list'),
+            'title' => __('items.header.title'),
             'list' => $list,
             'gallery' => $this->galleryRepository->coverList('items', $list->pluck('id')->toArray()),
             'category' => $this->categoryRepository->list(),
@@ -87,13 +87,5 @@ class ItemController extends Controller
             'item' => $item,
             'gallery' => $this->galleryRepository->list('items', $id)->toArray(),
         ]);
-    }
-
-    public function deleteSend(DeleteRequest $request, int $id)
-    {
-        $this->itemRepository->delete($id);
-
-        return redirect()->route('item.user.list')
-            ->with('success', 'Wpis został usunięty');
     }
 }

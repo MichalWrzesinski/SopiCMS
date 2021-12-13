@@ -1,35 +1,35 @@
 <div id="left-menu" class="collapse show">
     <section class="mb-4 d-block d-xl-none">
-        <h4 class="p-4">Nawigacja</h4>
+        <h4 class="p-4">{{ __('admin.nav') }}</h4>
         <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.dashboard') }}">
-                    Strona główna
+                    {{ __('admin.home') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('home') }}">
-                    Powrót do serwisu
+                    {{ __('admin.back') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('user.dashboard') }}">
-                    Twoje konto
+                    {{ __('admin.account') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('auth.logout') }}">
-                    Wyloguj się
+                    {{ __('admin.logout') }}
                 </a>
             </li>
         </ul>
     </section>
     <section class="mb-4">
-        <h4 class="p-4">{{ config('sopicms.item.name') }}</h4>
+        <h4 class="p-4">{{ __('items.header.title') }}</h4>
         <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.items.list') }}">
-                    {{ config('sopicms.item.list') }}
+                    {{ __('items.header.list') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Item::count() }}
@@ -37,7 +37,7 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.items.list.inactive') }}">
-                    Do aktywacji
+                    {{ __('items.header.deactive') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Item::where('status', 0)->count() }}
@@ -45,12 +45,12 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.items.settings') }}">
-                    Ustawienia
+                    {{ __('items.header.settings') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.categories.list') }}">
-                    Kategorie
+                    {{ __('categories.header.title') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Category::count() }}
@@ -59,11 +59,11 @@
         </ul>
     </section>
     <section class="mb-4">
-        <h4 class="p-4">Użytkownicy</h4>
+        <h4 class="p-4">{{ __('users.header.title') }}</h4>
         <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.users.list') }}">
-                    Lista użytkowników
+                    {{ __('users.header.list') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\User::count() }}
@@ -71,7 +71,7 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.users.payments') }}">
-                    Płatności
+                    {{ __('payments.header.title') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Payment::count() }}
@@ -79,7 +79,7 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.users.bans') }}">
-                    Banicja
+                    {{ __('bans.header.title') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Ban::count() }}
@@ -87,17 +87,17 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.users.newsletter') }}">
-                    Newsletter
+                    {{ __('newsletter.header.title') }}
                 </a>
             </li>
         </ul>
     </section>
     <section class="mb-4">
-        <h4 class="p-4">Treści</h4>
+        <h4 class="p-4">{{ __('layout.header.pages') }}</h4>
         <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.pages.list') }}">
-                    Strony
+                    {{ __('pages.header.title') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Page::count() }}
@@ -105,7 +105,7 @@
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.blog.list') }}">
-                    Blog
+                    {{ __('blog.header.title') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">
                     {{ App\Models\Blog::count() }}
@@ -114,31 +114,31 @@
         </ul>
     </section>
     <section class="mb-4">
-        <h4 class="p-4">Ustawienia</h4>
+        <h4 class="p-4">{{ __('settings.header.title') }}</h4>
         <ul class="list-group list-group-flush pb-3">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.settings.seo') }}">
-                    Optymalizacja SEO
+                    {{ __('settings.header.seo') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.settings.socialmedia') }}">
-                    Social media
+                    {{ __('settings.header.socialMedia') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.settings.email') }}">
-                    Poczta e-mail
+                    {{ __('settings.header.email') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.settings.ads') }}">
-                    Reklamy
+                    {{ __('settings.header.ads') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-4">
                 <a href="{{ route('admin.settings.other') }}">
-                    Inne ustawienia
+                    {{ __('settings.header.other') }}
                 </a>
             </li>
         </ul>

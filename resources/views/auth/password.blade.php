@@ -14,18 +14,18 @@
             <form method="post" action="{{ route('auth.password.send') }}">
                 @csrf
                 <label>
-                    <input type="email" name="email" required="required" placeholder="Adres e-mail" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
+                    <input type="email" name="email" required="required" placeholder="{{ __('auth.field.email') }}" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
                     @error('login')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </label>
                 <div class="mt-4">
-                    <input type="submit" value="Następny krok" class="btn btn-primary">
+                    <input type="submit" value="{{ __('auth.button.password') }}" class="btn btn-primary">
                 </div>
                 <div class="mt-4 small">
-                    <a href="{{ route('auth.login') }}" class="text-decoration-underline">Zaloguj się</a>
+                    <a href="{{ route('auth.login') }}" class="text-decoration-underline">{{ __('auth.header.login2') }}</a>
                     <span class="mx-2">/</span>
-                    <a href="{{ route('auth.register') }}" class="text-decoration-underline">Załóż konto</a>
+                    <a href="{{ route('auth.register') }}" class="text-decoration-underline">{{ __('auth.header.register2') }}</a>
                 </div>
             </form>
         @endif
@@ -33,19 +33,19 @@
             <form method="post" action="{{ route('auth.password.new.send', ['id' => $id, 'hash' => $hash]) }}">
                 @csrf
                 <label>
-                    <input type="password" name="password" required="required" placeholder="Hasło" class="@error('password') is-invalid @enderror">
+                    <input type="password" name="password" required="required" placeholder="{{ __('auth.field.password') }}" class="@error('password') is-invalid @enderror">
                     @error('password')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </label>
                 <label>
-                    <input type="password" name="password_confirmation" required="required" placeholder="Powtórz hasło" class="@error('password_confirmation') is-invalid @enderror">
+                    <input type="password" name="password_confirmation" required="required" placeholder="{{ __('auth.field.passwordConfirmation') }}" class="@error('password_confirmation') is-invalid @enderror">
                     @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </label>
                 <div class="mt-4">
-                    <input type="submit" value="Zmień hasło" class="btn btn-primary">
+                    <input type="submit" value="{{ __('auth.button.passwordNew') }}" class="btn btn-primary">
                 </div>
             </form>
         @endif

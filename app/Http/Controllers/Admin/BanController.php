@@ -21,7 +21,7 @@ class BanController extends Controller
             ->paginate(10);
 
         return View('admin.users.bans', [
-            'title' => 'Banicja',
+            'title' => __('bans.header.title'),
             'list' => $banArray,
         ]);
     }
@@ -32,7 +32,7 @@ class BanController extends Controller
             'ip' => $request['ip'],
         ]);
 
-        return back()->with('success', 'Adres IP został zablokowany');
+        return back()->with('success', __('bans.alert.add'));
     }
 
     public function deleteSend(Request $request, int $id)
@@ -40,6 +40,6 @@ class BanController extends Controller
         Ban::findOrFail($id)->delete();
 
         return redirect()->route('admin.users.bans')
-            ->with('success', 'Adres IP został odblokowany');
+            ->with('success', __('bans.alert.delete'));
     }
 }

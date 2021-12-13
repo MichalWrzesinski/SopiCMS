@@ -35,7 +35,7 @@ class ItemAdminController extends Controller
         }
 
         return View('admin.items.list', [
-            'title' => config('sopicms.item.name'),
+            'title' => __('items.header.title'),
             'list' => $this->itemRepository->list($request, config('sopicms.paginate')),
         ]);
     }
@@ -48,7 +48,7 @@ class ItemAdminController extends Controller
     public function edit(int $id): View
     {
         return View('admin.items.edit', [
-            'title' => config('sopicms.item.edit'),
+            'title' => __('items.header.edit'),
             'id' => $id,
             'item' => $this->itemRepository->get($id),
             'list' => $this->categoryRepository->list(),
@@ -60,26 +60,26 @@ class ItemAdminController extends Controller
     {
         $this->itemRepository->update($id, $request);
 
-        return back()->with('success', 'Zmiany zostały zapisane.');
+        return back()->with('success', __('items.alert.done'));
     }
 
     public function publicSend(Request $request, int $id)
     {
         $this->itemRepository->public($id, $request);
-        return back()->with('success', 'Zmiany zostały zapisane.');
+        return back()->with('success', __('items.alert.done'));
     }
 
     public function gallerySend(ImageRequest $request, int $id)
     {
         $file = $request->file('image')->store('items', 'public');
         $this->itemRepository->imageAdd($id, $file);
-        return back()->with('success', 'Zdjęcie zostało dodane do galerii2');
+        return back()->with('success', __('gallery.alert.add'));
     }
 
     public function settings(): View
     {
         return View('admin.items.settings', [
-            'title' => 'Ustawienia',
+            'title' => __('settings.header.title'),
             'form' => [
                 'validity' => config('settings.item.validity'),
                 'premium-validity' => config('settings.item.premium.validity'),
@@ -102,7 +102,7 @@ class ItemAdminController extends Controller
         Setting::where('key', 'item.premium.validity')->update(['value' => $request['premium-validity']]);
         Setting::where('key', 'item.premium.price')->update(['value' => $request['premium-price']]);
 
-        return back()->with('success', 'Ustawienia zostały zapisane');
+        return back()->with('success', __('items.alert.done'));
     }
 
     public function deleteSend(DeleteRequest $request, int $id)
@@ -110,6 +110,6 @@ class ItemAdminController extends Controller
         $this->itemRepository->delete($id);
 
         return redirect()->route('admin.items.list')
-            ->with('success', 'Wpis został usunięty');
+            ->with('success', __('items.alert.deleted'));
     }
 }

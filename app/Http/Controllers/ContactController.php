@@ -14,7 +14,7 @@ class ContactController extends Controller
     public function form(): View
     {
         return View('main.pages.contact', [
-            'title' => 'Kontakt',
+            'title' => __('contact.header.title'),
             'email' => config('sopicms.email'),
             'phone' => config('sopicms.phone'),
         ]);
@@ -30,12 +30,12 @@ class ContactController extends Controller
 
         Mail::to('wuerzet@gmail.com')
             ->send(new SendMail([
-                'subject' => 'Formularz kontaktowy',
+                'subject' => __('contact.header.subject'),
                 'body' => str_replace("\n", '<br>', $request['content']),
                 'name' => $request['name'],
                 'reply' => $request['email'],
             ]));
 
-        return back()->with('success', 'Dziękujemy! Wiadomość została wysłana.');
+        return back()->with('success', __('contact.alert.success'));
     }
 }

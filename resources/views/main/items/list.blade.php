@@ -11,20 +11,20 @@
         <div class="row">
             <div class="col-xl-3 col-sm-12">
                 <section class="p-4 mb-4">
-                    <h4>Filtruj</h4>
+                    <h4>{{ __('items.header.filters') }}</h4>
                     <form method="post" action="{{ route('item.search.send') }}">
                         @csrf
                         <label>
-                            Słowo kluczowe
+                            {{ __('items.field.keyword') }}
                             <input type="text" name="query" value="{{ $search['query'] ?? '' }}">
                             @error('search')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
                             @enderror
                         </label>
                         <label>
-                            Kategoria
+                            {{ __('items.field.category') }}
                             <select name="category" class="@error('category') is-invalid @enderror">
-                                <option value="">Wybierz</option>
+                                <option value="">{{ __('items.field.select') }}</option>
                                 @foreach($category[0] ?? [] as $cat)
                                     @if(isset($category[$cat['id']]) && is_array($category[$cat['id']]))
                                         <option value="{{ $cat['id'] }}"@if(isset($search['category']) && $search['category'] == $cat['id']) selected="selected"@endif>{{ $cat['name'] }}</option>
@@ -41,9 +41,9 @@
                             @enderror
                         </label>
                         <label>
-                            Region
+                            {{ __('items.field.region') }}
                             <select name="region" class="@error('category') is-invalid @enderror">
-                                <option value="">Wybierz</option>
+                                <option value="">{{ __('items.field.select') }}</option>
                                 @if(is_array(config('sopicms.region')))
                                     @foreach(config('sopicms.region') as $key => $name)
                                         <option value="{{ $key }}"@if(isset($search['region']) && $search['region'] == $key) selected="selected"@endif>{{ $name }}</option>
@@ -55,7 +55,7 @@
                             @enderror
                         </label>
                         <label>
-                            Miejscowość
+                            {{ __('items.field.city') }}
                             <input type="text" name="city" class="@error('city') is-invalid @enderror" value="{{ $search['city'] ?? '' }}">
                             @error('city')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -64,7 +64,7 @@
                         <div class="row">
                             <div class="col">
                                 <label>
-                                    Cena od
+                                    {{ __('items.field.priceFrom') }}
                                     <input type="text" name="price-from" class="@error('price-from') is-invalid @enderror" value="{{ $search['price-from'] ?? '' }}">
                                     @error('price-from')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col">
                                 <label>
-                                    do
+                                    {{ __('items.field.priceTo') }}
                                     <input type="text" name="price-to" class="@error('price-to') is-invalid @enderror" value="{{ $search['price-to'] ?? '' }}">
                                     @error('price-to')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -83,9 +83,9 @@
                         </div>
                         <input type="hidden" name="user" value="{{ $search['user'] ?? '' }}">
                         <div class="mt-4">
-                            <input type="submit" value="Szukaj" class="btn btn-primary me-2">
+                            <input type="submit" value="{{ __('items.button.submit') }}" class="btn btn-primary me-2">
                             @if(count($search) > 0)
-                                <a href="{{ route('item.list') }}" class="btn btn-secondary">Wyczyść filtry</a>
+                                <a href="{{ route('item.list') }}" class="btn btn-secondary">{{ __('items.button.clear') }}</a>
                             @endif
                         </div>
                     </form>
@@ -100,7 +100,7 @@
                 <section class="p-4 mb-4">
                     <h1>{{ $title }}</h1>
                     @if(count($list) == 0)
-                        <p>Niczego nie znaleziono</p>
+                        <p>{{ __('items.alert.notFound') }}</p>
                     @endif
                 </section>
                 @if(count($list) > 0)

@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Panel administracyjny</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.users.list') }}">Użytkownicy</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.users.list') }}">{{ __('users.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -29,21 +29,21 @@
                             <form method="post" action="{{ route('admin.users.newsletter.send') }}">
                                 @csrf
                                 <label>
-                                    Tytuł
+                                    {{ __('newsletter.field.title') }}
                                     <input type="text" name="title" required="required" value="{{ old('title') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label>
-                                    Treść
+                                    {{ __('newsletter.field.content') }}
                                     <textarea name="content" required="required">{{ old('content') }}</textarea>
                                     @error('content')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
-                                    <input type="submit" value="Wyślij" class="btn btn-primary">
+                                    <input type="submit" value="{{ __('layout.button.send') }}" class="btn btn-primary">
                                 </div>
                             </form>
                         </section>

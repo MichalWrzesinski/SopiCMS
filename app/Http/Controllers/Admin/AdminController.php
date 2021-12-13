@@ -14,14 +14,14 @@ class AdminController extends Controller
     public function dashboard(): View
     {
         return View('admin.layouts.index', [
-            'title' => 'Panel administracyjny',
+            'title' => __('admin.title'),
         ]);
     }
 
     public function seo(): View
     {
         return View('admin.settings.seo', [
-            'title' => 'Optymalizacja SEO',
+            'title' => __('settings.header.seo'),
             'form' => [
                 'name' => config('settings.meta.name'),
                 'title' => config('settings.meta.title'),
@@ -45,13 +45,13 @@ class AdminController extends Controller
         Setting::where('key', 'meta.keywords')->update(['value' => $request['keywords']]);
         Setting::where('key', 'meta.index')->update(['value' => $request['index']]);
 
-        return back()->with('success', 'Ustawienia zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function socialmedia(): View
     {
         return View('admin.settings.socialmedia', [
-            'title' => 'Social media',
+            'title' => __('settings.header.socialMedia'),
             'form' => [
                 'facebook' => config('settings.socialmedia.facebook'),
                 'instagram' => config('settings.socialmedia.instagram'),
@@ -70,13 +70,13 @@ class AdminController extends Controller
         Setting::where('key', 'socialmedia.twitter')->update(['value' => $request['twitter']]);
         Setting::where('key', 'socialmedia.linkedin')->update(['value' => $request['linkedin']]);
 
-        return back()->with('success', 'Ustawienia zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function email(): View
     {
         return View('admin.settings.email', [
-            'title' => 'E-mail',
+            'title' => __('settings.header.email'),
             'form' => [
                 'to' => config('settings.email.to'),
                 'reply' => config('settings.email.reply'),
@@ -97,13 +97,13 @@ class AdminController extends Controller
         Setting::where('key', 'email.reply')->update(['value' => $request['reply']]);
         Setting::where('key', 'email.sender')->update(['value' => $request['sender']]);
 
-        return back()->with('success', 'Ustawienia zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function ads(): View
     {
         return View('admin.settings.ads', [
-            'title' => 'Reklamy',
+            'title' => __('settings.header.ads'),
             'form' => [
                 'block1' => config('settings.ads.block1'),
                 'block2' => config('settings.ads.block2'),
@@ -120,13 +120,13 @@ class AdminController extends Controller
         Setting::where('key', 'ads.block3')->update(['value' => $request['block3']]);
         Setting::where('key', 'ads.block4')->update(['value' => $request['block4']]);
 
-        return back()->with('success', 'Ustawienia zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function other(): View
     {
         return View('admin.settings.other', [
-            'title' => 'Inne ustawienia',
+            'title' => __('settings.header.other'),
             'form' => [
                 'head' => config('settings.other.head'),
                 'body' => config('settings.other.body'),
@@ -139,6 +139,6 @@ class AdminController extends Controller
         Setting::where('key', 'other.head')->update(['value' => $request['head']]);
         Setting::where('key', 'other.body')->update(['value' => $request['body']]);
 
-        return back()->with('success', 'Ustawienia zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 }

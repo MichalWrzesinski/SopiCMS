@@ -19,7 +19,7 @@ class PaymentAdminController extends Controller
     public function list(Request $request): View
     {
         return View('admin.payments.list', [
-            'title' => 'Pałtności',
+            'title' => __('payments.header.title'),
             'list' => $this->paymentRepository->list(config('sopicms.paginate')),
         ]);
     }

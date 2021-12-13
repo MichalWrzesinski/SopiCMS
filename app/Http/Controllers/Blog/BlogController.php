@@ -26,7 +26,7 @@ class BlogController extends Controller
         $list = $this->blogRepository->list($request, config('sopicms.paginate'));
 
         return View('main.blogs.list', [
-            'title' => 'Blog',
+            'title' => __('blog.header.title'),
             'list' => $list,
             'gallery' => $this->galleryRepository->coverList('blogs', $list->pluck('id')->toArray()),
         ]);

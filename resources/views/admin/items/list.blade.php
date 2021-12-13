@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Panel administracyjny</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('admin.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -29,11 +29,11 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Tytuł</th>
-                                            <th>Status</th>
-                                            <th>Promowane</th>
-                                            <th>Opcje</th>
+                                            <th>{{ __('items.field.id') }}</th>
+                                            <th>{{ __('items.field.title') }}</th>
+                                            <th>{{ __('items.field.status') }}</th>
+                                            <th>{{ __('items.field.promote') }}</th>
+                                            <th>{{ __('admin.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,14 +43,14 @@
                                             <td><a href="{{ route('item.show', ['id' => $item['id'], 'url' => Str::Slug($item['title'])]) }}" target="_blank">{{ $item['title'] }}</a></td>
                                             <td>{{ config('sopicms.item.status.'.$item['status']) }}</td>
                                             <td>@if($item['premium'] > Carbon\Carbon::now()) {{ config('sopicms.item.premium.1') }} @else {{ config('sopicms.item.premium.0') }} @endif</td>
-                                            <td><a href="{{ route('admin.items.edit', ['id' => $item['id']]) }}">Zarządzaj</a></td>
+                                            <td><a href="{{ route('admin.items.edit', ['id' => $item['id']]) }}">{{ __('admin.manage') }}</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                                 {{ $list->appends(request()->input())->links() }}
                             @else
-                                <p>Niczego nie znaleziono</p>
+                                <p>{{ __('items.alert.notFound') }}</p>
                             @endif
                         </section>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="accordion-item mb-4">
                     <h2 class="accordion-header" id="section-2">
                         <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-2-container" aria-expanded="false" aria-controls="section-2-container">
-                            Szukaj ogłoszenia
+                            {{ __('items.header.search') }}
                         </button>
                     </h2>
                     <div id="section-2-container" class="accordion-collapse collapse" aria-labelledby="section-2">
@@ -67,7 +67,7 @@
                             <form method="post" action="{{ route('admin.items.list.send') }}">
                                 @csrf
                                 <label>
-                                    Słowo kluczowe
+                                    {{ __('items.field.keyword') }}
                                     <input type="text" name="search" required="required" value="{{ old('search') }}">
                                     @error('search')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -75,18 +75,18 @@
                                 </label>
                                 <label>
                                     <input type="checkbox" name="id" value="1" checked="checked">
-                                    Szukaj w ID
+                                    {{ __('items.field.inId') }}
                                 </label>
                                 <label>
                                     <input type="checkbox" name="title" value="1" checked="checked">
-                                    Szukaj w tytułach
+                                    {{ __('items.field.inTitle') }}
                                 </label>
                                 <label>
                                     <input type="checkbox" name="content" value="1" checked="checked">
-                                    Szukaj w treści
+                                    {{ __('items.field.inContent') }}
                                 </label>
                                 <div class="mt-4">
-                                    <input type="submit" value="Szukaj" class="btn btn-primary">
+                                    <input type="submit" value="{{ __('items.button.search') }}" class="btn btn-primary">
                                 </div>
                             </form>
                         </section>

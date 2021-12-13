@@ -100,13 +100,13 @@
                 @endisset
                 @if(isset($name) OR isset($email) OR isset($phone))
                     <p>
-                        @isset($name)Nadawca: {{ $name }}<br>@endisset
-                        @isset($email))E-mail: {{ $email }}<br>@endisset
-                        @isset($phone))Telefon: {{ $phone }}<br>@endisset
+                        @isset($name){{ __('email.sender') }}: {{ $name }}<br>@endisset
+                        @isset($email)){{ __('email.email') }}: {{ $email }}<br>@endisset
+                        @isset($phone)){{ __('email.phone') }}: {{ $phone }}<br>@endisset
                     </p>
                     <hr>
                 @endif
-                <p>Pozdrawiamy!<br><strong>{{ config('sopicms.siteName') }}</strong></p><br>
+                <p>{{ __('email.regards') }}<br><strong>{{ config('sopicms.siteName') }}</strong></p><br>
                 <p><a href="{{ env('APP_URL') }}">{{ env('APP_URL') }}</a></p>
             </div>
         </div>

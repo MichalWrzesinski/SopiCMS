@@ -13,43 +13,47 @@
         <form method="post" action="{{ route('auth.register.send') }}">
             @csrf
             <label>
-                <input type="text" name="name" required="required" placeholder="Nazwa użytkownika" class="@error('name') is-invalid @enderror" value="{{ old('name') }}">
+                <input type="text" name="name" required="required" placeholder="{{ __('auth.field.name') }}" class="@error('name') is-invalid @enderror" value="{{ old('name') }}">
                 @error('name')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <label>
-                <input type="email" name="email" required="required" placeholder="Adres e-mail" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
+                <input type="email" name="email" required="required" placeholder="{{ __('auth.field.email') }}" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
                 @error('login')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <label>
-                <input type="password" name="password" required="required" placeholder="Hasło" class="@error('password') is-invalid @enderror">
+                <input type="password" name="password" required="required" placeholder="{{ __('auth.field.password') }}" class="@error('password') is-invalid @enderror">
                 @error('password')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <label>
-                <input type="password" name="password_confirmation" required="required" placeholder="Powtórz hasło" class="@error('password_confirmation') is-invalid @enderror">
+                <input type="password" name="password_confirmation" required="required" placeholder="{{ __('auth.field.passwordConfirmation') }}" class="@error('password_confirmation') is-invalid @enderror">
                 @error('password_confirmation')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <label class="text-start small mt-4">
                 <input type="checkbox" name="regulations" required="required" class="@error('regulations') is-invalid @enderror" value="1"{{ old('regulations') == 'on' ? ' checked="checked"' : '' }}>
-                Oświadczam, iż zapozałem się z <a href="{{ route('page.show', ['url' => config('sopicms.url.regulations')]) }}" target="_blank">Regulaminem</a> i <a href="{{ route('page.show', ['url' => config('sopicms.url.privacyPolicy')]) }}" target="_blank">Polityką prywatności</a> serwisu {{ config('sopicms.siteName') }} i je akceptuję, a także wyrażam zgodę na przetwarzanie moich danych osobowych do celów świadczenia usług w ramach portalu internetowego.
+                {!! __('auth.field.regulations', [
+                    'Regulations' => '<a href="'.route('page.show', ['url' => config('sopicms.url.regulations')]).'" target="_blank">'.__('auth.field.regulationsRegulations').'</a>',
+                    'Policy' => '<a href="'.route('page.show', ['url' => config('sopicms.url.privacyPolicy')]).'" target="_blank">'.__('auth.field.regulationsPolicy').'</a>',
+                    'Name' => config('sopicms.siteName'),
+                ]) !!}
                 @error('regulations')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <div class="mt-4">
-                <input type="submit" value="Zarejestruj się" class="btn btn-primary">
+                <input type="submit" value="{{ __('auth.button.register') }}" class="btn btn-primary">
             </div>
             <div class="mt-4 small">
-                <a href="{{ route('auth.login') }}" class="text-decoration-underline">Zaloguj się</a>
+                <a href="{{ route('auth.login') }}" class="text-decoration-underline">{{ __('auth.header.login2') }}</a>
                 <span class="mx-2">/</span>
-                <a href="{{ route('auth.password') }}" class="text-decoration-underline">Zapomniałeś hasła?</a>
+                <a href="{{ route('auth.password') }}" class="text-decoration-underline">{{ __('auth.header.password2') }}</a>
             </div>
         </form>
     </section>

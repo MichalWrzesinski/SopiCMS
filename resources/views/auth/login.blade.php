@@ -13,24 +13,24 @@
         <form method="post" action="{{ route('auth.login.send') }}">
             @csrf
             <label>
-                <input type="email" name="email" required="required" placeholder="Adres e-mail" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
+                <input type="email" name="email" required="required" placeholder="{{ __('auth.field.email') }}" class="@error('email') is-invalid @enderror" value="{{ old('email') }}">
                 @error('login')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <label>
-                <input type="password" name="password" required="required" placeholder="Hasło" class="@error('password') is-invalid @enderror">
+                <input type="password" name="password" required="required" placeholder="{{ __('auth.field.password') }}" class="@error('password') is-invalid @enderror">
                 @error('password')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                 @enderror
             </label>
             <div class="mt-5">
-                <input type="submit" value="Zaloguj się" class="btn btn-primary">
+                <input type="submit" value="{{ __('auth.button.login') }}" class="btn btn-primary">
             </div>
             <div class="mt-4 small">
-                <a href="{{ route('auth.register') }}" class="text-decoration-underline">Załóż konto</a>
+                <a href="{{ route('auth.register') }}" class="text-decoration-underline">{{ __('auth.header.register2') }}</a>
                 <span class="mx-2">/</span>
-                <a href="{{ route('auth.password') }}" class="text-decoration-underline">Zapomniałeś hasła?</a>
+                <a href="{{ route('auth.password') }}" class="text-decoration-underline">{{ __('auth.header.password2') }}</a>
             </div>
         </form>
     </section>

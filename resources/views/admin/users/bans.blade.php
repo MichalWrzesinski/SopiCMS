@@ -4,8 +4,8 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Panel administracyjny</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.users.list') }}">Użytkownicy</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('layout.header.admin') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.users.list') }}">{{ __('users.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -30,10 +30,10 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>IP</th>
-                                            <th>Data blokady</th>
-                                            <th>Opcje</th>
+                                            <th>{{ __('bans.field.id') }}</th>
+                                            <th>{{ __('bans.field.ip') }}</th>
+                                            <th>{{ __('bans.field.date') }}</th>
+                                            <th>{{ __('admin.options') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,7 +46,7 @@
                                                     <form method="post" action="{{ route('admin.users.bans.delete.send', ['id' => $ban['id']]) }}">
                                                         @method('delete')
                                                         @csrf
-                                                        <input type="submit" value="Odblokuj" class="btn btn-link">
+                                                        <input type="submit" value="{{ __('bans.button.delete') }}" class="btn btn-link">
                                                     </form>
                                                 </td>
                                             </tr>
@@ -55,7 +55,7 @@
                                 </table>
                                 {{ $list->appends(request()->input())->links() }}
                             @else
-                                <p>Niczego nie znaleziono</p>
+                                <p>{{ __('layout.alert.notFound') }}</p>
                             @endif
                         </section>
                     </div>
@@ -64,7 +64,7 @@
                 <div class="accordion-item mb-4">
                     <h2 class="accordion-header" id="section-2">
                         <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-2-container" aria-expanded="false" aria-controls="section-2-container">
-                            Dodaj blokadę
+                            {{ __('bans.header.add') }}
                         </button>
                     </h2>
                     <div id="section-2-container" class="accordion-collapse collapse" aria-labelledby="section-2">
@@ -72,14 +72,14 @@
                             <form method="post" action="{{ route('admin.users.bans.add.send') }}">
                                 @csrf
                                 <label>
-                                    Adres IP
+                                    {{ __('bans.field.ip') }}
                                     <input type="text" name="ip" required="required" class="@error('ip') is-invalid @enderror">
                                     @error('ip')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <div class="mt-4">
-                                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                                    <input type="submit" value="{{ __('layout.button.add') }}" class="btn btn-primary">
                                 </div>
                             </form>
                         </section>
@@ -89,7 +89,7 @@
                 <div class="accordion-item mb-4">
                     <h2 class="accordion-header" id="section-3">
                         <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-3-container" aria-expanded="false" aria-controls="section-3-container">
-                            Szukaj rekordu
+                            {{ __('bans.header.search') }}
                         </button>
                     </h2>
                     <div id="section-3-container" class="accordion-collapse collapse" aria-labelledby="section-3">
@@ -97,7 +97,7 @@
                             <form method="post" action="{{ route('admin.users.bans.send') }}">
                                 @csrf
                                 <label>
-                                    Słowo kluczowe
+                                    {{ __('layout.field.keyword') }}
                                     <input type="text" name="search" required="required" value="{{ old('search') }}">
                                     @error('search')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -105,14 +105,14 @@
                                 </label>
                                 <label>
                                     <input type="checkbox" name="id" value="1" checked="checked">
-                                    Szukaj w ID
+                                    {{ __('layout.field.inId') }}
                                 </label>
                                 <label>
                                     <input type="checkbox" name="ip" value="1" checked="checked">
-                                    Szukaj w adresach IP
+                                    {{ __('layout.field.inIP') }}
                                 </label>
                                 <div class="mt-4">
-                                    <input type="submit" value="Szukaj" class="btn btn-primary">
+                                    <input type="submit" value="{{ __('layout.button.search') }}" class="btn btn-primary">
                                 </div>
                             </form>
                         </section>

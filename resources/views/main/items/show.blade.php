@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('item.list') }}">{{ config('sopicms.item.name') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('item.list') }}">{{ __('items.header.title') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -43,17 +43,17 @@
                 <section class="p-4 mb-4">
                     <h1>{{ $item->title }}</h1>
                     <ul class="list">
-                        <li>Cena: <strong>{{ priceFormat($item->price) }}</strong></li>
-                        <li>Kategoria: <strong>{{ $item->category_dir }}</strong></li>
-                        @if($item->region <> '')<li>Województwo: <strong>{{config('sopicms.region.'.$item->region) }}</strong></li>@endif
-                        @if($item->city <> '')<li>Miejscowość: <strong>{{ $item->city }}</strong></li>@endif
-                        @if($item->user <> '')<li>Sprzedający: <strong><a href="{{ route('item.list', ['search' => config('sopicms.opd.user').'/'.$item->user_id]) }}">{{ $item->user }}</a></strong></li>@endif
-                        @if($item->email <> '')<li>E-mail: <strong><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></strong></li>@endif
-                        @if($item->phone <> '')<li>Telefon: <strong>{{ $item->phone }}</strong></li>@endif
+                        <li>{{ __('items.field.price') }}: <strong>{{ priceFormat($item->price) }}</strong></li>
+                        <li>{{ __('items.field.category') }}: <strong>{{ $item->category_dir }}</strong></li>
+                        @if($item->region <> '')<li>{{ __('items.field.region') }}: <strong>{{config('sopicms.region.'.$item->region) }}</strong></li>@endif
+                        @if($item->city <> '')<li>{{ __('items.field.city') }}: <strong>{{ $item->city }}</strong></li>@endif
+                        @if($item->user <> '')<li>{{ __('items.field.seller') }}: <strong><a href="{{ route('item.list', ['search' => config('sopicms.opd.user').'/'.$item->user_id]) }}">{{ $item->user }}</a></strong></li>@endif
+                        @if($item->email <> '')<li>{{ __('items.field.email') }}: <strong><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></strong></li>@endif
+                        @if($item->phone <> '')<li>{{ __('items.field.phone') }}: <strong>{{ $item->phone }}</strong></li>@endif
                     </ul>
                 </section>
                 <section class="p-4 mb-4">
-                    <h3>Szczegóły oferty</h3>
+                    <h3>{{ __('items.header.detiles') }}</h3>
                     <p>{{ $item->content }}</p>
                 </section>
             </div>

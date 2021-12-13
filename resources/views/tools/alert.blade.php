@@ -1,6 +1,6 @@
 @if(session('success'))
     <div class="alert alert-success align-items-center" role="alert">
-        {!! session('success') ?? 'Operacja została wykonana pomyślnie' !!}
+        {!! session('success') ?? __('alerts.success') !!}
     </div>
 @endif
 
@@ -12,12 +12,12 @@
 
 @if($errors->any())
     <div class="alert alert-danger align-items-center" role="alert">
-        {!! $message ?? 'Operacja nie została wykonana, gdyż natrafiono na błąd' !!}
+        {!! $message ?? __('alerts.error') !!}
     </div>
 @endif
 
 @if(session('error'))
     <div class="alert alert-danger align-items-center" role="alert">
-        {!! session('error') ?? 'Operacja nie została wykonana, gdyż natrafiono na błąd' !!}
+        {!! session('error') ?? __('alerts.error') !!}
     </div>
 @endif

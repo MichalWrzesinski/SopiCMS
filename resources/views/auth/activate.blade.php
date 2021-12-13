@@ -11,9 +11,7 @@
         </a>
         @include('tools.alert')
         <p>
-            Twoje konto zostało zarejestrowane.
-            Na podany adres e-mail wysłaliśmy wiadomość.
-            Kliknij w link by zweryfikować swoje konto.
+            {!! __('auth.alert.register') !!}
         </p>
     </section>
 @endsection

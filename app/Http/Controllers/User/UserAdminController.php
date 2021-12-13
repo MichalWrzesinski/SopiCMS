@@ -28,7 +28,7 @@ class UserAdminController extends Controller
     public function list(Request $request): View
     {
         return View('admin.users.list', [
-            'title' => 'Użytkownicy',
+            'title' => __('users.header.title'),
             'list' => $this->userRepository->list($request, config('sopicms.paginate')),
         ]);
     }
@@ -45,7 +45,7 @@ class UserAdminController extends Controller
     {
         return View('admin.users.edit', [
             'id' => $id,
-            'title' => 'Edycja użytkownika',
+            'title' => __('users.header.edit'),
             'user' => $this->userRepository->get($id),
         ]);
     }
@@ -66,7 +66,7 @@ class UserAdminController extends Controller
             'email' => $request['email'],
         ]);
 
-        return back()->with('success', 'Zmiany zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function passwordSend(PasswordRequest $request, int $id)
@@ -74,14 +74,14 @@ class UserAdminController extends Controller
         $this->userRepository->update($id, [
             'password' => Hash::make($request['password'])
         ]);
-        return back()->with('success', 'Hasło użytkownika zostało zmienione');
+        return back()->with('success', __('users.alert.password'));
     }
 
     public function deleteSend(DeleteRequest $request, int $id)
     {
         $this->userRepository->delete($id);
         return redirect()->route('admin.users.list')
-            ->with('success', 'Użytkownik został usunięty');
+            ->with('success', __('users.alert.deleted'));
     }
 
     public function avatarAddSend(ImageRequest $request, int $id)
@@ -96,7 +96,7 @@ class UserAdminController extends Controller
         $this->userRepository->update($id, [
             'avatar' => $file,
         ]);
-        return back()->with('success', 'Avatar użytkownika został zmieniony');
+        return back()->with('success', __('users.alert.avatar'));
     }
 
     public function avatarDeleteSend(Request $request, int $id)
@@ -104,20 +104,13 @@ class UserAdminController extends Controller
         $this->userRepository->update($id, [
             'avatar' => '',
         ]);
-        return back()->with('success', 'Avatar użytkownika został usunięty');
-    }
-
-    public function bans(): View
-    {
-        return View('admin.users.bans', [
-            'title' => 'Banicja',
-        ]);
+        return back()->with('success', __('users.alert.avatarDeleted'));
     }
 
     public function newsletter(): View
     {
         return View('admin.users.newsletter', [
-            'title' => 'Newsletter',
+            'title' => __('newsletter.header.title'),
         ]);
     }
 
@@ -129,6 +122,6 @@ class UserAdminController extends Controller
         ]);
 
         $this->userRepository->newsletter($request['title'], $request['content']);
-        return back()->with('success', 'Newsletter został wysłany');
+        return back()->with('success', __('newsletter.alert.send'));
     }
 }

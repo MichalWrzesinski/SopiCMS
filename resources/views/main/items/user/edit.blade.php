@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('sopicms.siteName') }}</a></li>
             <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Twoje konto</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('user.item.list') }}">{{ config('sopicms.item.userList') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('user.item.list') }}">{{ __('items.headers.userList') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>
     </nav>
@@ -33,7 +33,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <label>
-                                                Tytuł
+                                                {{ __('items.field.title') }}
                                                 <input type="text" name="title" required="required" class="@error('title') is-invalid @enderror" value="{{ old('title', $item->title) }}">
                                                 @error('title')
                                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="col-4">
                                             <label>
-                                                Cena
+                                                {{ __('items.field.price') }}
                                                 <input type="text" name="price" required="required" class="@error('category') is-invalid @enderror" value="{{ old('price', $item->price) }}">
                                                 @error('price')
                                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -53,9 +53,9 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <label>
-                                                Kategoria
+                                                {{ __('items.field.category') }}
                                                 <select name="category" required="required" class="@error('category') is-invalid @enderror">
-                                                    <option value="">Wybierz</option>
+                                                    <option value="">{{ __('items.field.select') }}</option>
                                                     @if(isset($list[0]) && is_array($list[0]))
                                                         @foreach($list[0] as $cat)
                                                             @if(isset($list[$cat['id']]) && is_array($list[$cat['id']]))
@@ -77,9 +77,9 @@
                                         </div>
                                         <div class="col-4">
                                             <label>
-                                                Region
+                                                {{ __('items.field.region') }}
                                                 <select name="region" required="required" class="@error('category') is-invalid @enderror">
-                                                    <option value="">Wybierz</option>
+                                                    <option value="">{{ __('items.field.select') }}</option>
                                                     @if(is_array(config('sopicms.region')))
                                                         @foreach(config('sopicms.region') as $key => $name)
                                                             <option value="{{ $key }}"@if($item->region == $key) selected="selected"@endif>{{ $name }}</option>
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-4">
                                             <label>
-                                                Miejscowość
+                                                {{ __('items.field.city') }}
                                                 <input type="text" name="city" required="required" class="@error('city') is-invalid @enderror" value="{{ old('city', $item->city) }}">
                                                 @error('city')
                                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -102,14 +102,14 @@
                                         </div>
                                     </div>
                                     <label>
-                                        Treść
+                                        {{ __('items.field.content') }}
                                         <textarea name="content" required="required">{{ old('content', $item->content) }}</textarea>
                                         @error('content')
                                             <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">
-                                        <input type="submit" value="Zapisz" class="btn btn-primary">
+                                        <input type="submit" value="{{ __('items.button.save') }}" class="btn btn-primary">
                                     </div>
                                 </form>
                             </section>
@@ -119,14 +119,14 @@
                     <div class="accordion-item mb-4">
                         <h2 class="accordion-header" id="section-2">
                             <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-2-container" aria-expanded="false" aria-controls="section-2-container">
-                                Galeria zdjęć
+                                {{ __('gallery.header.title') }}
                             </button>
                         </h2>
                         <div id="section-2-container" class="accordion-collapse collapse" aria-labelledby="section-2">
                             <section class="accordion-body p-4">
                                 @if(isset($gallery) && is_array($gallery) && count($gallery) > 0)
                                     <div class="mb-5">
-                                        <p>Kliknij na zdjęciu by wyświetlić więcej opcji</p>
+                                        <p>{{ __('gallery.alert.info') }}</p>
                                         @foreach($gallery as $img)
                                             <a href="#" class=dropdown-toggle" role="button" id="image-options{{ $img['id'] }}" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <img src="{{ route('image.thumbnail', ['path' => $img['image'], 'width' => 150, 'height' => 150]) }}" alt="Zdjęcie">
@@ -136,7 +136,7 @@
                                                     <li>
                                                         <form method="post" action="{{ route('gallery.cover.send', ['module' => 'items', 'moduleId' => $id, 'id' => $img['id']]) }}" class="dropdown-item">
                                                             @csrf
-                                                            <input type="submit" value="Ustaw jako zdjęcie główne" class="btn btn-link">
+                                                            <input type="submit" value="{{ __('gallery.button.cover') }}" class="btn btn-link">
                                                         </form>
                                                     </li>
                                                 @endif
@@ -144,26 +144,26 @@
                                                     <form method="post" action="{{ route('gallery.delete.send', ['id' => $img['id']]) }}" class="dropdown-item">
                                                         @method('delete')
                                                         @csrf
-                                                        <input type="submit" value="Usuń zdjęcie" class="btn btn-link">
+                                                        <input type="submit" value="{{ __('gallery.button.delete') }}" class="btn btn-link">
                                                     </form>
                                                 </li>
                                             </ul>
                                         @endforeach
                                     </div>
                                 @else
-                                    <p>Nie dodano jeszcze żadnego zdjęcia</p>
+                                    <p>{{ __('gallery.alert.notFound') }}</p>
                                 @endif
                                 <form method="post" action="{{ route('gallery.add.send', ['module' => 'items', 'moduleId' => $id]) }}" enctype="multipart/form-data">
                                     @csrf
                                     <label>
-                                        Plik graficzny
+                                        {{ __('gallery.field.file') }}
                                         <input type="file" name="image" required="required" class="@error('image') is-invalid @enderror">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">
-                                        <input type="submit" value="Dodaj zdjęcie" class="btn btn-primary">
+                                        <input type="submit" value="{{ __('gallery.button.submit') }}" class="btn btn-primary">
                                     </div>
                                 </form>
                             </section>
@@ -188,7 +188,7 @@
                     <div class="accordion-item mb-4">
                         <h2 class="accordion-header" id="section-4">
                             <button class="accordion-button collapsed text-black" type="button" data-bs-toggle="collapse" data-bs-target="#section-4-container" aria-expanded="false" aria-controls="section-4-container">
-                                Usuń
+                                {{ __('items.header.delete') }}
                             </button>
                         </h2>
                         <div id="section-4-container" class="accordion-collapse collapse" aria-labelledby="section-4">
@@ -198,13 +198,13 @@
                                     @method('delete')
                                     <label>
                                         <input type="checkbox" name="delete" value="1" required="required" class="@error('delete') is-invalid @enderror">
-                                        Potwierdzam chęć usunięcia tego ogłoszenia
+                                        {{ __('items.field.delete') }}
                                         @error('delete')
                                             <span class="invalid-feedback" role="alert">>{{ $message }}/span>
                                         @enderror
                                     </label>
                                     <div class="mt-4">
-                                        <input type="submit" value="Usuń" class="btn btn-primary">
+                                        <input type="submit" value="{{ __('items.button.delete') }}" class="btn btn-primary">
                                     </div>
                                 </form>
                             </section>

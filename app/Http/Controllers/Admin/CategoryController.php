@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function list(): View
     {
         return View('admin.categories.list', [
-            'title' => 'Kategorie',
+            'title' => __('categories.header.title'),
             'list' => $this->categoryRepository->list(),
         ]);
     }
@@ -28,32 +28,32 @@ class CategoryController extends Controller
     public function addSend(NameRequest $request)
     {
         $this->categoryRepository->add($request);
-        return back()->with('success', 'Kategoria została dodana');
+        return back()->with('success', __('categories.alert.add'));
     }
 
     public function up(int $id)
     {
         if(!$this->categoryRepository->up($id)) {
-            return back()->with('error', 'Nie można przesunąć kategorii w górę');
+            return back()->with('error', __('categories.alert.errorUp'));
         }
 
-        return back()->with('success', 'Kategoria została przesunięta w górę');
+        return back()->with('success', __('categories.alert.doneUp'));
     }
 
     public function down(int $id)
     {
         if(!$this->categoryRepository->down($id)) {
-            return back()->with('error', 'Nie można przesunąć kategorii w dół');
+            return back()->with('error', __('categories.alert.errorDown'));
         }
 
-        return back()->with('success', 'Kategoria została przesunięta w dół');
+        return back()->with('success', __('categories.alert.doneDown'));
     }
 
     public function edit(int $id): View
     {
         return View('admin.categories.edit', [
             'id' => $id,
-            'title' => 'Edycja kategorii',
+            'title' => __('categories.header.edit'),
             'category' => $this->categoryRepository->get($id),
             'list' => $this->categoryRepository->list(),
         ]);
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function editSend(NameRequest $request, int $id)
     {
         $this->categoryRepository->update($id, $request);
-        return back()->with('success', 'Zmiany zostały zapisane');
+        return back()->with('success', __('layout.alert.save'));
     }
 
     public function deleteSend(Request $request, int $id)
@@ -70,6 +70,6 @@ class CategoryController extends Controller
         $this->categoryRepository->delete($id);
 
         return redirect()->route('admin.categories.list')
-            ->with('success', 'Kategoria została usunięta');
+            ->with('success', __('categories.alert.delete'));
     }
 }

@@ -10,11 +10,11 @@
                 <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
             </svg>
         </a>
-        <p>Zostałeś wylogowany ze swojego konta</p>
+        <p>{{ __('auth.alert.logout') }}</p>
         <div class="mt-4 small">
-            <a href="{{ route('home') }}" class="text-decoration-underline">Strona główna</a>
+            <a href="{{ route('home') }}" class="text-decoration-underline">{{ __('layout.header.home') }}</a>
             <span class="mx-2">/</span>
-            <a href="{{ route('auth.login') }}" class="text-decoration-underline">Zaloguj się</a>
+            <a href="{{ route('auth.login') }}" class="text-decoration-underline">{{ __('auth.header.login2') }}</a>
         </div>
     </section>
 @endsection

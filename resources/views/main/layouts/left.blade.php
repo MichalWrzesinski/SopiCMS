@@ -1,48 +1,48 @@
 @auth
     <section class="p-4 pb-3 mb-4">
-        <h2>Nawigacja</h2>
+        <h2>{{ __('layout.header.nav') }}</h2>
         <ul class="list-group list-group-flush">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('user.dashboard') }}">
-                    Twoje konto
+                    {{ __('user.header.title') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('user.manage') }}">
-                    Ustawienia konta
+                    {{ __('user.header.manage') }}
                 </a>
             </li>
             @can('admin')
                 <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                     <a href="{{ route('admin.dashboard') }}">
-                        Panel administracyjny
+                        {{ __('user.header.admin') }}
                     </a>
                 </li>
             @endcan
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('auth.logout') }}">
-                    Wyloguj się
+                    {{ __('user.header.logout') }}
                 </a>
             </li>
         </ul>
     </section>
     <section class="p-4 pb-3 mb-4">
-        <h2>{{ config('sopicms.item.name') }}</h2>
+        <h2>{{ __('items.header.title') }}</h2>
         <ul class="list-group list-group-flush">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('user.item.list') }}">
-                    {{ config('sopicms.item.userList') }}
+                    {{ __('items.header.user') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">{{ App\Models\Item::where('user_id', Auth::id())->count() }}</span>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('user.item.add') }}">
-                    {{ config('sopicms.item.add') }}
+                    {{ __('items.header.add') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('item.list') }}">
-                    {{ config('sopicms.item.search') }}
+                    {{ __('items.header.title') }}
                 </a>
                 <span class="badge bg-primary rounded-pill">{{ App\Models\Item::count() }}</span>
             </li>
@@ -50,21 +50,21 @@
     </section>
 @else
     <section class="p-4 pb-3 mb-4">
-        <h2>Nawigacja</h2>
+        <h2>{{ __('layout.header.nav') }}</h2>
         <ul class="list-group list-group-flush">
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('auth.login') }}">
-                    Logowanie
+                    {{ __('auth.header.login') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('auth.register') }}">
-                    Rejestracja
+                    {{ __('auth.header.register') }}
                 </a>
             </li>
             <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0">
                 <a href="{{ route('auth.password') }}">
-                    Przypomnij hasło
+                    {{ __('auth.header.password') }}
                 </a>
             </li>
         </ul>

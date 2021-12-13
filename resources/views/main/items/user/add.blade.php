@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <label>
-                                    Tytuł
+                                    {{ __('items.field.title') }}
                                     <input type="text" name="title" required="required" class="@error('title') is-invalid @enderror" value="{{ old('title') }}">
                                     @error('title')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-4">
                                 <label>
-                                    Cena
+                                    {{ __('items.field.price') }}
                                     <input type="text" name="price" required="required" class="@error('category') is-invalid @enderror" value="{{ old('price') }}">
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -44,9 +44,9 @@
                         <div class="row">
                             <div class="col-4">
                                 <label>
-                                    Kategoria
+                                    {{ __('items.field.category') }}
                                     <select name="category" required="required" class="@error('category') is-invalid @enderror">
-                                        <option value="">Wybierz</option>
+                                        <option value="">{{ __('items.field.select') }}</option>
                                         @if(isset($list[0]) && is_array($list[0]))
                                             @foreach($list[0] as $cat)
                                                 @if(isset($list[$cat['id']]) && is_array($list[$cat['id']]))
@@ -68,9 +68,9 @@
                             </div>
                             <div class="col-4">
                                 <label>
-                                    Region
+                                    {{ __('items.field.region') }}
                                     <select name="region" required="required" class="@error('category') is-invalid @enderror">
-                                        <option value="">Wybierz</option>
+                                        <option value="">{{ __('items.field.select') }}</option>
                                         @if(is_array(config('sopicms.region')))
                                             @foreach(config('sopicms.region') as $key => $name)
                                                 <option value="{{ $key }}"@if(old('region') == $key) selected="selected"@endif>{{ $name }}</option>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-4">
                                 <label>
-                                    Miejscowość
+                                    {{ __('items.field.city') }}
                                     <input type="text" name="city" required="required" class="@error('city') is-invalid @enderror" value="{{ old('city') }}">
                                     @error('city')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -93,14 +93,14 @@
                             </div>
                         </div>
                         <label>
-                            Treść
+                            {{ __('items.field.content') }}
                             <textarea name="content" required="required" class="@error('content') is-invalid @enderror" >{{ old('content') }}</textarea>
                             @error('content')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
                             @enderror
                         </label>
                         <div class="mt-4">
-                            <input type="submit" value="Dalej" class="btn btn-primary">
+                            <input type="submit" value="{{ __('items.button.next') }}" class="btn btn-primary">
                         </div>
                     </form>
                 </section>

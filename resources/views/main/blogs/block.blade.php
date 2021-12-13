@@ -16,7 +16,7 @@
         </strong>
         <div class="card-buttons">
             <a href="{{ $blog->url }}" class="btn btn-primary">
-                Czytaj całość
+                {{ __('blog.button.more') }}
             </a>
         </div>
     </div>

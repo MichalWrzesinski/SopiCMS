@@ -24,7 +24,7 @@
                         {{ dateTimeFormat(strtotime($blog->created_at)) }}
                     </p>
                     @if(isset($gallery) && is_array($gallery) && count($gallery) > 0)
-                        <div class="mt-4">
+                        <div class="mt-4 mb-4">
                             <div>
                                 @foreach($gallery as $img)
                                     <a href="{{ route('image.show', ['path' => $img['image']]) }}" data-lightbox="gallery">

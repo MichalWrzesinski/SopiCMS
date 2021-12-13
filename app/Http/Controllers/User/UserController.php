@@ -28,14 +28,14 @@ class UserController extends Controller
     public function dashboard(): View
     {
         return View('main.user.dashboard', [
-            'title' => 'Twoje konto',
+            'title' => __('user.header.title'),
         ]);
     }
 
     public function manage(): View
     {
         return View('main.user.manage', [
-            'title' => 'Ustawienia konta',
+            'title' => __('user.header.manage'),
             'user' => Auth::user(),
         ]);
     }
@@ -52,7 +52,7 @@ class UserController extends Controller
             'email' => $request['email'],
         ]);
 
-        return back()->with('success', 'Twoje ustawienia zostały zmienione');
+        return back()->with('success', __('user.alert.success'));
     }
 
     public function managePasswordSend(PasswordRequest $request)
@@ -61,7 +61,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return back()->with('success', 'Twoje hasło zostało zmienione');
+        return back()->with('success', __('user.alert.password'));
     }
 
     public function manageAvatarSend(ImageRequest $request)
@@ -76,7 +76,7 @@ class UserController extends Controller
             'avatar' => $file,
         ]);
 
-        return back()->with('success', 'Twój avatar został zmieniony');
+        return back()->with('success', __('user.alert.avatar'));
     }
 
     public function manageAvatarDelete()
@@ -85,6 +85,6 @@ class UserController extends Controller
             'avatar' => '',
         ]);
 
-        return back()->with('success', 'Twój avatar został usunięty');
+        return back()->with('success', __('user.alert.avatarDeleted'));
     }
 }

@@ -34,7 +34,7 @@ class ItemUserController extends Controller
         $list = $this->itemRepository->userItems(Auth::id(), config('sopicms.paginate'));
 
         return View('main.items.user.list', [
-            'title' => config('sopicms.item.userList'),
+            'title' => __('items.header.user'),
             'list' => $list,
             'gallery' => $this->galleryRepository->coverList('items', $list->pluck('id')->toArray()),
         ]);
@@ -43,7 +43,7 @@ class ItemUserController extends Controller
     public function add(): View
     {
         return View('main.items.user.add', [
-            'title' => config('sopicms.item.add'),
+            'title' => __('items.header.add'),
             'list' => $this->categoryRepository->list(),
         ]);
     }
@@ -51,13 +51,13 @@ class ItemUserController extends Controller
     public function addSend(ItemRequest $request)
     {
         return redirect()->route('user.item.edit', ['id' => $this->itemRepository->add($request)])
-            ->with('success', 'Ogłoszenie zostało dodane. Zaczekaj na aktywację przez administratora.');
+            ->with('success', __('items.alert.success'));
     }
 
     public function edit(int $id): View
     {
         return View('main.items.user.edit', [
-            'title' => config('sopicms.item.edit'),
+            'title' => __('items.header.edit'),
             'id' => $id,
             'item' => $this->itemRepository->get($id, Auth::id()),
             'gallery' => $this->galleryRepository->list('items', $id)->toArray(),
@@ -68,7 +68,7 @@ class ItemUserController extends Controller
     public function editSend(ItemRequest $request, int $id)
     {
         $this->itemRepository->update($id, $request, Auth::id());
-        return back()->with('success', 'Zmiany zostały zapisane.');
+        return back()->with('success', __('items.alert.done'));
     }
 
     public function deleteSend(DeleteRequest $request, int $id)
@@ -76,6 +76,6 @@ class ItemUserController extends Controller
         $this->itemRepository->delete($id, Auth::id());
 
         return redirect()->route('user.item.list')
-            ->with('success', 'Ogłoszenie zostało usunięte');
+            ->with('success', __('items.alert.deleted'));
     }
 }
