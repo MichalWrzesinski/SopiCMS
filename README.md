@@ -6,7 +6,7 @@ SopiCMS is a content management system based on the Laravel framework.
 * Pages
 * Blog
 * Multilanguage
-* Advertisements (to be adapted to auctions, products, courses, etc.)
+* Items (to be adapted to auctions, products, courses, etc.)
 
 # Author
 * Michał Wrzesiński 
