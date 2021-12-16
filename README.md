@@ -1,6 +1,9 @@
 # SopiCMS
 SopiCMS is a content management system based on the Laravel framework. 
 
+# Demo
+http://sopicms.webhome.pl/
+
 # Modules
 * Users
 * Pages
