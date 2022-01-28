@@ -36,7 +36,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         if(isset($categoryArray) && is_array($categoryArray)) {
             foreach($categoryArray as $key => $value) {
                 $sortedCategoryArray[$value['parent_id']][$value['y']] = $value;
-                $sortedCategoryArray[$value['parent_id']][$value['y']]['lastY'] = $this->lastY($value['parent_id']);
+                $sortedCategoryArray[$value['parent_id']][$value['y']]['lastY'] = $this->lastY((int)$value['parent_id']);
             }
         }
 
@@ -126,7 +126,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         $selectCategory = $this->model->findOrFail($id);
 
-        if($selectCategory->y >= $this->lastY($selectCategory['parent_id'])) {
+        if($selectCategory->y >= $this->lastY((int)$selectCategory['parent_id'])) {
             return false;
         }
 
@@ -152,7 +152,7 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->get()
             ->toArray();
 
-        return ((isset($lastY[0]['y'])) ? $lastY[0]['y'] : (-1));
+        return (int)((isset($lastY[0]['y'])) ? $lastY[0]['y'] : (-1));
     }
 
     public function parentList()

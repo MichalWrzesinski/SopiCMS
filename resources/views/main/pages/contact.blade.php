@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="mt-4">
-                            <input type="submit" value="{{ __('layout.button.send')` }}" class="btn btn-primary">
+                            <input type="submit" value="{{ __('layout.button.send') }}" class="btn btn-primary">
                         </div>
                     </form>
                 </section>

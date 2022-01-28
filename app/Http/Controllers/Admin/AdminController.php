@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function dashboard(): View
     {
         return View('admin.layouts.index', [
-            'title' => __('admin.title'),
+            'title' => __('layout.header.admin'),
         ]);
     }
 

@@ -61,7 +61,7 @@
                                     @else
                                         <li class="nav-item">
                                             <a href="{{ route('auth.register') }}" class="nav-link{!! Request::url() == route('auth.register') ? ' active' : '' !!}">
-                                                {{ __('auh.header.register') }}
+                                                {{ __('auth.header.register') }}
                                             </a>
                                         </li>
                                         <li class="nav-item ps-3">
